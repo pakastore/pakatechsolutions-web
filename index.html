@@ -1,285 +1,299 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta name="google-site-verification" content="dWMUHvnS15ercMqQrwJT8nfVtoBMDEwm4-_Dt-18s64" />
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>PAKA Tech Solutions | Soporte Técnico y Mantenimiento</title>
-<meta name="description" content="Servicio técnico profesional en Guatemala: limpieza de computadoras, instalación de antivirus, Office, mantenimiento de impresoras y más. Atención confiable y rápida." />
-<meta name="keywords" content="PAKA Tech, soporte técnico Guatemala, limpieza de computadoras, instalación de Office, antivirus, mantenimiento impresoras, reparación computadoras, PAKA DC" />
-<meta name="author" content="PAKA DC" />
-<style>
-  /* Reset y tipografía */
-  *, *::before, *::after {
-    box-sizing: border-box;
-  }
-  body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    margin:0; padding:0; background:#e6f0ff; color:#222;
-  }
-  a {
-    color: #0077ff;
-    text-decoration: none;
-  }
-  a:hover {
-    text-decoration: underline;
-  }
-  /* Header */
-  header {
-    background: #0059b3;
-    color: white;
-    padding: 1rem 2rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
-  }
-  header h1 {
-    margin: 0;
-    font-size: 1.9rem;
-    font-weight: 700;
-    letter-spacing: 1px;
-  }
-  nav a {
-    margin-left: 1.5rem;
-    font-weight: 600;
-    transition: color 0.3s ease;
-  }
-  nav a:hover {
-    color: #003d80;
-  }
-  /* Hero Section */
-  .hero {
-    background: linear-gradient(135deg, #0066ff 0%, #003d99 100%);
-    color: white;
-    padding: 5rem 2rem;
-    text-align: center;
-    box-shadow: inset 0 0 30px rgba(0,0,0,0.3);
-  }
-  .hero h2 {
-    margin-bottom: 0.5rem;
-    font-size: 2.8rem;
-    text-shadow: 2px 2px 8px rgba(0,0,0,0.4);
-  }
-  .hero p {
-    font-size: 1.3rem;
-    max-width: 650px;
-    margin: 0 auto;
-    line-height: 1.6;
-    text-shadow: 1px 1px 5px rgba(0,0,0,0.3);
-  }
-  /* Main content */
-  main {
-    padding: 2rem 1rem 4rem 1rem;
-    max-width: 1000px;
-    margin: 0 auto;
-  }
-  section {
-    margin-bottom: 4rem;
-  }
-  h3 {
-    color: #0066ff;
-    margin-bottom: 1.3rem;
-    font-weight: 900;
-    letter-spacing: 0.03em;
-  }
-  /* Servicios Grid */
-  .services-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
-    gap: 1.8rem;
-  }
-  .service-card {
-    background: white;
-    border-radius: 12px;
-    padding: 2rem 1.5rem;
-    box-shadow: 0 4px 15px rgba(0,102,255,0.1);
-    transition: box-shadow 0.35s ease, transform 0.35s ease;
-    text-align: center;
-  }
-  .service-card:hover {
-    box-shadow: 0 12px 35px rgba(0,102,255,0.25);
-    transform: translateY(-8px);
-  }
-  .service-card svg {
-    width: 55px;
-    height: 55px;
-    fill: #0066ff;
-    margin-bottom: 1.2rem;
-  }
-  .service-card h4 {
-    margin: 0.5rem 0 1rem;
-    font-weight: 700;
-    color: #004a99;
-  }
-  .service-card p {
-    font-size: 1rem;
-    color: #444;
-    line-height: 1.5;
-  }
-  /* Precios Tabla */
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    background: white;
-    box-shadow: 0 6px 18px rgba(0,102,255,0.15);
-    border-radius: 12px;
-    overflow: hidden;
-  }
-  th, td {
-    padding: 1.1rem 1.2rem;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
-    font-weight: 600;
-    font-size: 1.05rem;
-  }
-  th {
-    background: #0066ff;
-    color: white;
-  }
-  tr:last-child td {
-    border-bottom: none;
-  }
-  /* Sobre PAKA DC */
-  .about {
-    background: #d6e6ff;
-    padding: 2.5rem 2rem;
-    border-radius: 12px;
-    text-align: center;
-    box-shadow: 0 6px 25px rgba(0,102,255,0.1);
-  }
-  .about p {
-    max-width: 650px;
-    margin: 0 auto;
-    line-height: 1.6;
-    font-size: 1.15rem;
-    color: #003d80;
-  }
-  /* Contacto */
-  #contacto {
-    text-align:center; 
-    padding: 3rem 1rem; 
-    background: linear-gradient(135deg, #00c6ff, #0072ff); 
-    color: white; 
-    border-radius: 15px;
-    box-shadow: 0 8px 40px rgba(0,114,255,0.5);
-  }
-  #contacto h3 {
-    font-size: 2.2rem; 
-    margin-bottom: 0.5rem; 
-    font-weight: 900; 
-    text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
-  }
-  #contacto p {
-    font-size: 1.2rem; 
-    max-width: 600px; 
-    margin: 0 auto 2rem auto; 
-    text-shadow: 1px 1px 5px rgba(0,0,0,0.4);
-  }
-  .contact-buttons {
-    display:flex; 
-    justify-content:center; 
-    gap:2.5rem; 
-    flex-wrap:wrap;
-  }
-  .contact-buttons a {
-    background: #25d366; 
-    color: white; 
-    padding: 1.3rem 3.5rem; 
-    border-radius: 50px; 
-    font-weight: 800; 
-    font-size: 1.5rem; 
-    box-shadow: 0 8px 25px rgba(37, 211, 102, 0.6); 
-    transition: all 0.3s ease; 
-    display: flex; 
-    align-items: center; 
-    gap: 1rem; 
-    text-decoration: none;
-  }
-  .contact-buttons a:last-child {
-    background: #1e88e5; 
-    box-shadow: 0 8px 25px rgba(30, 136, 229, 0.6);
-  }
-  .contact-buttons a:hover {
-    filter: brightness(1.1);
-    transform: translateY(-3px);
-  }
-  .contact-buttons svg {
-    width: 36px; 
-    height: 36px; 
-    fill: white;
-  }
-  #contacto > div:last-child {
-    margin-top:3rem; 
-    max-width: 600px; 
-    margin-left:auto; 
-    margin-right:auto; 
-    background: rgba(255 255 255 / 0.15); 
-    border-radius: 15px; 
-    padding: 1.8rem; 
-    text-align: left; 
-    box-shadow: 0 0 30px rgba(0,0,0,0.15);
-    color: white;
-  }
-  #contacto ul {
-    list-style: none; 
-    padding-left: 0; 
-    font-size: 1.15rem; 
-    line-height: 1.6;
-  }
-  #contacto ul li {
-    margin-bottom: 0.9rem;
-  }
-  /* WhatsApp flotante */
-  .whatsapp-btn {
-    position: fixed;
-    bottom: 25px;
-    right: 25px;
-    background: #25d366;
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 999;
-    transition: background 0.3s ease;
-  }
-  .whatsapp-btn:hover {
-    background: #128c4a;
-  }
-  .whatsapp-btn svg {
-    width: 30px;
-    height: 30px;
-    fill: white;
-  }
-  /* Responsive */
-  @media (max-width: 600px) {
+  <meta name="google-site-verification" content="dWMUHvnS15ercMqQrwJT8nfVtoBMDEwm4-_Dt-18s64" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PAKA Tech Solutions | Soporte Técnico y Mantenimiento</title>
+  <meta name="description" content="Servicio técnico profesional en Guatemala: limpieza de computadoras, instalación de antivirus, Office, mantenimiento de impresoras y más. Atención confiable y rápida.">
+  <meta name="keywords" content="PAKA Tech, soporte técnico Guatemala, limpieza de computadoras, instalación de Office, antivirus, mantenimiento impresoras, reparación computadoras, PAKA DC">
+  <meta name="author" content="PAKA DC">
+  <style>
+    :root {
+      --main-blue: #007bff;
+      --dark-blue: #003366;
+      --light-bg: #f0f6ff;
+      --gradient: linear-gradient(135deg, #00c6ff, #0072ff);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: var(--light-bg);
+      color: #333;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    a {
+      text-decoration: none;
+      color: var(--main-blue);
+      transition: all 0.3s ease;
+    }
+
+    a:hover {
+      color: var(--dark-blue);
+    }
+
     header {
-      flex-direction: column;
-      align-items: flex-start;
+      background: var(--dark-blue);
+      color: white;
+      padding: 1.5rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
     }
+
+    header h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      letter-spacing: 1px;
+    }
+
     nav a {
-      margin: 0.5rem 0 0 0;
+      margin-left: 1.5rem;
+      font-weight: 600;
     }
+
+    .hero {
+      background: var(--gradient);
+      color: white;
+      text-align: center;
+      padding: 6rem 2rem 4rem;
+      position: relative;
+    }
+
     .hero h2 {
-      font-size: 1.9rem;
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      animation: fadeInDown 1s ease-in-out;
     }
+
+    .hero p {
+      font-size: 1.3rem;
+      max-width: 700px;
+      margin: auto;
+      animation: fadeInUp 1.2s ease-in-out;
+    }
+
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
     main {
+      padding: 3rem 1rem;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    section {
+      margin-bottom: 4rem;
+    }
+
+    h3 {
+      font-size: 2rem;
+      color: var(--main-blue);
+      margin-bottom: 1.2rem;
+      text-align: center;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+    }
+
+    .service-card {
+      background: white;
+      padding: 2rem;
+      border-radius: 15px;
+      box-shadow: 0 6px 20px rgba(0, 123, 255, 0.15);
+      transition: all 0.3s ease;
+      text-align: center;
+    }
+
+    .service-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 30px rgba(0, 123, 255, 0.35);
+    }
+
+    .service-card svg {
+      width: 60px;
+      height: 60px;
+      fill: var(--main-blue);
+      margin-bottom: 1rem;
+    }
+
+    .service-card h4 {
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+      color: var(--dark-blue);
+    }
+
+    table {
+      width: 100%;
+      background: white;
+      border-collapse: collapse;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0, 123, 255, 0.15);
+    }
+
+    th, td {
       padding: 1rem;
+      text-align: left;
     }
+
+    th {
+      background: var(--main-blue);
+      color: white;
+      font-size: 1.1rem;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f4f9ff;
+    }
+
+    .about {
+      background: white;
+      padding: 2rem;
+      border-radius: 15px;
+      box-shadow: 0 6px 20px rgba(0, 102, 255, 0.1);
+      text-align: center;
+    }
+
+    .about p {
+      max-width: 700px;
+      margin: auto;
+      font-size: 1.1rem;
+      color: #333;
+    }
+
+    #contacto {
+      background: var(--gradient);
+      color: white;
+      padding: 4rem 2rem;
+      border-radius: 20px;
+      text-align: center;
+      box-shadow: 0 10px 40px rgba(0, 114, 255, 0.5);
+    }
+
+    #contacto h3 {
+      font-size: 2.2rem;
+      margin-bottom: 1rem;
+    }
+
+    #contacto p {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+    }
+
     .contact-buttons {
-      flex-direction: column;
-      gap: 1.2rem;
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+      margin-bottom: 2rem;
     }
+
     .contact-buttons a {
       padding: 1rem 2rem;
-      font-size: 1.3rem;
+      background: white;
+      color: var(--main-blue);
+      border-radius: 50px;
+      font-weight: bold;
+      font-size: 1.2rem;
+      box-shadow: 0 6px 20px rgba(255,255,255,0.3);
+      transition: transform 0.3s ease, background 0.3s ease;
     }
-  }
-</style>
+
+    .contact-buttons a:hover {
+      background: var(--dark-blue);
+      color: white;
+      transform: scale(1.05);
+    }
+
+    #contacto ul {
+      list-style: none;
+      padding: 0;
+      font-size: 1.1rem;
+      margin-top: 1rem;
+    }
+
+    #contacto ul li::before {
+      content: "✅ ";
+    }
+
+    .whatsapp-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #25d366;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+      z-index: 1000;
+      transition: transform 0.3s ease;
+    }
+
+    .whatsapp-btn:hover {
+      transform: scale(1.1);
+    }
+
+    .whatsapp-btn svg {
+      fill: white;
+      width: 30px;
+      height: 30px;
+    }
+
+    @media (max-width: 600px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      nav {
+        margin-top: 1rem;
+      }
+
+      .hero h2 {
+        font-size: 2rem;
+      }
+
+      .contact-buttons {
+        flex-direction: column;
+      }
+    }
+  </style>
 </head>
 <body>
 
@@ -288,105 +302,84 @@
   <nav>
     <a href="#servicios">Servicios</a>
     <a href="#precios">Precios</a>
-    <a href="#sobre">Sobre PAKA DC</a>
+    <a href="#sobre">Sobre</a>
     <a href="#contacto">Contacto</a>
   </nav>
 </header>
 
 <section class="hero">
   <h2>¡Dejá tu compu como nueva!</h2>
-  <p>Servicio técnico profesional en Guatemala especializado en limpieza de computadoras, reinstalación de sistemas, antivirus, Office e impresoras.</p>
+  <p>Servicio técnico profesional en Guatemala especializado en limpieza, formateo, antivirus y mucho más.</p>
 </section>
 
 <main>
+  <section id="servicios">
+    <h3>Servicios</h3>
+    <div class="services-grid">
+      <div class="service-card">
+        <svg viewBox="0 0 64 64"><path d="M32 6a26 26 0 1 0 26 26A26 26 0 0 0 32 6z"/><path d="M31 15h2v18h-2zM24 30h16v4H24z"/></svg>
+        <h4>Limpieza Interna y Externa</h4>
+        <p>Mantenimiento preventivo para mejorar el rendimiento de tu equipo.</p>
+      </div>
+      <div class="service-card">
+        <svg viewBox="0 0 64 64"><path d="M20 44h24v4H20zM22 34h20v6H22zM32 12a12 12 0 1 0 12 12A12 12 0 0 0 32 12z"/></svg>
+        <h4>Formateo e Instalación de Sistema</h4>
+        <p>Reinstalamos Windows y dejamos tu PC rápida y optimizada.</p>
+      </div>
+      <div class="service-card">
+        <svg viewBox="0 0 64 64"><path d="M28 18h8v8h-8zM24 28v16h16V28z"/></svg>
+        <h4>Antivirus Profesional</h4>
+        <p>Eliminamos virus y te protegemos con software confiable.</p>
+      </div>
+      <div class="service-card">
+        <svg viewBox="0 0 64 64"><path d="M42 20H22v24h20zm-2 20H24V22h16z"/></svg>
+        <h4>Microsoft Office</h4>
+        <p>Instalación y activación de Office 100% funcional.</p>
+      </div>
+      <div class="service-card">
+        <svg viewBox="0 0 64 64"><path d="M22 22h20v20H22z"/><path d="M18 18h28v28H18z"/></svg>
+        <h4>Mantenimiento de Impresoras</h4>
+        <p>Revisión y limpieza de impresoras para evitar fallos.</p>
+      </div>
+    </div>
+  </section>
 
-<section id="servicios">
-  <h3>Servicios</h3>
-  <div class="services-grid">
-    <article class="service-card">
-      <svg viewBox="0 0 64 64" aria-hidden="true"><path d="M32 6a26 26 0 1 0 26 26A26 26 0 0 0 32 6zm0 48a22 22 0 1 1 22-22 22.025 22.025 0 0 1-22 22z"/><path d="M31 15h2v18h-2zM24 30h16v4H24z"/></svg>
-      <h4>Limpieza Interna y Externa</h4>
-      <p>Servicio preventivo y profundo para mantener tu equipo en óptimas condiciones.</p>
-    </article>
-    <article class="service-card">
-      <svg viewBox="0 0 64 64" aria-hidden="true"><path d="M20 44h24v4H20zM22 34h20v6H22zM32 12a12 12 0 1 0 12 12A12 12 0 0 0 32 12z"/></svg>
-      <h4>Reinstalación de Sistemas</h4>
-      <p>Instalación y configuración de sistemas operativos para mejor rendimiento.</p>
-    </article>
-    <article class="service-card">
-      <svg viewBox="0 0 64 64" aria-hidden="true"><path d="M28 18h8v8h-8zM24 28v16h16V28z"/></svg>
-      <h4>Instalación de Antivirus</h4>
-      <p>Protegé tu computadora contra virus y malware con antivirus actualizado.</p>
-    </article>
-    <article class="service-card">
-      <svg viewBox="0 0 64 64" aria-hidden="true"><path d="M42 20H22v24h20zm-2 20H24V22h16z"/></svg>
-      <h4>Instalación y Activación de Office</h4>
-      <p>Office completo listo para trabajar sin problemas.</p>
-    </article>
-    <article class="service-card">
-      <svg viewBox="0 0 64 64" aria-hidden="true"><path d="M22 22h20v20H22z"/><path d="M18 18h28v28H18z"/></svg>
-      <h4>Mantenimiento de Impresoras</h4>
-      <p>Servicio preventivo para impresoras que asegura su buen funcionamiento.</p>
-    </article>
-  </div>
-</section>
-
-<section id="precios">
-  <h3>Precios</h3>
-  <table>
-    <thead>
+  <section id="precios">
+    <h3>Precios</h3>
+    <table>
       <tr><th>Servicio</th><th>Precio (Q)</th></tr>
-    </thead>
-    <tbody>
       <tr><td>Limpieza Interna</td><td>150</td></tr>
       <tr><td>Limpieza Externa</td><td>100</td></tr>
-      <tr><td>Reinstalación de Sistemas</td><td>100</td></tr>
-      <tr><td>Instalación de Antivirus</td><td>50</td></tr>
-      <tr><td>Instalación y Activación de Office</td><td>75</td></tr>
-      <tr><td>Mantenimiento Preventivo de Impresoras</td><td>125</td></tr>
-    </tbody>
-  </table>
-</section>
+      <tr><td>Reinstalación de Windows</td><td>100</td></tr>
+      <tr><td>Antivirus</td><td>50</td></tr>
+      <tr><td>Office Activado</td><td>75</td></tr>
+      <tr><td>Impresoras</td><td>125</td></tr>
+    </table>
+  </section>
 
-<section id="sobre" class="about">
-  <h3>Sobre PAKA DC</h3>
-  <p>PAKA DC es un experto en soporte técnico y mantenimiento informático en Guatemala, comprometido con brindar soluciones rápidas y confiables para mantener tus dispositivos siempre en óptimas condiciones.</p>
-</section>
+  <section id="sobre" class="about">
+    <h3>Sobre PAKA DC</h3>
+    <p>PAKA DC es un profesional con experiencia en soporte técnico y mantenimiento informático. Atención rápida, confiable y personalizada en Guatemala.</p>
+  </section>
+</main>
 
 <section id="contacto">
-  <h3>¡Contactanos y mejora tu PC hoy!</h3>
-  <p>Servicio rápido, confiable y personalizado para que tu equipo funcione como nuevo.</p>
+  <h3>¡Contactanos y mejora tu equipo hoy!</h3>
+  <p>Resolvemos tus problemas técnicos de forma rápida y profesional.</p>
   <div class="contact-buttons">
-    <a href="https://wa.me/50247548991" target="_blank" rel="noopener" aria-label="Contactar por WhatsApp">
-      <svg viewBox="0 0 24 24" aria-hidden="true">
-        <path d="M20.52 3.48A11.94 11.94 0 0 0 12 0C5.37 0 0 5.37 0 12a11.94 11.94 0 0 0 3.48 8.52L0 24l3.48-3.48A11.94 11.94 0 0 0 12 24c6.63 0 12-5.37 12-12a11.94 11.94 0 0 0-3.48-8.52zM12 22a10 10 0 0 1-5.52-1.7l-.39-.23-2.62.7.7-2.62-.23-.39A10 10 0 1 1 12 22zm5.23-7.32c-.29-.15-1.72-.85-1.99-.94s-.46-.14-.65.15-.75.94-.92 1.13-.34.22-.62.07a8.1 8.1 0 0 1-2.38-1.47 9.05 9.05 0 0 1-1.68-2.09c-.18-.3 0-.46.13-.61s.29-.34.44-.5a1.23 1.23 0 0 0 .29-.49.18.18 0 0 0 0-.35c-.08-.08-.65-1.56-.9-2.14a.59.59 0 0 0-.9-.5c-.27.1-1.16.54-1.16 1.3s.75 1.52.86 1.62a12.42 12.42 0 0 0 2.25 3.45 12.15 12.15 0 0 0 3.72 2.87c.52.22.92.18 1.26.11a2.5 2.5 0 0 0 1.81-2.12c.04-.33.03-.6 0-.68z"/>
-      </svg>
-      WhatsApp
-    </a>
-    <a href="tel:+50247548991" aria-label="Llamar a PAKA Tech Solutions">
-      <svg viewBox="0 0 24 24" aria-hidden="true">
-        <path d="M6.62 10.79a15.093 15.093 0 0 0 6.59 6.59l2.2-2.2a1.003 1.003 0 0 1 1.11-.21c1.21.48 2.53.75 3.88.75a1 1 0 0 1 1 1v3.5a1 1 0 0 1-1 1C7.83 21.75 2.25 16.17 2.25 9a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.35.27 2.67.75 3.88.15.33.07.71-.21 1.11l-2.17 2.2z"/>
-      </svg>
-      Llamar Ahora
-    </a>
+    <a href="https://wa.me/50247548991" target="_blank">WhatsApp</a>
+    <a href="tel:+50247548991">Llamar Ahora</a>
   </div>
-  <div>
-    <h4>¿Por qué elegirnos?</h4>
-    <ul>
-      <li>✔️ Servicio rápido y confiable</li>
-      <li>✔️ Atención personalizada a cada cliente</li>
-      <li>✔️ Precios justos y transparentes</li>
-      <li>✔️ Experiencia comprobada en mantenimiento</li>
-      <li>✔️ Soporte técnico profesional en Guatemala</li>
-    </ul>
-  </div>
+  <ul>
+    <li>Servicio rápido y personalizado</li>
+    <li>Precios justos</li>
+    <li>Atención a domicilio</li>
+    <li>Garantía en cada trabajo</li>
+  </ul>
 </section>
 
-<!-- Botón flotante WhatsApp -->
-<a href="https://wa.me/50247548991" class="whatsapp-btn" target="_blank" aria-label="Chat WhatsApp">
-  <svg viewBox="0 0 24 24" aria-hidden="true">
-    <path d="M20.52 3.48A11.94 11.94 0 0 0 12 0C5.37 0 0 5.37 0 12a11.94 11.94 0 0 0 3.48 8.52L0 24l3.48-3.48A11.94 11.94 0 0 0 12 24c6.63 0 12-5.37 12-12a11.94 11.94 0 0 0-3.48-8.52zM12 22a10 10 0 0 1-5.52-1.7l-.39-.23-2.62.7.7-2.62-.23-.39A10 10 0 1 1 12 22zm5.23-7.32c-.29-.15-1.72-.85-1.99-.94s-.46-.14-.65.15-.75.94-.92 1.13-.34.22-.62.07a8.1 8.1 0 0 1-2.38-1.47 9.05 9.05 0 0 1-1.68-2.09c-.18-.3 0-.46.13-.61s.29-.34.44-.5a1.23 1.23 0 0 0 .29-.49.18.18 0 0 0 0-.35c-.08-.08-.65-1.56-.9-2.14a.59.59 0 0 0-.9-.5c-.27.1-1.16.54-1.16 1.3s.75 1.52.86 1.62a12.42 12.42 0 0 0 2.25 3.45 12.15 12.15 0 0 0 3.72 2.87c.52.22.92.18 1.26.11a2.5 2.5 0 0 0 1.81-2.12c.04-.33.03-.6 0-.68z"/>
-  </svg>
+<a href="https://wa.me/50247548991" class="whatsapp-btn" target="_blank" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M20.52 3.48A11.94 11.94 0 0 0 12 0C5.37 0 0 5.37 0 12a11.94 11.94 0 0 0 3.48 8.52L0 24l3.48-3.48A11.94 11.94 0 0 0 12 24c6.63 0 12-5.37 12-12a11.94 11.94 0 0 0-3.48-8.52z"/></svg>
 </a>
 
 </body>
