@@ -15,267 +15,219 @@
   }
   body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    margin: 0; padding: 0;
-    background: #fcfcfc;
-    color: #444;
-    line-height: 1.6;
+    margin:0; padding:0; background:#f7f9fc; color:#333;
   }
   a {
-    color: #1e88e5;
+    color: #008CFF;
     text-decoration: none;
-    transition: color 0.3s ease;
   }
   a:hover {
-    color: #0d47a1;
+    text-decoration: underline;
   }
   /* Header */
   header {
-    background: #1e88e5;
+    background: #008CFF;
     color: white;
-    padding: 1.2rem 2rem;
+    padding: 1rem 2rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
     flex-wrap: wrap;
-    box-shadow: 0 2px 8px rgba(30,136,229,0.3);
   }
   header h1 {
     margin: 0;
-    font-size: 1.9rem;
+    font-size: 1.8rem;
     font-weight: 700;
-    letter-spacing: 1px;
   }
   nav a {
-    margin-left: 1.8rem;
+    margin-left: 1.5rem;
     font-weight: 600;
-    font-size: 1rem;
   }
   nav a:hover {
-    color: #bbdefb;
+    color: #005fbb;
   }
   /* Hero Section */
   .hero {
-    background: linear-gradient(135deg, #1e88e5 0%, #0d47a1 100%);
-    color: #fff;
-    padding: 5rem 2rem 4rem;
+    background: linear-gradient(135deg, #008CFF 0%, #005fbb 100%);
+    color: white;
+    padding: 4rem 2rem;
     text-align: center;
-    border-bottom-left-radius: 50px;
-    border-bottom-right-radius: 50px;
-    box-shadow: 0 8px 15px rgba(13,71,161,0.4);
   }
   .hero h2 {
-    margin-bottom: 0.7rem;
-    font-size: 2.8rem;
-    font-weight: 800;
-    text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+    margin-bottom: 0.5rem;
+    font-size: 2.4rem;
   }
   .hero p {
-    font-size: 1.25rem;
-    max-width: 650px;
+    font-size: 1.2rem;
+    max-width: 600px;
     margin: 0 auto;
-    line-height: 1.7;
-    font-weight: 500;
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.15);
+    line-height: 1.5;
   }
   /* Main content */
   main {
-    padding: 3rem 1.5rem 4rem;
-    max-width: 1100px;
+    padding: 2rem;
+    max-width: 1000px;
     margin: 0 auto;
   }
   section {
-    margin-bottom: 4rem;
+    margin-bottom: 3rem;
   }
   h3 {
-    color: #1e88e5;
-    font-weight: 700;
-    margin-bottom: 1.8rem;
-    font-size: 1.9rem;
-    border-bottom: 3px solid #bbdefb;
-    padding-bottom: 0.4rem;
-    letter-spacing: 0.03em;
+    color: #008CFF;
+    margin-bottom: 1rem;
   }
   /* Servicios Grid */
   .services-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit,minmax(260px,1fr));
-    gap: 2rem;
+    grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
+    gap: 1.5rem;
   }
   .service-card {
     background: white;
-    border-radius: 14px;
-    padding: 2rem 1.8rem;
-    box-shadow: 0 4px 15px rgba(30,136,229,0.15);
-    transition: box-shadow 0.4s ease, transform 0.3s ease;
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+    transition: box-shadow 0.3s ease;
     text-align: center;
-    cursor: default;
   }
   .service-card:hover {
-    box-shadow: 0 10px 30px rgba(30,136,229,0.25);
-    transform: translateY(-6px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
   }
   .service-card svg {
-    width: 60px;
-    height: 60px;
-    fill: #1e88e5;
+    width: 50px;
+    height: 50px;
+    fill: #008CFF;
     margin-bottom: 1rem;
-    filter: drop-shadow(0 1px 1px rgba(0,0,0,0.1));
   }
   .service-card h4 {
-    margin: 0.5rem 0 1rem;
-    font-size: 1.3rem;
-    font-weight: 700;
-    color: #0d47a1;
-  }
-  .service-card p {
-    font-weight: 500;
-    font-size: 1rem;
-    color: #555;
-    line-height: 1.5;
+    margin: 0.5rem 0 0.8rem;
   }
   /* Precios Tabla */
   table {
     width: 100%;
-    border-collapse: separate;
-    border-spacing: 0 0.75rem;
-    background: transparent;
+    border-collapse: collapse;
+    background: white;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    overflow: hidden;
   }
   th, td {
-    padding: 1rem 1.2rem;
+    padding: 1rem;
     text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+  th {
+    background: #008CFF;
+    color: white;
     font-weight: 600;
   }
-  thead th {
-    background: #1e88e5;
-    color: white;
-    border-radius: 10px 10px 0 0;
-  }
-  tbody tr {
-    background: white;
-    box-shadow: 0 4px 10px rgba(30,136,229,0.12);
-    border-radius: 10px;
-    transition: background 0.3s ease;
-  }
-  tbody tr:hover {
-    background: #e3f2fd;
-  }
-  tbody td {
-    font-weight: 500;
-    color: #333;
+  tr:last-child td {
     border-bottom: none;
   }
   /* Sobre PAKA DC */
   .about {
     background: #e8f0fe;
-    padding: 2.5rem 2rem;
-    border-radius: 14px;
+    padding: 2rem;
+    border-radius: 8px;
     text-align: center;
-    max-width: 700px;
-    margin: 0 auto;
-    box-shadow: 0 4px 15px rgba(30,136,229,0.1);
   }
   .about p {
     max-width: 600px;
     margin: 0 auto;
-    line-height: 1.7;
-    font-weight: 600;
-    font-size: 1.1rem;
-    color: #1a237e;
+    line-height: 1.5;
   }
-  /* Contacto */
-  form {
-    background: white;
-    padding: 2.5rem 2rem;
-    border-radius: 14px;
-    box-shadow: 0 6px 18px rgba(30,136,229,0.18);
-    max-width: 650px;
-    margin: 0 auto;
-    font-weight: 600;
+  /* Contacto renovado */
+  #contacto {
+    text-align: center;
   }
-  form label {
-    display: block;
-    margin-bottom: 0.4rem;
+  #contacto p {
+    font-size: 1.2rem;
+  }
+  #contacto div.contact-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1rem;
+  }
+  #contacto a.contact-btn {
+    padding: 1rem 2.5rem;
+    border-radius: 30px;
     font-weight: 700;
-    font-size: 1rem;
-    color: #0d47a1;
-  }
-  form input, form textarea {
-    width: 100%;
-    padding: 0.85rem 1rem;
-    margin-bottom: 1.5rem;
-    border: 2px solid #cfd8dc;
-    border-radius: 10px;
-    font-size: 1.1rem;
-    font-weight: 500;
-    color: #263238;
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
-    resize: vertical;
-  }
-  form input:focus, form textarea:focus {
-    border-color: #1e88e5;
-    box-shadow: 0 0 8px #90caf9;
-    outline: none;
-  }
-  form button {
-    background: #1e88e5;
+    font-size: 1.3rem;
+    text-decoration: none;
     color: white;
-    padding: 1rem 2.2rem;
-    border: none;
-    border-radius: 12px;
-    font-weight: 800;
-    font-size: 1.1rem;
-    cursor: pointer;
-    transition: background 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+    transition: background 0.3s ease, transform 0.2s ease;
+    display: inline-block;
   }
-  form button:hover {
-    background: #1565c0;
-    box-shadow: 0 6px 15px rgba(21,101,192,0.5);
+  #contacto a.contact-btn.whatsapp {
+    background: #25d366;
+    box-shadow: 0 6px 15px rgba(37,211,102,0.4);
+  }
+  #contacto a.contact-btn.whatsapp:hover {
+    background: #128c4a;
+    transform: scale(1.05);
+  }
+  #contacto a.contact-btn.phone {
+    background: #1e88e5;
+    box-shadow: 0 6px 15px rgba(30,136,229,0.4);
+  }
+  #contacto a.contact-btn.phone:hover {
+    background: #125a9c;
+    transform: scale(1.05);
+  }
+  #contacto .map-container {
+    margin-top: 2rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.15);
   }
   /* WhatsApp flotante */
   .whatsapp-btn {
     position: fixed;
-    bottom: 28px;
-    right: 28px;
+    bottom: 25px;
+    right: 25px;
     background: #25d366;
-    width: 64px;
-    height: 64px;
+    width: 60px;
+    height: 60px;
     border-radius: 50%;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
     display: flex;
     align-items: center;
     justify-content: center;
     z-index: 999;
-    transition: background 0.3s ease, transform 0.3s ease;
+    transition: background 0.3s ease;
   }
   .whatsapp-btn:hover {
     background: #128c4a;
-    transform: scale(1.1);
   }
   .whatsapp-btn svg {
-    width: 32px;
-    height: 32px;
+    width: 30px;
+    height: 30px;
     fill: white;
-    filter: drop-shadow(0 1px 1px rgba(0,0,0,0.15));
   }
   /* Responsive */
-  @media (max-width: 700px) {
+  @media (max-width: 600px) {
     header {
       flex-direction: column;
       align-items: flex-start;
     }
     nav a {
-      margin: 0.7rem 0 0 0;
-      font-size: 0.95rem;
+      margin: 0.5rem 0 0 0;
     }
     .hero h2 {
-      font-size: 2rem;
+      font-size: 1.8rem;
     }
     main {
-      padding: 2rem 1rem 3rem;
+      padding: 1rem;
     }
-    .services-grid {
-      grid-template-columns: 1fr;
-      gap: 1.5rem;
+    #contacto div.contact-buttons {
+      flex-direction: column;
     }
   }
 </style>
@@ -302,27 +254,27 @@
 <section id="servicios">
   <h3>Servicios</h3>
   <div class="services-grid">
-    <article class="service-card" tabindex="0" aria-label="Limpieza Interna y Externa">
+    <article class="service-card">
       <svg viewBox="0 0 64 64" aria-hidden="true"><path d="M32 6a26 26 0 1 0 26 26A26 26 0 0 0 32 6zm0 48a22 22 0 1 1 22-22 22.025 22.025 0 0 1-22 22z"/><path d="M31 15h2v18h-2zM24 30h16v4H24z"/></svg>
       <h4>Limpieza Interna y Externa</h4>
       <p>Servicio preventivo y profundo para mantener tu equipo en óptimas condiciones.</p>
     </article>
-    <article class="service-card" tabindex="0" aria-label="Reinstalación de Sistemas">
+    <article class="service-card">
       <svg viewBox="0 0 64 64" aria-hidden="true"><path d="M20 44h24v4H20zM22 34h20v6H22zM32 12a12 12 0 1 0 12 12A12 12 0 0 0 32 12z"/></svg>
       <h4>Reinstalación de Sistemas</h4>
       <p>Instalación y configuración de sistemas operativos para mejor rendimiento.</p>
     </article>
-    <article class="service-card" tabindex="0" aria-label="Instalación de Antivirus">
+    <article class="service-card">
       <svg viewBox="0 0 64 64" aria-hidden="true"><path d="M28 18h8v8h-8zM24 28v16h16V28z"/></svg>
       <h4>Instalación de Antivirus</h4>
       <p>Protegé tu computadora contra virus y malware con antivirus actualizado.</p>
     </article>
-    <article class="service-card" tabindex="0" aria-label="Instalación y Activación de Office">
+    <article class="service-card">
       <svg viewBox="0 0 64 64" aria-hidden="true"><path d="M42 20H22v24h20zm-2 20H24V22h16z"/></svg>
       <h4>Instalación y Activación de Office</h4>
       <p>Office completo listo para trabajar sin problemas.</p>
     </article>
-    <article class="service-card" tabindex="0" aria-label="Mantenimiento de Impresoras">
+    <article class="service-card">
       <svg viewBox="0 0 64 64" aria-hidden="true"><path d="M22 22h20v20H22z"/><path d="M18 18h28v28H18z"/></svg>
       <h4>Mantenimiento de Impresoras</h4>
       <p>Servicio preventivo para impresoras que asegura su buen funcionamiento.</p>
@@ -354,36 +306,31 @@
 
 <section id="contacto">
   <h3>Contacto</h3>
-  <form onsubmit="return enviarFormulario(event)" aria-label="Formulario de contacto PAKA Tech Solutions">
-    <label for="nombre">Nombre:</label>
-    <input id="nombre" name="name" type="text" placeholder="Tu nombre" required aria-required="true" />
-    <label for="email">Correo electrónico:</label>
-    <input id="email" name="_replyto" type="email" placeholder="Tu correo" required aria-required="true" />
-    <label for="mensaje">Mensaje:</label>
-    <textarea id="mensaje" name="message" placeholder="Escribe tu mensaje aquí..." rows="4" required aria-required="true"></textarea>
-    <button type="submit">Enviar</button>
-  </form>
+  <p>¿Querés que tu computadora quede como nueva? ¡Hablemos!</p>
+  <div class="contact-buttons">
+    <a href="https://wa.me/50247548991" target="_blank" rel="noopener" class="contact-btn whatsapp">
+      WhatsApp: +502 4754 8991
+    </a>
+    <a href="tel:+50247548991" class="contact-btn phone">
+      Llamar Ahora
+    </a>
+  </div>
+  <div class="map-container">
+    <iframe 
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3875.0654227989367!2d-90.52124448465587!3d14.634915789728055!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x858f836a42d28279%3A0x6f0d1dba13a8a5a3!2sGuatemala%20City!5e0!3m2!1ses!2sgt!4v1690553600000!5m2!1ses!2sgt" 
+      width="100%" height="320" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" 
+      title="Ubicación PAKA Tech Solutions"></iframe>
+  </div>
 </section>
 
 </main>
 
 <!-- Botón WhatsApp flotante -->
 <a href="https://wa.me/50247548991" target="_blank" class="whatsapp-btn" aria-label="Contactar por WhatsApp">
-  <svg viewBox="0 0 24 24" aria-hidden="true" role="img" focusable="false">
+  <svg viewBox="0 0 24 24" aria-hidden="true">
     <path d="M20.52 3.48A11.94 11.94 0 0 0 12 0C5.37 0 0 5.37 0 12a11.94 11.94 0 0 0 3.48 8.52L0 24l3.48-3.48A11.94 11.94 0 0 0 12 24c6.63 0 12-5.37 12-12a11.94 11.94 0 0 0-3.48-8.52zM12 22a10 10 0 0 1-5.52-1.7l-.39-.23-2.62.7.7-2.62-.23-.39A10 10 0 1 1 12 22zm5.23-7.32c-.29-.15-1.72-.85-1.99-.94s-.46-.14-.65.15-.75.94-.92 1.13-.34.22-.62.07a8.1 8.1 0 0 1-2.38-1.47 9.05 9.05 0 0 1-1.68-2.09c-.18-.3 0-.46.13-.61s.29-.34.44-.5a1.23 1.23 0 0 0 .29-.49.18.18 0 0 0 0-.35c-.08-.08-.65-1.56-.9-2.14a.59.59 0 0 0-.9-.5c-.27.1-1.16.54-1.16 1.3s.75 1.52.86 1.62a12.42 12.42 0 0 0 2.25 3.45 12.15 12.15 0 0 0 3.72 2.87c.52.22.92.18 1.26.11a2.5 2.5 0 0 0 1.81-2.12c.04-.33.03-.6 0-.68z"/>
   </svg>
 </a>
-
-<script>
-  function enviarFormulario(event) {
-    event.preventDefault();
-    alert('Gracias por contactarte, PAKA DC pronto te responderá.');
-    document.getElementById('nombre').value = '';
-    document.getElementById('email').value = '';
-    document.getElementById('mensaje').value = '';
-    return false;
-  }
-</script>
 
 </body>
 </html>
