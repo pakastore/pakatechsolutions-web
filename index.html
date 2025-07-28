@@ -287,13 +287,13 @@
 
 <section id="contacto">
   <h3>Contacto</h3>
-  <form onsubmit="return enviarFormulario(event)">
+  <form action="https://formspree.io/f/mgebklpb" method="POST">
     <label for="nombre">Nombre:</label>
-    <input id="nombre" type="text" placeholder="Tu nombre" required />
+    <input id="nombre" name="name" type="text" placeholder="Tu nombre" required />
     <label for="email">Correo electrónico:</label>
-    <input id="email" type="email" placeholder="Tu correo" required />
+    <input id="email" name="_replyto" type="email" placeholder="Tu correo" required />
     <label for="mensaje">Mensaje:</label>
-    <textarea id="mensaje" placeholder="Escribe tu mensaje aquí..." rows="4" required></textarea>
+    <textarea id="mensaje" name="message" placeholder="Escribe tu mensaje aquí..." rows="4" required></textarea>
     <button type="submit">Enviar</button>
   </form>
 </section>
@@ -306,17 +306,6 @@
     <path d="M20.52 3.48A11.94 11.94 0 0 0 12 0C5.37 0 0 5.37 0 12a11.94 11.94 0 0 0 3.48 8.52L0 24l3.48-3.48A11.94 11.94 0 0 0 12 24c6.63 0 12-5.37 12-12a11.94 11.94 0 0 0-3.48-8.52zM12 22a10 10 0 0 1-5.52-1.7l-.39-.23-2.62.7.7-2.62-.23-.39A10 10 0 1 1 12 22zm5.23-7.32c-.29-.15-1.72-.85-1.99-.94s-.46-.14-.65.15-.75.94-.92 1.13-.34.22-.62.07a8.1 8.1 0 0 1-2.38-1.47 9.05 9.05 0 0 1-1.68-2.09c-.18-.3 0-.46.13-.61s.29-.34.44-.5a1.23 1.23 0 0 0 .29-.49.18.18 0 0 0 0-.35c-.08-.08-.65-1.56-.9-2.14a.59.59 0 0 0-.9-.5c-.27.1-1.16.54-1.16 1.3s.75 1.52.86 1.62a12.42 12.42 0 0 0 2.25 3.45 12.15 12.15 0 0 0 3.72 2.87c.52.22.92.18 1.26.11a2.5 2.5 0 0 0 1.81-2.12c.04-.33.03-.6 0-.68z"/>
   </svg>
 </a>
-
-<script>
-  function enviarFormulario(event) {
-    event.preventDefault();
-    alert('Gracias por contactarte, PAKA DC pronto te responderá.');
-    document.getElementById('nombre').value = '';
-    document.getElementById('email').value = '';
-    document.getElementById('mensaje').value = '';
-    return false;
-  }
-</script>
 
 </body>
 </html>
