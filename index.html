@@ -1,74 +1,322 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta name="google-site-verification" content="dWMUHvnS15ercMqQrwJT8nfVtoBMDEwm4-_Dt-18s64" />
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Servicios técnicos profesionales para tu PC, laptops e impresoras. PAKA Tech Solutions ofrece limpieza, formateo, antivirus y más." />
-  <meta name="keywords" content="PAKA Tech, soporte técnico, reparación de computadoras, limpieza interna, reinstalación sistema, antivirus, impresoras" />
-  <meta name="author" content="PAKA DC" />
-  <link rel="canonical" href="https://pakatechsolutions.com/" />
-  <meta property="og:title" content="PAKA Tech Solutions - Dejá tu compu como nueva" />
-  <meta property="og:description" content="Expertos en limpieza de computadoras, reinstalación de sistemas, antivirus y mantenimiento de impresoras." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://pakatechsolutions.com/" />
-  <meta property="og:image" content="https://pakatechsolutions.com/assets/cover.png" />
-  <title>PAKA Tech Solutions</title>
-  <link rel="stylesheet" href="styles.css" />
-  <link rel="icon" href="assets/favicon.ico" type="image/x-icon" />
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    "name": "PAKA Tech Solutions",
-    "image": "https://pakatechsolutions.com/assets/logo.png",
-    "telephone": "+502 4754-8991",
-    "email": "pakatechsolutions@gmail.com",
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "Guatemala",
-      "addressCountry": "GT"
-    },
-    "description": "Limpieza interna y externa de computadoras, reinstalación de sistema operativo, instalación de antivirus, mantenimiento de impresoras.",
-    "priceRange": "$"
+<meta name="google-site-verification" content="dWMUHvnS15ercMqQrwJT8nfVtoBMDEwm4-_Dt-18s64" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>PAKA Tech Solutions | Soporte Técnico y Mantenimiento</title>
+<meta name="description" content="Servicio técnico profesional en Guatemala: limpieza de computadoras, instalación de antivirus, Office, mantenimiento de impresoras y más. Atención confiable y rápida." />
+<meta name="keywords" content="PAKA Tech, soporte técnico Guatemala, limpieza de computadoras, instalación de Office, antivirus, mantenimiento impresoras, reparación computadoras, PAKA DC" />
+<meta name="author" content="PAKA DC" />
+<style>
+  /* Reset y tipografía */
+  *, *::before, *::after {
+    box-sizing: border-box;
   }
-  </script>
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin:0; padding:0; background:#f7f9fc; color:#333;
+  }
+  a {
+    color: #008CFF;
+    text-decoration: none;
+  }
+  a:hover {
+    text-decoration: underline;
+  }
+  /* Header */
+  header {
+    background: #008CFF;
+    color: white;
+    padding: 1rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  header h1 {
+    margin: 0;
+    font-size: 1.8rem;
+    font-weight: 700;
+  }
+  nav a {
+    margin-left: 1.5rem;
+    font-weight: 600;
+  }
+  nav a:hover {
+    color: #005fbb;
+  }
+  /* Hero Section */
+  .hero {
+    background: linear-gradient(135deg, #008CFF 0%, #005fbb 100%);
+    color: white;
+    padding: 4rem 2rem;
+    text-align: center;
+  }
+  .hero h2 {
+    margin-bottom: 0.5rem;
+    font-size: 2.4rem;
+  }
+  .hero p {
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.5;
+  }
+  /* Main content */
+  main {
+    padding: 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  section {
+    margin-bottom: 3rem;
+  }
+  h3 {
+    color: #008CFF;
+    margin-bottom: 1rem;
+  }
+  /* Servicios Grid */
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
+    gap: 1.5rem;
+  }
+  .service-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+    transition: box-shadow 0.3s ease;
+    text-align: center;
+  }
+  .service-card:hover {
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  }
+  .service-card svg {
+    width: 50px;
+    height: 50px;
+    fill: #008CFF;
+    margin-bottom: 1rem;
+  }
+  .service-card h4 {
+    margin: 0.5rem 0 0.8rem;
+  }
+  /* Precios Tabla */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  th, td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+  th {
+    background: #008CFF;
+    color: white;
+    font-weight: 600;
+  }
+  tr:last-child td {
+    border-bottom: none;
+  }
+  /* Sobre PAKA DC */
+  .about {
+    background: #e8f0fe;
+    padding: 2rem;
+    border-radius: 8px;
+    text-align: center;
+  }
+  .about p {
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.5;
+  }
+  /* Contacto */
+  form {
+    background: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  form label {
+    display: block;
+    margin-bottom: 0.3rem;
+    font-weight: 600;
+  }
+  form input, form textarea {
+    width: 100%;
+    padding: 0.7rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+  }
+  form button {
+    background: #008CFF;
+    color: white;
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 5px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  form button:hover {
+    background: #005fbb;
+  }
+  /* WhatsApp flotante */
+  .whatsapp-btn {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    background: #25d366;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+    transition: background 0.3s ease;
+  }
+  .whatsapp-btn:hover {
+    background: #128c4a;
+  }
+  .whatsapp-btn svg {
+    width: 30px;
+    height: 30px;
+    fill: white;
+  }
+  /* Responsive */
+  @media (max-width: 600px) {
+    header {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    nav a {
+      margin: 0.5rem 0 0 0;
+    }
+    .hero h2 {
+      font-size: 1.8rem;
+    }
+    main {
+      padding: 1rem;
+    }
+  }
+</style>
 </head>
 <body>
-  <header>
-    <h1>PAKA Tech Solutions</h1>
-    <p>🖥️ ¡Dejá tu compu como nueva!</p>
-  </header>
 
-  <section>
-    <h2>Servicios y Precios</h2>
-    <ul>
-      <li>Limpieza interna: Q150</li>
-      <li>Limpieza externa: Q100</li>
-      <li>Reinstalación de sistemas operativos: Q100</li>
-      <li>Instalación de antivirus: Q50</li>
-      <li>Instalación y activación de Microsoft Office: Q75</li>
-      <li>Mantenimiento preventivo de impresoras: Q125</li>
-    </ul>
-  </section>
+<header>
+  <h1>PAKA Tech Solutions</h1>
+  <nav>
+    <a href="#servicios">Servicios</a>
+    <a href="#precios">Precios</a>
+    <a href="#sobre">Sobre PAKA DC</a>
+    <a href="#contacto">Contacto</a>
+  </nav>
+</header>
 
-  <section>
-    <h2>Contáctanos</h2>
-    <form action="https://formspree.io/f/xgejkjzj" method="POST">
-      <input type="text" name="name" placeholder="Tu nombre" required>
-      <input type="email" name="email" placeholder="Tu correo" required>
-      <textarea name="message" placeholder="Tu mensaje" required></textarea>
-      <button type="submit">Enviar</button>
-    </form>
-    <p>O escribinos directamente a: <a href="mailto:pakatechsolutions@gmail.com">pakatechsolutions@gmail.com</a></p>
-  </section>
+<section class="hero">
+  <h2>¡Dejá tu compu como nueva!</h2>
+  <p>Servicio técnico profesional en Guatemala especializado en limpieza de computadoras, reinstalación de sistemas, antivirus, Office e impresoras.</p>
+</section>
 
-  <a href="https://wa.me/50247548991" class="whatsapp-float" target="_blank">💬 WhatsApp</a>
+<main>
 
-  <footer>
-    <p>&copy; 2025 PAKA Tech Solutions. Todos los derechos reservados.</p>
-  </footer>
+<section id="servicios">
+  <h3>Servicios</h3>
+  <div class="services-grid">
+    <article class="service-card">
+      <svg viewBox="0 0 64 64" aria-hidden="true"><path d="M32 6a26 26 0 1 0 26 26A26 26 0 0 0 32 6zm0 48a22 22 0 1 1 22-22 22.025 22.025 0 0 1-22 22z"/><path d="M31 15h2v18h-2zM24 30h16v4H24z"/></svg>
+      <h4>Limpieza Interna y Externa</h4>
+      <p>Servicio preventivo y profundo para mantener tu equipo en óptimas condiciones.</p>
+    </article>
+    <article class="service-card">
+      <svg viewBox="0 0 64 64" aria-hidden="true"><path d="M20 44h24v4H20zM22 34h20v6H22zM32 12a12 12 0 1 0 12 12A12 12 0 0 0 32 12z"/></svg>
+      <h4>Reinstalación de Sistemas</h4>
+      <p>Instalación y configuración de sistemas operativos para mejor rendimiento.</p>
+    </article>
+    <article class="service-card">
+      <svg viewBox="0 0 64 64" aria-hidden="true"><path d="M28 18h8v8h-8zM24 28v16h16V28z"/></svg>
+      <h4>Instalación de Antivirus</h4>
+      <p>Protegé tu computadora contra virus y malware con antivirus actualizado.</p>
+    </article>
+    <article class="service-card">
+      <svg viewBox="0 0 64 64" aria-hidden="true"><path d="M42 20H22v24h20zm-2 20H24V22h16z"/></svg>
+      <h4>Instalación y Activación de Office</h4>
+      <p>Office completo listo para trabajar sin problemas.</p>
+    </article>
+    <article class="service-card">
+      <svg viewBox="0 0 64 64" aria-hidden="true"><path d="M22 22h20v20H22z"/><path d="M18 18h28v28H18z"/></svg>
+      <h4>Mantenimiento de Impresoras</h4>
+      <p>Servicio preventivo para impresoras que asegura su buen funcionamiento.</p>
+    </article>
+  </div>
+</section>
 
-  <script src="script.js"></script>
+<section id="precios">
+  <h3>Precios</h3>
+  <table>
+    <thead>
+      <tr><th>Servicio</th><th>Precio (Q)</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Limpieza Interna</td><td>150</td></tr>
+      <tr><td>Limpieza Externa</td><td>100</td></tr>
+      <tr><td>Reinstalación de Sistemas</td><td>100</td></tr>
+      <tr><td>Instalación de Antivirus</td><td>50</td></tr>
+      <tr><td>Instalación y Activación de Office</td><td>75</td></tr>
+      <tr><td>Mantenimiento Preventivo de Impresoras</td><td>125</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section id="sobre" class="about">
+  <h3>Sobre PAKA DC</h3>
+  <p>PAKA DC es un experto en soporte técnico y mantenimiento informático en Guatemala, comprometido con brindar soluciones rápidas y confiables para mantener tus dispositivos siempre en óptimas condiciones.</p>
+</section>
+
+<section id="contacto">
+  <h3>Contacto</h3>
+  <form onsubmit="return enviarFormulario(event)">
+    <label for="nombre">Nombre:</label>
+    <input id="nombre" type="text" placeholder="Tu nombre" required />
+    <label for="email">Correo electrónico:</label>
+    <input id="email" type="email" placeholder="Tu correo" required />
+    <label for="mensaje">Mensaje:</label>
+    <textarea id="mensaje" placeholder="Escribe tu mensaje aquí..." rows="4" required></textarea>
+    <button type="submit">Enviar</button>
+  </form>
+</section>
+
+</main>
+
+<!-- Botón WhatsApp flotante -->
+<a href="https://wa.me/50247548991" target="_blank" class="whatsapp-btn" aria-label="Contactar por WhatsApp">
+  <svg viewBox="0 0 24 24" aria-hidden="true">
+    <path d="M20.52 3.48A11.94 11.94 0 0 0 12 0C5.37 0 0 5.37 0 12a11.94 11.94 0 0 0 3.48 8.52L0 24l3.48-3.48A11.94 11.94 0 0 0 12 24c6.63 0 12-5.37 12-12a11.94 11.94 0 0 0-3.48-8.52zM12 22a10 10 0 0 1-5.52-1.7l-.39-.23-2.62.7.7-2.62-.23-.39A10 10 0 1 1 12 22zm5.23-7.32c-.29-.15-1.72-.85-1.99-.94s-.46-.14-.65.15-.75.94-.92 1.13-.34.22-.62.07a8.1 8.1 0 0 1-2.38-1.47 9.05 9.05 0 0 1-1.68-2.09c-.18-.3 0-.46.13-.61s.29-.34.44-.5a1.23 1.23 0 0 0 .29-.49.18.18 0 0 0 0-.35c-.08-.08-.65-1.56-.9-2.14a.59.59 0 0 0-.9-.5c-.27.1-1.16.54-1.16 1.3s.75 1.52.86 1.62a12.42 12.42 0 0 0 2.25 3.45 12.15 12.15 0 0 0 3.72 2.87c.52.22.92.18 1.26.11a2.5 2.5 0 0 0 1.81-2.12c.04-.33.03-.6 0-.68z"/>
+  </svg>
+</a>
+
+<script>
+  function enviarFormulario(event) {
+    event.preventDefault();
+    alert('Gracias por contactarte, PAKA DC pronto te responderá.');
+    document.getElementById('nombre').value = '';
+    document.getElementById('email').value = '';
+    document.getElementById('mensaje').value = '';
+    return false;
+  }
+</script>
+
 </body>
 </html>
