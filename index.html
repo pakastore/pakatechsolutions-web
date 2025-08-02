@@ -1,256 +1,202 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>PAKA Tech Solutions | Soporte Técnico y Mantenimiento</title>
-  <meta name="description" content="Servicio técnico profesional en Guatemala: limpieza de computadoras, instalación de antivirus, Office, mantenimiento de impresoras y más." />
-  <meta name="keywords" content="PAKA Tech, soporte técnico Guatemala, limpieza de computadoras, instalación de Office, antivirus, mantenimiento impresoras" />
-  <meta name="author" content="PAKA DC" />
   <meta name="google-site-verification" content="dWMUHvnS15ercMqQrwJT8nfVtoBMDEwm4-_Dt-18s64" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PAKA Tech Solutions | Tecnología a tu alcance</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet" />
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap');
-
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      font-family: 'Montserrat', sans-serif;
-      background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
-      color: #fff;
-      line-height: 1.6;
-      overflow-x: hidden;
-    }
-
-    header {
-      background: rgba(0, 0, 0, 0.7);
-      padding: 20px;
-      text-align: center;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.8);
-    }
-
-    header h1 {
-      font-size: 2.8rem;
-      color: #00ffff;
-      text-shadow: 0 0 10px #00ffffaa;
-      letter-spacing: 2px;
-    }
-
-    .hero {
-      text-align: center;
-      padding: 80px 20px;
-      background: url('https://images.unsplash.com/photo-1581091870622-6a5f3fb2e4f4?auto=format&fit=crop&w=1400&q=80') no-repeat center center/cover;
-      position: relative;
-    }
-
-    .hero::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.7);
-    }
-
-    .hero h2 {
-      position: relative;
-      font-size: 2.5rem;
-      color: #fff;
-      z-index: 1;
-      text-shadow: 0 0 20px #00ffff88;
-    }
-
-    .content {
-      padding: 60px 20px;
-      max-width: 1200px;
-      margin: auto;
-    }
-
-    .content h3 {
-      font-size: 2rem;
-      color: #00ffff;
-      margin-bottom: 20px;
-    }
-
-    .content ul {
-      list-style: none;
-      padding-left: 0;
-    }
-
-    .content li {
-      margin-bottom: 15px;
-      font-size: 1.1rem;
-      background: rgba(255, 255, 255, 0.05);
-      padding: 12px 18px;
-      border-radius: 8px;
-      transition: all 0.3s ease;
-      box-shadow: 0 0 10px rgba(0, 255, 255, 0.2);
-    }
-
-    .content li:hover {
-      background: rgba(0, 255, 255, 0.1);
-      transform: translateX(10px);
-    }
-
-    .cards {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
-      margin-top: 40px;
-    }
-
-    .card {
-      flex: 1 1 calc(33.333% - 20px);
-      background-color: rgba(255, 255, 255, 0.05);
-      padding: 25px;
-      border-radius: 15px;
-      box-shadow: 0 8px 20px rgba(0, 255, 255, 0.2);
-      transition: all 0.3s ease;
-    }
-
-    .card:hover {
-      transform: scale(1.05);
-      background-color: rgba(0, 255, 255, 0.08);
-    }
-
-    .card h4 {
-      color: #00ffff;
-      margin-bottom: 10px;
-    }
-
-    .about {
-      background: #0f2027;
-      padding: 60px 20px;
-      text-align: center;
-    }
-
-    .about h3 {
-      color: #00ffff;
-      font-size: 2rem;
-      margin-bottom: 20px;
-    }
-
-    .about p {
-      max-width: 800px;
-      margin: auto;
-      font-size: 1.1rem;
-      line-height: 1.8;
-    }
-
-    .cta {
-      background: #00ffff11;
-      padding: 60px 20px;
-      text-align: center;
-    }
-
-    .cta h3 {
-      font-size: 2rem;
-      color: #00ffff;
-      margin-bottom: 15px;
-    }
-
-    .cta p {
-      font-size: 1.1rem;
-      max-width: 700px;
-      margin: 0 auto 30px;
-    }
-
-    .whatsapp-btn {
-      position: fixed;
-      bottom: 25px;
-      right: 25px;
-      background: #25d366;
-      color: #fff;
-      border-radius: 50%;
-      width: 60px;
-      height: 60px;
-      text-align: center;
-      line-height: 60px;
-      font-size: 30px;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
-      z-index: 1000;
-      text-decoration: none;
-      transition: transform 0.2s;
-    }
-
-    .whatsapp-btn:hover {
-      transform: scale(1.1);
-    }
-
-    footer {
-      text-align: center;
-      padding: 30px 0;
-      background: #111;
-      color: #aaa;
-      font-size: 0.9rem;
-    }
-
+    * { box-sizing: border-box; scroll-behavior: smooth; }
+    body { margin: 0; font-family: 'Poppins', sans-serif; background: #0f0f0f; color: #fff; line-height: 1.6; }
+    header { background: #111; padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.5); }
+    .logo { font-size: 1.8rem; font-weight: 800; color: #00fff2; user-select: none; }
+    nav.nav-desktop { display: flex; gap: 1.5rem; }
+    nav.nav-desktop a { color: #fff; text-decoration: none; font-weight: 600; padding: 0.4rem 0.8rem; border-radius: 4px; transition: background-color 0.3s, color 0.3s; }
+    nav.nav-desktop a:hover, nav.nav-desktop a:focus { background-color: #00fff2; color: #000; outline: none; }
+    .menu-btn { display: none; flex-direction: column; gap: 5px; cursor: pointer; user-select: none; background: none; border: none; padding: 0; }
+    .menu-btn div { width: 28px; height: 3.5px; background: #fff; border-radius: 2px; transition: all 0.3s ease; }
+    .menu-btn.active div:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+    .menu-btn.active div:nth-child(2) { opacity: 0; }
+    .menu-btn.active div:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+    .nav-mobile { display: none; flex-direction: column; background: #111; position: fixed; top: 60px; right: 20px; padding: 1rem 1.5rem; border-radius: 8px; min-width: 220px; box-shadow: 0 8px 24px rgba(0,0,0,0.7); z-index: 1100; user-select: none; max-height: calc(100vh - 80px); overflow-y: auto; transition: opacity 0.3s ease, visibility 0.3s ease; opacity: 0; visibility: hidden; }
+    .nav-mobile.show { display: flex; opacity: 1; visibility: visible; }
+    .nav-mobile a { color: #fff; margin: 0.5rem 0; font-weight: 600; text-decoration: none; padding: 0.4rem 0.6rem; border-radius: 4px; transition: background-color 0.3s; display: flex; justify-content: space-between; align-items: center; }
+    .nav-mobile a:hover, .nav-mobile a:focus { background-color: #00fff2; color: #000; outline: none; }
+    .submenu-mobile { display: flex; flex-direction: column; }
+    .submenu-toggle { cursor: pointer; display: flex; justify-content: space-between; align-items: center; color: #fff; font-weight: 600; user-select: none; padding: 0.4rem 0.6rem; border-radius: 4px; transition: background-color 0.3s; }
+    .submenu-toggle:hover, .submenu-toggle:focus { background-color: #00fff2; color: #000; outline: none; }
+    .submenu-toggle .arrow { font-size: 1rem; margin-left: 8px; transition: transform 0.3s ease; user-select: none; }
+    .submenu-toggle.active .arrow { transform: rotate(180deg); }
+    .submenu-content { display: none; flex-direction: column; margin-left: 1rem; margin-top: 0.5rem; }
+    .submenu-content.show { display: flex; }
+    .submenu-content a { color: #00fff2; font-weight: 500; margin: 0.3rem 0; text-decoration: none; padding-left: 0.4rem; border-left: 2px solid #00fff2; transition: color 0.3s; }
+    .submenu-content a:hover, .submenu-content a:focus { text-decoration: underline; color: #33fff6; outline: none; }
+    .hero { background: linear-gradient(135deg, #00fff2, #0066ff); padding: 6rem 2rem; text-align: center; color: #000; }
+    .hero h1 { font-size: 3rem; margin-bottom: 1rem; user-select: none; }
+    .hero p { font-size: 1.25rem; max-width: 700px; margin: 0 auto; user-select: none; }
+    section { padding: 4rem 2rem; max-width: 1100px; margin: auto; }
+    section h2 { text-align: center; font-size: 2.5rem; margin-bottom: 2rem; color: #00fff2; user-select: none; }
+    .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; }
+    .card { background: #1a1a1a; padding: 2rem; border-radius: 10px; transition: transform 0.3s ease, box-shadow 0.3s ease; user-select: none; }
+    .card:hover, .card:focus-within { transform: translateY(-8px); box-shadow: 0 8px 20px rgba(0, 255, 242, 0.3); outline: none; }
+    .card h3 { color: #00fff2; margin-bottom: 1rem; }
+    .faq, .testimonios { max-width: 800px; margin: auto; text-align: center; user-select: none; }
+    .faq p, .testimonios p { margin-bottom: 1.5rem; background: #1a1a1a; padding: 1rem; border-radius: 8px; }
+    footer { background: #111; padding: 2rem; text-align: center; color: #888; user-select: none; }
+    .whatsapp { position: fixed; bottom: 20px; right: 20px; z-index: 1001; width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; border-radius: 50%; background: #25D366; box-shadow: 0 0 15px rgba(0,0,0,0.4); text-decoration: none; transition: background-color 0.3s ease; }
+    .whatsapp:hover, .whatsapp:focus { background: #1ebe57; outline: none; }
+    .whatsapp img { pointer-events: none; user-select: none; }
+    .scroll-top { right: 80px; background: #0066ff; transition: opacity 0.4s ease, transform 0.4s ease; opacity: 0; transform: translateY(20px); pointer-events: none; position: fixed; bottom: 20px; border-radius: 50%; padding: 0.6rem 0.8rem; color: white; font-size: 1.8rem; box-shadow: 0 0 15px rgba(0,0,0,0.4); z-index: 1001; text-decoration: none; display: flex; align-items: center; justify-content: center; width: 48px; height: 48px; }
+    .scroll-top.show { opacity: 1; transform: translateY(0); pointer-events: auto; }
+    .scroll-top svg { width: 24px; height: 24px; display: block; }
     @media (max-width: 768px) {
-      .cards {
-        flex-direction: column;
-      }
-
-      .card {
-        flex: 1 1 100%;
-      }
+      nav.nav-desktop { display: none; }
+      .menu-btn { display: flex; }
     }
   </style>
 </head>
 <body>
 
   <header>
-    <h1>PAKA Tech Solutions</h1>
+    <div class="logo" tabindex="0">PAKA Tech</div>
+    <nav class="nav-desktop" aria-label="Menú principal">
+      <a href="#servicios" tabindex="0">Servicios</a>
+      <a href="#nosotros" tabindex="0">Nosotros</a>
+      <a href="#contacto" tabindex="0">Contacto</a>
+    </nav>
+    <button class="menu-btn" aria-label="Abrir menú móvil" aria-expanded="false" aria-controls="mobileMenu" onclick="toggleMenu(this)">
+      <div></div><div></div><div></div>
+    </button>
+    <nav class="nav-mobile" id="mobileMenu" aria-label="Menú móvil" role="navigation">
+      <a href="#servicios" onclick="toggleMenu()" tabindex="0">Servicios</a>
+      <div class="submenu-mobile">
+        <a href="#nosotros" class="submenu-toggle" aria-haspopup="true" aria-expanded="false" tabindex="0">
+          Nosotros <span class="arrow" aria-hidden="true">▼</span>
+        </a>
+        <div class="submenu-content" role="region" aria-label="Submenú Nosotros">
+          <a href=".testimonios" onclick="toggleMenu()" tabindex="0">Testimonios</a>
+          <a href=".faq" onclick="toggleMenu()" tabindex="0">Preguntas Frecuentes</a>
+        </div>
+      </div>
+      <a href="#contacto" onclick="toggleMenu()" tabindex="0">Contacto</a>
+    </nav>
   </header>
 
-  <section class="hero">
-    <h2>¡Dejá tu compu como nueva!</h2>
+  <section class="hero" data-aos="fade-up" tabindex="0">
+    <h1>Soluciones Tecnológicas a tu Alcance</h1>
+    <p>Reparación, mantenimiento, redes, instalación de software y más. Siempre cerca, siempre contigo</p>
   </section>
 
-  <section class="about">
-    <h3>Sobre PAKA DC</h3>
-    <p>PAKA DC es un experto en soporte técnico y mantenimiento informático en Guatemala, comprometido con brindar soluciones rápidas y confiables para mantener tus dispositivos siempre en óptimas condiciones.</p>
-  </section>
-
-  <section class="content">
-    <h3>Servicios que ofrecemos</h3>
-    <ul>
-      <li>Limpieza interna y externa de computadoras</li>
-      <li>Reinstalación de sistemas operativos</li>
-      <li>Instalación de antivirus y Office</li>
-      <li>Mantenimiento preventivo de impresoras</li>
-      <li>Asistencia remota y presencial</li>
-    </ul>
-
+  <section id="servicios" tabindex="0">
+    <h2 data-aos="fade-down">Servicios</h2>
     <div class="cards">
-      <div class="card">
-        <h4>🔧 Soporte Profesional</h4>
-        <p>Soluciones técnicas confiables, rápidas y personalizadas.</p>
+      <div class="card" data-aos="fade-right" tabindex="0">
+        <h3>Reparación de PC</h3>
+        <p>Formateo, diagnóstico profesional, optimización y más.</p>
       </div>
-      <div class="card">
-        <h4>💻 Optimización Total</h4>
-        <p>Mejora el rendimiento de tus dispositivos con nuestras técnicas avanzadas.</p>
+      <div class="card" data-aos="zoom-in" tabindex="0">
+        <h3>Mantenimiento</h3>
+        <p>Limpieza interna y externa para un rendimiento óptimo.</p>
       </div>
-      <div class="card">
-        <h4>🛠️ Reparación y Mantenimiento</h4>
-        <p>Evita fallos costosos con nuestros servicios preventivos.</p>
+      <div class="card" data-aos="fade-left" tabindex="0">
+        <h3>Instalación de Software</h3>
+        <p>Windows, Office, antivirus y programas personalizados.</p>
+      </div>
+      <div class="card" data-aos="fade-up" tabindex="0">
+        <h3>Mantenimiento Preventivo de Impresoras</h3>
+        <p>Revisión, limpieza y optimización para evitar fallos y prolongar la vida útil.</p>
       </div>
     </div>
   </section>
 
-  <section class="cta">
-    <h3>¿Por qué elegirnos?</h3>
-    <p>
-      ✅ Servicio confiable y personalizado<br>
-      ✅ Precios accesibles y justos<br>
-      ✅ Atención rápida en Ciudad de Guatemala<br>
-      ✅ WhatsApp directo para soporte inmediato
+  <section id="nosotros" tabindex="0">
+    <h2 data-aos="zoom-in">Sobre Nosotros</h2>
+    <p data-aos="fade-up" style="text-align:center; max-width:700px; margin:auto;">
+      PAKA es un experto en soporte técnico y mantenimiento informático en Villa Alborada, comprometido con brindar soluciones rápidas y confiables para mantener tus dispositivos siempre en óptimas condiciones.
     </p>
   </section>
 
-  <!-- Botón flotante de WhatsApp funcional -->
-  <a class="whatsapp-btn" href="https://wa.me/50247548991" target="_blank" title="Contactar por WhatsApp">
-    🟢
-  </a>
+  <section class="testimonios" tabindex="0">
+    <h2 data-aos="fade-up">Testimonios</h2>
+    <p data-aos="fade-right">“Gracias a PAKA Tech mi laptop volvió a la vida. Excelente atención.” – Yoselin N.</p>
+    <p data-aos="fade-left">“Rápido, confiable y con precios justos. Muy recomendado.” –  Sofía L.</p>
+  </section>
+
+  <section class="faq" tabindex="0">
+    <h2 data-aos="fade-up">Preguntas Frecuentes</h2>
+    <p data-aos="fade-up"><strong>¿Ofrecen garantía por los servicios realizados?</strong> Sí, todos nuestros servicios cuentan con garantía para tu tranquilidad.</p>
+    <p data-aos="fade-up"><strong>¿Atienden emergencias?</strong> Sí, con un pequeño recargo adicional por urgencia.</p>
+  </section>
+
+  <section id="contacto" tabindex="0">
+    <h2 data-aos="flip-left">Contacto</h2>
+    <p data-aos="fade-up" style="text-align:center;">
+      📞 Tel: +502 4754-8991 <br />
+      ✉️ Email: pakatechsolutions@gmail.com <br />
+      📍Villa Alborada, Amatitlán, Guatemala
+    </p>
+  </section>
 
   <footer>
-    &copy; 2025 PAKA Tech Solutions - Todos los derechos reservados
+    &copy; 2025 PAKA Tech Solutions. Todos los derechos reservados.
   </footer>
 
+  <!-- Botón WhatsApp con PNG oficial -->
+  <a class="whatsapp" href="https://wa.me/50247548991" target="_blank" rel="noopener" aria-label="Chat en WhatsApp" title="Chat en WhatsApp">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" draggable="false" style="width:28px; height:28px;" />
+  </a>
+
+  <a class="scroll-top" id="scrollTopBtn" href="#" aria-label="Ir arriba">
+    <svg xmlns="http://www.w3.org/2000/svg" height="24" width="24" fill="#fff" viewBox="0 0 24 24">
+      <path d="M12 4.5 4.5 12h15ZM4.5 12v1.5h15V12Z" />
+    </svg>
+  </a>
+
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init({ duration: 1200 });
+    function toggleMenu(button) {
+      const menu = document.getElementById('mobileMenu');
+      const isVisible = menu.classList.toggle('show');
+      if (button) {
+        button.classList.toggle('active');
+        button.setAttribute('aria-expanded', isVisible);
+      }
+    }
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('.submenu-toggle').forEach(btn => {
+        btn.addEventListener('click', e => {
+          e.preventDefault();
+          const content = btn.nextElementSibling;
+          const isVisible = content.classList.contains('show');
+          document.querySelectorAll('.submenu-content').forEach(c => c.classList.remove('show'));
+          document.querySelectorAll('.submenu-toggle').forEach(t => { t.classList.remove('active'); t.setAttribute('aria-expanded','false'); });
+          if (!isVisible) {
+            content.classList.add('show');
+            btn.classList.add('active');
+            btn.setAttribute('aria-expanded','true');
+          }
+        });
+      });
+      document.querySelectorAll('.nav-mobile a').forEach(link => {
+        link.addEventListener('click', () => {
+          const menu = document.getElementById('mobileMenu');
+          const menuBtn = document.querySelector('.menu-btn');
+          if (menu.classList.contains('show')) {
+            menu.classList.remove('show');
+            menuBtn.classList.remove('active');
+            menuBtn.setAttribute('aria-expanded','false');
+          }
+        });
+      });
+    });
+    const scrollBtn = document.getElementById('scrollTopBtn');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 300) scrollBtn.classList.add('show'); else scrollBtn.classList.remove('show');
+    });
+    scrollBtn.addEventListener('click', e => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); });
+  </script>
 </body>
 </html>
