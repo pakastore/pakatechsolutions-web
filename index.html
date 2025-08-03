@@ -1,202 +1,1903 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta name="google-site-verification" content="dWMUHvnS15ercMqQrwJT8nfVtoBMDEwm4-_Dt-18s64" />
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>PAKA Tech Solutions | Tecnología a tu alcance</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet" />
-  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
-  <style>
-    * { box-sizing: border-box; scroll-behavior: smooth; }
-    body { margin: 0; font-family: 'Poppins', sans-serif; background: #0f0f0f; color: #fff; line-height: 1.6; }
-    header { background: #111; padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.5); }
-    .logo { font-size: 1.8rem; font-weight: 800; color: #00fff2; user-select: none; }
-    nav.nav-desktop { display: flex; gap: 1.5rem; }
-    nav.nav-desktop a { color: #fff; text-decoration: none; font-weight: 600; padding: 0.4rem 0.8rem; border-radius: 4px; transition: background-color 0.3s, color 0.3s; }
-    nav.nav-desktop a:hover, nav.nav-desktop a:focus { background-color: #00fff2; color: #000; outline: none; }
-    .menu-btn { display: none; flex-direction: column; gap: 5px; cursor: pointer; user-select: none; background: none; border: none; padding: 0; }
-    .menu-btn div { width: 28px; height: 3.5px; background: #fff; border-radius: 2px; transition: all 0.3s ease; }
-    .menu-btn.active div:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
-    .menu-btn.active div:nth-child(2) { opacity: 0; }
-    .menu-btn.active div:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
-    .nav-mobile { display: none; flex-direction: column; background: #111; position: fixed; top: 60px; right: 20px; padding: 1rem 1.5rem; border-radius: 8px; min-width: 220px; box-shadow: 0 8px 24px rgba(0,0,0,0.7); z-index: 1100; user-select: none; max-height: calc(100vh - 80px); overflow-y: auto; transition: opacity 0.3s ease, visibility 0.3s ease; opacity: 0; visibility: hidden; }
-    .nav-mobile.show { display: flex; opacity: 1; visibility: visible; }
-    .nav-mobile a { color: #fff; margin: 0.5rem 0; font-weight: 600; text-decoration: none; padding: 0.4rem 0.6rem; border-radius: 4px; transition: background-color 0.3s; display: flex; justify-content: space-between; align-items: center; }
-    .nav-mobile a:hover, .nav-mobile a:focus { background-color: #00fff2; color: #000; outline: none; }
-    .submenu-mobile { display: flex; flex-direction: column; }
-    .submenu-toggle { cursor: pointer; display: flex; justify-content: space-between; align-items: center; color: #fff; font-weight: 600; user-select: none; padding: 0.4rem 0.6rem; border-radius: 4px; transition: background-color 0.3s; }
-    .submenu-toggle:hover, .submenu-toggle:focus { background-color: #00fff2; color: #000; outline: none; }
-    .submenu-toggle .arrow { font-size: 1rem; margin-left: 8px; transition: transform 0.3s ease; user-select: none; }
-    .submenu-toggle.active .arrow { transform: rotate(180deg); }
-    .submenu-content { display: none; flex-direction: column; margin-left: 1rem; margin-top: 0.5rem; }
-    .submenu-content.show { display: flex; }
-    .submenu-content a { color: #00fff2; font-weight: 500; margin: 0.3rem 0; text-decoration: none; padding-left: 0.4rem; border-left: 2px solid #00fff2; transition: color 0.3s; }
-    .submenu-content a:hover, .submenu-content a:focus { text-decoration: underline; color: #33fff6; outline: none; }
-    .hero { background: linear-gradient(135deg, #00fff2, #0066ff); padding: 6rem 2rem; text-align: center; color: #000; }
-    .hero h1 { font-size: 3rem; margin-bottom: 1rem; user-select: none; }
-    .hero p { font-size: 1.25rem; max-width: 700px; margin: 0 auto; user-select: none; }
-    section { padding: 4rem 2rem; max-width: 1100px; margin: auto; }
-    section h2 { text-align: center; font-size: 2.5rem; margin-bottom: 2rem; color: #00fff2; user-select: none; }
-    .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; }
-    .card { background: #1a1a1a; padding: 2rem; border-radius: 10px; transition: transform 0.3s ease, box-shadow 0.3s ease; user-select: none; }
-    .card:hover, .card:focus-within { transform: translateY(-8px); box-shadow: 0 8px 20px rgba(0, 255, 242, 0.3); outline: none; }
-    .card h3 { color: #00fff2; margin-bottom: 1rem; }
-    .faq, .testimonios { max-width: 800px; margin: auto; text-align: center; user-select: none; }
-    .faq p, .testimonios p { margin-bottom: 1.5rem; background: #1a1a1a; padding: 1rem; border-radius: 8px; }
-    footer { background: #111; padding: 2rem; text-align: center; color: #888; user-select: none; }
-    .whatsapp { position: fixed; bottom: 20px; right: 20px; z-index: 1001; width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; border-radius: 50%; background: #25D366; box-shadow: 0 0 15px rgba(0,0,0,0.4); text-decoration: none; transition: background-color 0.3s ease; }
-    .whatsapp:hover, .whatsapp:focus { background: #1ebe57; outline: none; }
-    .whatsapp img { pointer-events: none; user-select: none; }
-    .scroll-top { right: 80px; background: #0066ff; transition: opacity 0.4s ease, transform 0.4s ease; opacity: 0; transform: translateY(20px); pointer-events: none; position: fixed; bottom: 20px; border-radius: 50%; padding: 0.6rem 0.8rem; color: white; font-size: 1.8rem; box-shadow: 0 0 15px rgba(0,0,0,0.4); z-index: 1001; text-decoration: none; display: flex; align-items: center; justify-content: center; width: 48px; height: 48px; }
-    .scroll-top.show { opacity: 1; transform: translateY(0); pointer-events: auto; }
-    .scroll-top svg { width: 24px; height: 24px; display: block; }
-    @media (max-width: 768px) {
-      nav.nav-desktop { display: none; }
-      .menu-btn { display: flex; }
+<html lang="es" class="translated-ltr">
+ <head> 
+    <meta name="google-site-verification" content="dWMUHvnS15ercMqQrwJT8nfVtoBMDEwm4-_Dt-18s64" />
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <meta name="theme-color" content="#000000">
+   <meta name="description" content="A product of emergent.sh">
+   <!--
+      manifest.json provides metadata used when your web app is installed on a
+      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
+    -->
+ <!--
+      Notice the use of  in the tags above.
+      It will be replaced with the URL of the `public` folder during the build.
+      Only files inside the `public` folder can be referenced from the HTML.
+
+      Unlike "/favicon.ico" or "favicon.ico", "/favicon.ico" will
+      work correctly both with client-side routing and a non-root public URL.
+      Learn how to configure a non-root public URL by running `npm run build`.
+    -->
+   <title>PAKA  |PAKATECHSOLUTIONS</title>
+   <script type="text/javascript" crossorigin="anonymous" async="" src="https://us-assets.i.posthog.com/static/array.js"></script>
+   <script defer="" src="/static/js/bundle.js"></script>
+   <style>
+     *, ::before, ::after {
+  --tw-border-spacing-x: 0;
+  --tw-border-spacing-y: 0;
+  --tw-translate-x: 0;
+  --tw-translate-y: 0;
+  --tw-rotate: 0;
+  --tw-skew-x: 0;
+  --tw-skew-y: 0;
+  --tw-scale-x: 1;
+  --tw-scale-y: 1;
+  --tw-pan-x:  ;
+  --tw-pan-y:  ;
+  --tw-pinch-zoom:  ;
+  --tw-scroll-snap-strictness: proximity;
+  --tw-gradient-from-position:  ;
+  --tw-gradient-via-position:  ;
+  --tw-gradient-to-position:  ;
+  --tw-ordinal:  ;
+  --tw-slashed-zero:  ;
+  --tw-numeric-figure:  ;
+  --tw-numeric-spacing:  ;
+  --tw-numeric-fraction:  ;
+  --tw-ring-inset:  ;
+  --tw-ring-offset-width: 0px;
+  --tw-ring-offset-color: #fff;
+  --tw-ring-color: rgb(59 130 246 / 0.5);
+  --tw-ring-offset-shadow: 0 0 #0000;
+  --tw-ring-shadow: 0 0 #0000;
+  --tw-shadow: 0 0 #0000;
+  --tw-shadow-colored: 0 0 #0000;
+  --tw-blur:  ;
+  --tw-brightness:  ;
+  --tw-contrast:  ;
+  --tw-grayscale:  ;
+  --tw-hue-rotate:  ;
+  --tw-invert:  ;
+  --tw-saturate:  ;
+  --tw-sepia:  ;
+  --tw-drop-shadow:  ;
+  --tw-backdrop-blur:  ;
+  --tw-backdrop-brightness:  ;
+  --tw-backdrop-contrast:  ;
+  --tw-backdrop-grayscale:  ;
+  --tw-backdrop-hue-rotate:  ;
+  --tw-backdrop-invert:  ;
+  --tw-backdrop-opacity:  ;
+  --tw-backdrop-saturate:  ;
+  --tw-backdrop-sepia:  ;
+  --tw-contain-size:  ;
+  --tw-contain-layout:  ;
+  --tw-contain-paint:  ;
+  --tw-contain-style:  ;
+}
+
+::backdrop {
+  --tw-border-spacing-x: 0;
+  --tw-border-spacing-y: 0;
+  --tw-translate-x: 0;
+  --tw-translate-y: 0;
+  --tw-rotate: 0;
+  --tw-skew-x: 0;
+  --tw-skew-y: 0;
+  --tw-scale-x: 1;
+  --tw-scale-y: 1;
+  --tw-pan-x:  ;
+  --tw-pan-y:  ;
+  --tw-pinch-zoom:  ;
+  --tw-scroll-snap-strictness: proximity;
+  --tw-gradient-from-position:  ;
+  --tw-gradient-via-position:  ;
+  --tw-gradient-to-position:  ;
+  --tw-ordinal:  ;
+  --tw-slashed-zero:  ;
+  --tw-numeric-figure:  ;
+  --tw-numeric-spacing:  ;
+  --tw-numeric-fraction:  ;
+  --tw-ring-inset:  ;
+  --tw-ring-offset-width: 0px;
+  --tw-ring-offset-color: #fff;
+  --tw-ring-color: rgb(59 130 246 / 0.5);
+  --tw-ring-offset-shadow: 0 0 #0000;
+  --tw-ring-shadow: 0 0 #0000;
+  --tw-shadow: 0 0 #0000;
+  --tw-shadow-colored: 0 0 #0000;
+  --tw-blur:  ;
+  --tw-brightness:  ;
+  --tw-contrast:  ;
+  --tw-grayscale:  ;
+  --tw-hue-rotate:  ;
+  --tw-invert:  ;
+  --tw-saturate:  ;
+  --tw-sepia:  ;
+  --tw-drop-shadow:  ;
+  --tw-backdrop-blur:  ;
+  --tw-backdrop-brightness:  ;
+  --tw-backdrop-contrast:  ;
+  --tw-backdrop-grayscale:  ;
+  --tw-backdrop-hue-rotate:  ;
+  --tw-backdrop-invert:  ;
+  --tw-backdrop-opacity:  ;
+  --tw-backdrop-saturate:  ;
+  --tw-backdrop-sepia:  ;
+  --tw-contain-size:  ;
+  --tw-contain-layout:  ;
+  --tw-contain-paint:  ;
+  --tw-contain-style:  ;
+}/*
+! tailwindcss v3.4.17 | MIT License | https://tailwindcss.com
+*//*
+1. Prevent padding and border from affecting element width. (https://github.com/mozdevs/cssremedy/issues/4)
+2. Allow adding a border to an element by just adding a border-width. (https://github.com/tailwindcss/tailwindcss/pull/116)
+*/
+
+*,
+::before,
+::after {
+  box-sizing: border-box; /* 1 */
+  border-width: 0; /* 2 */
+  border-style: solid; /* 2 */
+  border-color: #e5e7eb; /* 2 */
+}
+
+::before,
+::after {
+  --tw-content: '';
+}
+
+/*
+1. Use a consistent sensible line-height in all browsers.
+2. Prevent adjustments of font size after orientation changes in iOS.
+3. Use a more readable tab size.
+4. Use the user's configured `sans` font-family by default.
+5. Use the user's configured `sans` font-feature-settings by default.
+6. Use the user's configured `sans` font-variation-settings by default.
+7. Disable tap highlights on iOS
+*/
+
+html,
+:host {
+  line-height: 1.5; /* 1 */
+  -webkit-text-size-adjust: 100%; /* 2 */ /* 3 */
+  tab-size: 4; /* 3 */
+  font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"; /* 4 */
+  font-feature-settings: normal; /* 5 */
+  font-variation-settings: normal; /* 6 */
+  -webkit-tap-highlight-color: transparent; /* 7 */
+}
+
+/*
+1. Remove the margin in all browsers.
+2. Inherit line-height from `html` so users can set them as a class directly on the `html` element.
+*/
+
+body {
+  margin: 0; /* 1 */
+  line-height: inherit; /* 2 */
+}
+
+/*
+1. Add the correct height in Firefox.
+2. Correct the inheritance of border color in Firefox. (https://bugzilla.mozilla.org/show_bug.cgi?id=190655)
+3. Ensure horizontal rules are visible by default.
+*/
+
+hr {
+  height: 0; /* 1 */
+  color: inherit; /* 2 */
+  border-top-width: 1px; /* 3 */
+}
+
+/*
+Add the correct text decoration in Chrome, Edge, and Safari.
+*/
+
+abbr:where([title]) {
+  -webkit-text-decoration: underline dotted;
+          text-decoration: underline dotted;
+}
+
+/*
+Remove the default font size and weight for headings.
+*/
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+/*
+Reset links to optimize for opt-in styling instead of opt-out.
+*/
+
+a {
+  color: inherit;
+  text-decoration: inherit;
+}
+
+/*
+Add the correct font weight in Edge and Safari.
+*/
+
+b,
+strong {
+  font-weight: bolder;
+}
+
+/*
+1. Use the user's configured `mono` font-family by default.
+2. Use the user's configured `mono` font-feature-settings by default.
+3. Use the user's configured `mono` font-variation-settings by default.
+4. Correct the odd `em` font sizing in all browsers.
+*/
+
+code,
+kbd,
+samp,
+pre {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; /* 1 */
+  font-feature-settings: normal; /* 2 */
+  font-variation-settings: normal; /* 3 */
+  font-size: 1em; /* 4 */
+}
+
+/*
+Add the correct font size in all browsers.
+*/
+
+small {
+  font-size: 80%;
+}
+
+/*
+Prevent `sub` and `sup` elements from affecting the line height in all browsers.
+*/
+
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+sup {
+  top: -0.5em;
+}
+
+/*
+1. Remove text indentation from table contents in Chrome and Safari. (https://bugs.chromium.org/p/chromium/issues/detail?id=999088, https://bugs.webkit.org/show_bug.cgi?id=201297)
+2. Correct table border color inheritance in all Chrome and Safari. (https://bugs.chromium.org/p/chromium/issues/detail?id=935729, https://bugs.webkit.org/show_bug.cgi?id=195016)
+3. Remove gaps between table borders by default.
+*/
+
+table {
+  text-indent: 0; /* 1 */
+  border-color: inherit; /* 2 */
+  border-collapse: collapse; /* 3 */
+}
+
+/*
+1. Change the font styles in all browsers.
+2. Remove the margin in Firefox and Safari.
+3. Remove default padding in all browsers.
+*/
+
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: inherit; /* 1 */
+  font-feature-settings: inherit; /* 1 */
+  font-variation-settings: inherit; /* 1 */
+  font-size: 100%; /* 1 */
+  font-weight: inherit; /* 1 */
+  line-height: inherit; /* 1 */
+  letter-spacing: inherit; /* 1 */
+  color: inherit; /* 1 */
+  margin: 0; /* 2 */
+  padding: 0; /* 3 */
+}
+
+/*
+Remove the inheritance of text transform in Edge and Firefox.
+*/
+
+button,
+select {
+  text-transform: none;
+}
+
+/*
+1. Correct the inability to style clickable types in iOS and Safari.
+2. Remove default button styles.
+*/
+
+button,
+input:where([type='button']),
+input:where([type='reset']),
+input:where([type='submit']) {
+  -webkit-appearance: button; /* 1 */
+  background-color: transparent; /* 2 */
+  background-image: none; /* 2 */
+}
+
+/*
+Use the modern Firefox focus style for all focusable elements.
+*/
+
+:-moz-focusring {
+  outline: auto;
+}
+
+/*
+Remove the additional `:invalid` styles in Firefox. (https://github.com/mozilla/gecko-dev/blob/2f9eacd9d3d995c937b4251a5557d95d494c9be1/layout/style/res/forms.css#L728-L737)
+*/
+
+:-moz-ui-invalid {
+  box-shadow: none;
+}
+
+/*
+Add the correct vertical alignment in Chrome and Firefox.
+*/
+
+progress {
+  vertical-align: baseline;
+}
+
+/*
+Correct the cursor style of increment and decrement buttons in Safari.
+*/
+
+::-webkit-inner-spin-button,
+::-webkit-outer-spin-button {
+  height: auto;
+}
+
+/*
+1. Correct the odd appearance in Chrome and Safari.
+2. Correct the outline style in Safari.
+*/
+
+[type='search'] {
+  -webkit-appearance: textfield; /* 1 */
+  outline-offset: -2px; /* 2 */
+}
+
+/*
+Remove the inner padding in Chrome and Safari on macOS.
+*/
+
+::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+/*
+1. Correct the inability to style clickable types in iOS and Safari.
+2. Change font properties to `inherit` in Safari.
+*/
+
+::-webkit-file-upload-button {
+  -webkit-appearance: button; /* 1 */
+  font: inherit; /* 2 */
+}
+
+/*
+Add the correct display in Chrome and Safari.
+*/
+
+summary {
+  display: list-item;
+}
+
+/*
+Removes the default spacing and border for appropriate elements.
+*/
+
+blockquote,
+dl,
+dd,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+hr,
+figure,
+p,
+pre {
+  margin: 0;
+}
+
+fieldset {
+  margin: 0;
+  padding: 0;
+}
+
+legend {
+  padding: 0;
+}
+
+ol,
+ul,
+menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/*
+Reset default styling for dialogs.
+*/
+dialog {
+  padding: 0;
+}
+
+/*
+Prevent resizing textareas horizontally by default.
+*/
+
+textarea {
+  resize: vertical;
+}
+
+/*
+1. Reset the default placeholder opacity in Firefox. (https://github.com/tailwindlabs/tailwindcss/issues/3300)
+2. Set the default placeholder color to the user's configured gray 400 color.
+*/
+
+input::placeholder,
+textarea::placeholder {
+  opacity: 1; /* 1 */
+  color: #9ca3af; /* 2 */
+}
+
+/*
+Set the default cursor for buttons.
+*/
+
+button,
+[role="button"] {
+  cursor: pointer;
+}
+
+/*
+Make sure disabled buttons don't get the pointer cursor.
+*/
+:disabled {
+  cursor: default;
+}
+
+/*
+1. Make replaced elements `display: block` by default. (https://github.com/mozdevs/cssremedy/issues/14)
+2. Add `vertical-align: middle` to align replaced elements more sensibly by default. (https://github.com/jensimmons/cssremedy/issues/14#issuecomment-634934210)
+   This can trigger a poorly considered lint error in some tools but is included by design.
+*/
+
+img,
+svg,
+video,
+canvas,
+audio,
+iframe,
+embed,
+object {
+  display: block; /* 1 */
+  vertical-align: middle; /* 2 */
+}
+
+/*
+Constrain images and videos to the parent width and preserve their intrinsic aspect ratio. (https://github.com/mozdevs/cssremedy/issues/14)
+*/
+
+img,
+video {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Make elements with the HTML hidden attribute stay hidden by default */
+[hidden]:where(:not([hidden="until-found"])) {
+  display: none;
+}
+.fixed {
+  position: fixed;
+}
+.absolute {
+  position: absolute;
+}
+.relative {
+  position: relative;
+}
+.inset-0 {
+  inset: 0px;
+}
+.-bottom-6 {
+  bottom: -1.5rem;
+}
+.-left-6 {
+  left: -1.5rem;
+}
+.-right-6 {
+  right: -1.5rem;
+}
+.-top-6 {
+  top: -1.5rem;
+}
+.bottom-20 {
+  bottom: 5rem;
+}
+.bottom-40 {
+  bottom: 10rem;
+}
+.bottom-6 {
+  bottom: 1.5rem;
+}
+.bottom-8 {
+  bottom: 2rem;
+}
+.left-1\/2 {
+  left: 50%;
+}
+.left-10 {
+  left: 2.5rem;
+}
+.left-20 {
+  left: 5rem;
+}
+.left-6 {
+  left: 1.5rem;
+}
+.right-10 {
+  right: 2.5rem;
+}
+.right-20 {
+  right: 5rem;
+}
+.right-4 {
+  right: 1rem;
+}
+.right-40 {
+  right: 10rem;
+}
+.right-6 {
+  right: 1.5rem;
+}
+.top-0 {
+  top: 0px;
+}
+.top-20 {
+  top: 5rem;
+}
+.top-4 {
+  top: 1rem;
+}
+.top-40 {
+  top: 10rem;
+}
+.z-0 {
+  z-index: 0;
+}
+.z-10 {
+  z-index: 10;
+}
+.z-20 {
+  z-index: 20;
+}
+.z-50 {
+  z-index: 50;
+}
+.col-span-1 {
+  grid-column: span 1 / span 1;
+}
+.mx-auto {
+  margin-left: auto;
+  margin-right: auto;
+}
+.mb-16 {
+  margin-bottom: 4rem;
+}
+.mb-2 {
+  margin-bottom: 0.5rem;
+}
+.mb-3 {
+  margin-bottom: 0.75rem;
+}
+.mb-4 {
+  margin-bottom: 1rem;
+}
+.mb-6 {
+  margin-bottom: 1.5rem;
+}
+.mb-8 {
+  margin-bottom: 2rem;
+}
+.ml-10 {
+  margin-left: 2.5rem;
+}
+.ml-4 {
+  margin-left: 1rem;
+}
+.mr-3 {
+  margin-right: 0.75rem;
+}
+.mr-4 {
+  margin-right: 1rem;
+}
+.mt-16 {
+  margin-top: 4rem;
+}
+.mt-2 {
+  margin-top: 0.5rem;
+}
+.mt-6 {
+  margin-top: 1.5rem;
+}
+.mt-8 {
+  margin-top: 2rem;
+}
+.block {
+  display: block;
+}
+.flex {
+  display: flex;
+}
+.inline-flex {
+  display: inline-flex;
+}
+.grid {
+  display: grid;
+}
+.hidden {
+  display: none;
+}
+.h-16 {
+  height: 4rem;
+}
+.h-2 {
+  height: 0.5rem;
+}
+.h-3 {
+  height: 0.75rem;
+}
+.h-32 {
+  height: 8rem;
+}
+.h-4 {
+  height: 1rem;
+}
+.h-40 {
+  height: 10rem;
+}
+.h-48 {
+  height: 12rem;
+}
+.h-5 {
+  height: 1.25rem;
+}
+.h-6 {
+  height: 1.5rem;
+}
+.h-8 {
+  height: 2rem;
+}
+.h-96 {
+  height: 24rem;
+}
+.h-full {
+  height: 100%;
+}
+.min-h-screen {
+  min-height: 100vh;
+}
+.w-16 {
+  width: 4rem;
+}
+.w-2 {
+  width: 0.5rem;
+}
+.w-3 {
+  width: 0.75rem;
+}
+.w-32 {
+  width: 8rem;
+}
+.w-4 {
+  width: 1rem;
+}
+.w-40 {
+  width: 10rem;
+}
+.w-5 {
+  width: 1.25rem;
+}
+.w-6 {
+  width: 1.5rem;
+}
+.w-8 {
+  width: 2rem;
+}
+.w-full {
+  width: 100%;
+}
+.max-w-3xl {
+  max-width: 48rem;
+}
+.max-w-4xl {
+  max-width: 56rem;
+}
+.max-w-7xl {
+  max-width: 80rem;
+}
+.flex-shrink-0 {
+  flex-shrink: 0;
+}
+.-translate-x-1\/2 {
+  --tw-translate-x: -50%;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+.rotate-45 {
+  --tw-rotate: 45deg;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+.transform {
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+@keyframes bounce {
+
+  0%, 100% {
+    transform: translateY(-25%);
+    animation-timing-function: cubic-bezier(0.8,0,1,1);
+  }
+
+  50% {
+    transform: none;
+    animation-timing-function: cubic-bezier(0,0,0.2,1);
+  }
+}
+.animate-bounce {
+  animation: bounce 1s infinite;
+}
+@keyframes ping {
+
+  75%, 100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+.animate-ping {
+  animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+@keyframes pulse {
+
+  50% {
+    opacity: .5;
+  }
+}
+.animate-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+.resize-none {
+  resize: none;
+}
+.grid-cols-1 {
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+}
+.grid-cols-2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.flex-col {
+  flex-direction: column;
+}
+.flex-wrap {
+  flex-wrap: wrap;
+}
+.items-center {
+  align-items: center;
+}
+.items-baseline {
+  align-items: baseline;
+}
+.justify-center {
+  justify-content: center;
+}
+.justify-between {
+  justify-content: space-between;
+}
+.gap-12 {
+  gap: 3rem;
+}
+.gap-4 {
+  gap: 1rem;
+}
+.gap-6 {
+  gap: 1.5rem;
+}
+.gap-8 {
+  gap: 2rem;
+}
+.space-x-4 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-x-reverse: 0;
+  margin-right: calc(1rem * var(--tw-space-x-reverse));
+  margin-left: calc(1rem * calc(1 - var(--tw-space-x-reverse)));
+}
+.space-y-1 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-y-reverse: 0;
+  margin-top: calc(0.25rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(0.25rem * var(--tw-space-y-reverse));
+}
+.space-y-2 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-y-reverse: 0;
+  margin-top: calc(0.5rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(0.5rem * var(--tw-space-y-reverse));
+}
+.space-y-4 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-y-reverse: 0;
+  margin-top: calc(1rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(1rem * var(--tw-space-y-reverse));
+}
+.space-y-6 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-y-reverse: 0;
+  margin-top: calc(1.5rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(1.5rem * var(--tw-space-y-reverse));
+}
+.overflow-hidden {
+  overflow: hidden;
+}
+.rounded-2xl {
+  border-radius: 1rem;
+}
+.rounded-full {
+  border-radius: 9999px;
+}
+.rounded-lg {
+  border-radius: 0.5rem;
+}
+.rounded-md {
+  border-radius: 0.375rem;
+}
+.rounded-xl {
+  border-radius: 0.75rem;
+}
+.border {
+  border-width: 1px;
+}
+.border-2 {
+  border-width: 2px;
+}
+.border-t {
+  border-top-width: 1px;
+}
+.border-cyan-400 {
+  --tw-border-opacity: 1;
+  border-color: rgb(34 211 238 / var(--tw-border-opacity, 1));
+}
+.border-gray-600 {
+  --tw-border-opacity: 1;
+  border-color: rgb(75 85 99 / var(--tw-border-opacity, 1));
+}
+.border-gray-600\/50 {
+  border-color: rgb(75 85 99 / 0.5);
+}
+.border-gray-700 {
+  --tw-border-opacity: 1;
+  border-color: rgb(55 65 81 / var(--tw-border-opacity, 1));
+}
+.bg-blue-400 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(96 165 250 / var(--tw-bg-opacity, 1));
+}
+.bg-blue-500 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(59 130 246 / var(--tw-bg-opacity, 1));
+}
+.bg-blue-600 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(37 99 235 / var(--tw-bg-opacity, 1));
+}
+.bg-blue-600\/20 {
+  background-color: rgb(37 99 235 / 0.2);
+}
+.bg-cyan-300 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(103 232 249 / var(--tw-bg-opacity, 1));
+}
+.bg-cyan-400 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(34 211 238 / var(--tw-bg-opacity, 1));
+}
+.bg-cyan-400\/20 {
+  background-color: rgb(34 211 238 / 0.2);
+}
+.bg-cyan-600 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(8 145 178 / var(--tw-bg-opacity, 1));
+}
+.bg-cyan-600\/20 {
+  background-color: rgb(8 145 178 / 0.2);
+}
+.bg-gray-700\/50 {
+  background-color: rgb(55 65 81 / 0.5);
+}
+.bg-gray-800 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(31 41 55 / var(--tw-bg-opacity, 1));
+}
+.bg-gray-900 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(17 24 39 / var(--tw-bg-opacity, 1));
+}
+.bg-gray-900\/95 {
+  background-color: rgb(17 24 39 / 0.95);
+}
+.bg-green-500 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(34 197 94 / var(--tw-bg-opacity, 1));
+}
+.bg-green-600 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(22 163 74 / var(--tw-bg-opacity, 1));
+}
+.bg-transparent {
+  background-color: transparent;
+}
+.bg-gradient-to-br {
+  background-image: linear-gradient(to bottom right, var(--tw-gradient-stops));
+}
+.bg-gradient-to-r {
+  background-image: linear-gradient(to right, var(--tw-gradient-stops));
+}
+.bg-gradient-to-t {
+  background-image: linear-gradient(to top, var(--tw-gradient-stops));
+}
+.from-blue-600 {
+  --tw-gradient-from: #2563eb var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(37 99 235 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+.from-cyan-400 {
+  --tw-gradient-from: #22d3ee var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(34 211 238 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+.from-cyan-600 {
+  --tw-gradient-from: #0891b2 var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(8 145 178 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+.from-cyan-600\/20 {
+  --tw-gradient-from: rgb(8 145 178 / 0.2) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(8 145 178 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+.from-gray-700\/50 {
+  --tw-gradient-from: rgb(55 65 81 / 0.5) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(55 65 81 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+.from-gray-800\/50 {
+  --tw-gradient-from: rgb(31 41 55 / 0.5) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(31 41 55 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+.from-gray-900\/50 {
+  --tw-gradient-from: rgb(17 24 39 / 0.5) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(17 24 39 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+.from-gray-900\/80 {
+  --tw-gradient-from: rgb(17 24 39 / 0.8) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(17 24 39 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+.from-gray-900\/90 {
+  --tw-gradient-from: rgb(17 24 39 / 0.9) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(17 24 39 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+.via-gray-900\/80 {
+  --tw-gradient-to: rgb(17 24 39 / 0)  var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), rgb(17 24 39 / 0.8) var(--tw-gradient-via-position), var(--tw-gradient-to);
+}
+.to-blue-400 {
+  --tw-gradient-to: #60a5fa var(--tw-gradient-to-position);
+}
+.to-blue-600 {
+  --tw-gradient-to: #2563eb var(--tw-gradient-to-position);
+}
+.to-blue-600\/20 {
+  --tw-gradient-to: rgb(37 99 235 / 0.2) var(--tw-gradient-to-position);
+}
+.to-blue-900\/70 {
+  --tw-gradient-to: rgb(30 58 138 / 0.7) var(--tw-gradient-to-position);
+}
+.to-cyan-600 {
+  --tw-gradient-to: #0891b2 var(--tw-gradient-to-position);
+}
+.to-gray-700\/50 {
+  --tw-gradient-to: rgb(55 65 81 / 0.5) var(--tw-gradient-to-position);
+}
+.to-gray-800\/50 {
+  --tw-gradient-to: rgb(31 41 55 / 0.5) var(--tw-gradient-to-position);
+}
+.to-transparent {
+  --tw-gradient-to: transparent var(--tw-gradient-to-position);
+}
+.bg-clip-text {
+  background-clip: text;
+}
+.object-cover {
+  object-fit: cover;
+}
+.p-2 {
+  padding: 0.5rem;
+}
+.p-3 {
+  padding: 0.75rem;
+}
+.p-4 {
+  padding: 1rem;
+}
+.p-6 {
+  padding: 1.5rem;
+}
+.px-2 {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+.px-3 {
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+}
+.px-4 {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+.px-6 {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+.px-8 {
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+.py-12 {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+.py-2 {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+.py-20 {
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+}
+.py-3 {
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+}
+.py-4 {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+.pb-3 {
+  padding-bottom: 0.75rem;
+}
+.pb-6 {
+  padding-bottom: 1.5rem;
+}
+.pr-4 {
+  padding-right: 1rem;
+}
+.pt-2 {
+  padding-top: 0.5rem;
+}
+.pt-8 {
+  padding-top: 2rem;
+}
+.text-left {
+  text-align: left;
+}
+.text-center {
+  text-align: center;
+}
+.text-2xl {
+  font-size: 1.5rem;
+  line-height: 2rem;
+}
+.text-3xl {
+  font-size: 1.875rem;
+  line-height: 2.25rem;
+}
+.text-4xl {
+  font-size: 2.25rem;
+  line-height: 2.5rem;
+}
+.text-base {
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+.text-lg {
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+}
+.text-sm {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+.text-xl {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+}
+.font-bold {
+  font-weight: 700;
+}
+.font-medium {
+  font-weight: 500;
+}
+.font-semibold {
+  font-weight: 600;
+}
+.italic {
+  font-style: italic;
+}
+.leading-relaxed {
+  line-height: 1.625;
+}
+.leading-tight {
+  line-height: 1.25;
+}
+.text-blue-400 {
+  --tw-text-opacity: 1;
+  color: rgb(96 165 250 / var(--tw-text-opacity, 1));
+}
+.text-cyan-400 {
+  --tw-text-opacity: 1;
+  color: rgb(34 211 238 / var(--tw-text-opacity, 1));
+}
+.text-gray-300 {
+  --tw-text-opacity: 1;
+  color: rgb(209 213 219 / var(--tw-text-opacity, 1));
+}
+.text-gray-400 {
+  --tw-text-opacity: 1;
+  color: rgb(156 163 175 / var(--tw-text-opacity, 1));
+}
+.text-gray-500 {
+  --tw-text-opacity: 1;
+  color: rgb(107 114 128 / var(--tw-text-opacity, 1));
+}
+.text-transparent {
+  color: transparent;
+}
+.text-white {
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity, 1));
+}
+.text-yellow-400 {
+  --tw-text-opacity: 1;
+  color: rgb(250 204 21 / var(--tw-text-opacity, 1));
+}
+.placeholder-gray-400::placeholder {
+  --tw-placeholder-opacity: 1;
+  color: rgb(156 163 175 / var(--tw-placeholder-opacity, 1));
+}
+.opacity-10 {
+  opacity: 0.1;
+}
+.shadow-2xl {
+  --tw-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+  --tw-shadow-colored: 0 25px 50px -12px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+.shadow-lg {
+  --tw-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+.blur-3xl {
+  --tw-blur: blur(64px);
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
+}
+.backdrop-blur-md {
+  --tw-backdrop-blur: blur(12px);
+  backdrop-filter: var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);
+}
+.backdrop-blur-sm {
+  --tw-backdrop-blur: blur(4px);
+  backdrop-filter: var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);
+}
+.transition-all {
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+.transition-colors {
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+.transition-transform {
+  transition-property: transform;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+.duration-200 {
+  transition-duration: 200ms;
+}
+.duration-300 {
+  transition-duration: 300ms;
+}
+.duration-500 {
+  transition-duration: 500ms;
+}
+
+/* Custom Animations and Styles for PAKA Tech */
+
+/* Base styles */
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+        "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+        "Helvetica Neue", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+}
+
+code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+        monospace;
+}
+
+/* Smooth scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Custom animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
     }
-  </style>
-</head>
-<body>
-
-  <header>
-    <div class="logo" tabindex="0">PAKA Tech</div>
-    <nav class="nav-desktop" aria-label="Menú principal">
-      <a href="#servicios" tabindex="0">Servicios</a>
-      <a href="#nosotros" tabindex="0">Nosotros</a>
-      <a href="#contacto" tabindex="0">Contacto</a>
-    </nav>
-    <button class="menu-btn" aria-label="Abrir menú móvil" aria-expanded="false" aria-controls="mobileMenu" onclick="toggleMenu(this)">
-      <div></div><div></div><div></div>
-    </button>
-    <nav class="nav-mobile" id="mobileMenu" aria-label="Menú móvil" role="navigation">
-      <a href="#servicios" onclick="toggleMenu()" tabindex="0">Servicios</a>
-      <div class="submenu-mobile">
-        <a href="#nosotros" class="submenu-toggle" aria-haspopup="true" aria-expanded="false" tabindex="0">
-          Nosotros <span class="arrow" aria-hidden="true">▼</span>
-        </a>
-        <div class="submenu-content" role="region" aria-label="Submenú Nosotros">
-          <a href=".testimonios" onclick="toggleMenu()" tabindex="0">Testimonios</a>
-          <a href=".faq" onclick="toggleMenu()" tabindex="0">Preguntas Frecuentes</a>
-        </div>
-      </div>
-      <a href="#contacto" onclick="toggleMenu()" tabindex="0">Contacto</a>
-    </nav>
-  </header>
-
-  <section class="hero" data-aos="fade-up" tabindex="0">
-    <h1>Soluciones Tecnológicas a tu Alcance</h1>
-    <p>Reparación, mantenimiento, redes, instalación de software y más. Siempre cerca, siempre contigo</p>
-  </section>
-
-  <section id="servicios" tabindex="0">
-    <h2 data-aos="fade-down">Servicios</h2>
-    <div class="cards">
-      <div class="card" data-aos="fade-right" tabindex="0">
-        <h3>Reparación de PC</h3>
-        <p>Formateo, diagnóstico profesional, optimización y más.</p>
-      </div>
-      <div class="card" data-aos="zoom-in" tabindex="0">
-        <h3>Mantenimiento</h3>
-        <p>Limpieza interna y externa para un rendimiento óptimo.</p>
-      </div>
-      <div class="card" data-aos="fade-left" tabindex="0">
-        <h3>Instalación de Software</h3>
-        <p>Windows, Office, antivirus y programas personalizados.</p>
-      </div>
-      <div class="card" data-aos="fade-up" tabindex="0">
-        <h3>Mantenimiento Preventivo de Impresoras</h3>
-        <p>Revisión, limpieza y optimización para evitar fallos y prolongar la vida útil.</p>
-      </div>
-    </div>
-  </section>
-
-  <section id="nosotros" tabindex="0">
-    <h2 data-aos="zoom-in">Sobre Nosotros</h2>
-    <p data-aos="fade-up" style="text-align:center; max-width:700px; margin:auto;">
-      PAKA es un experto en soporte técnico y mantenimiento informático en Villa Alborada, comprometido con brindar soluciones rápidas y confiables para mantener tus dispositivos siempre en óptimas condiciones.
-    </p>
-  </section>
-
-  <section class="testimonios" tabindex="0">
-    <h2 data-aos="fade-up">Testimonios</h2>
-    <p data-aos="fade-right">“Gracias a PAKA Tech mi laptop volvió a la vida. Excelente atención.” – Yoselin N.</p>
-    <p data-aos="fade-left">“Rápido, confiable y con precios justos. Muy recomendado.” –  Sofía L.</p>
-  </section>
-
-  <section class="faq" tabindex="0">
-    <h2 data-aos="fade-up">Preguntas Frecuentes</h2>
-    <p data-aos="fade-up"><strong>¿Ofrecen garantía por los servicios realizados?</strong> Sí, todos nuestros servicios cuentan con garantía para tu tranquilidad.</p>
-    <p data-aos="fade-up"><strong>¿Atienden emergencias?</strong> Sí, con un pequeño recargo adicional por urgencia.</p>
-  </section>
-
-  <section id="contacto" tabindex="0">
-    <h2 data-aos="flip-left">Contacto</h2>
-    <p data-aos="fade-up" style="text-align:center;">
-      📞 Tel: +502 4754-8991 <br />
-      ✉️ Email: pakatechsolutions@gmail.com <br />
-      📍Villa Alborada, Amatitlán, Guatemala
-    </p>
-  </section>
-
-  <footer>
-    &copy; 2025 PAKA Tech Solutions. Todos los derechos reservados.
-  </footer>
-
-  <!-- Botón WhatsApp con PNG oficial -->
-  <a class="whatsapp" href="https://wa.me/50247548991" target="_blank" rel="noopener" aria-label="Chat en WhatsApp" title="Chat en WhatsApp">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" draggable="false" style="width:28px; height:28px;" />
-  </a>
-
-  <a class="scroll-top" id="scrollTopBtn" href="#" aria-label="Ir arriba">
-    <svg xmlns="http://www.w3.org/2000/svg" height="24" width="24" fill="#fff" viewBox="0 0 24 24">
-      <path d="M12 4.5 4.5 12h15ZM4.5 12v1.5h15V12Z" />
-    </svg>
-  </a>
-
-  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-  <script>
-    AOS.init({ duration: 1200 });
-    function toggleMenu(button) {
-      const menu = document.getElementById('mobileMenu');
-      const isVisible = menu.classList.toggle('show');
-      if (button) {
-        button.classList.toggle('active');
-        button.setAttribute('aria-expanded', isVisible);
-      }
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
-    document.addEventListener('DOMContentLoaded', () => {
-      document.querySelectorAll('.submenu-toggle').forEach(btn => {
-        btn.addEventListener('click', e => {
-          e.preventDefault();
-          const content = btn.nextElementSibling;
-          const isVisible = content.classList.contains('show');
-          document.querySelectorAll('.submenu-content').forEach(c => c.classList.remove('show'));
-          document.querySelectorAll('.submenu-toggle').forEach(t => { t.classList.remove('active'); t.setAttribute('aria-expanded','false'); });
-          if (!isVisible) {
-            content.classList.add('show');
-            btn.classList.add('active');
-            btn.setAttribute('aria-expanded','true');
-          }
-        });
-      });
-      document.querySelectorAll('.nav-mobile a').forEach(link => {
-        link.addEventListener('click', () => {
-          const menu = document.getElementById('mobileMenu');
-          const menuBtn = document.querySelector('.menu-btn');
-          if (menu.classList.contains('show')) {
-            menu.classList.remove('show');
-            menuBtn.classList.remove('active');
-            menuBtn.setAttribute('aria-expanded','false');
-          }
-        });
-      });
-    });
-    const scrollBtn = document.getElementById('scrollTopBtn');
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 300) scrollBtn.classList.add('show'); else scrollBtn.classList.remove('show');
-    });
-    scrollBtn.addEventListener('click', e => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); });
-  </script>
-</body>
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+}
+
+@keyframes bounce {
+    0%, 20%, 53%, 80%, 100% {
+        transform: translate3d(0, 0, 0);
+    }
+    40%, 43% {
+        transform: translate3d(0, -30px, 0);
+    }
+    70% {
+        transform: translate3d(0, -15px, 0);
+    }
+    90% {
+        transform: translate3d(0, -4px, 0);
+    }
+}
+
+@keyframes ping {
+    75%, 100% {
+        transform: scale(2);
+        opacity: 0;
+    }
+}
+
+/* Animation classes */
+.animate-fade-in-up {
+    animation: fadeInUp 1s ease-out forwards;
+}
+
+.animate-fade-in {
+    animation: fadeIn 0.5s ease-out forwards;
+}
+
+.animate-slide-in-left {
+    animation: slideInLeft 0.6s ease-out forwards;
+}
+
+.animate-slide-in-right {
+    animation: slideInRight 0.6s ease-out forwards;
+}
+
+.animate-pulse {
+    animation: pulse 2s infinite;
+}
+
+.animate-bounce {
+    animation: bounce 1s infinite;
+}
+
+.animate-ping {
+    animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+/* Gradient text animations */
+@keyframes gradientShift {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.gradient-text {
+    background: linear-gradient(-45deg, #06b6d4, #3b82f6, #8b5cf6, #06b6d4);
+    background-size: 400% 400%;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradientShift 3s ease infinite;
+}
+
+/* Backdrop blur support */
+.backdrop-blur-sm {
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+}
+
+.backdrop-blur-md {
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #1f2937;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(to bottom, #06b6d4, #3b82f6);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(to bottom, #0891b2, #2563eb);
+}
+
+/* Firefox scrollbar */
+html {
+    scrollbar-width: thin;
+    scrollbar-color: #06b6d4 #1f2937;
+}
+
+/* Loading animation for images */
+img {
+    transition: opacity 0.3s ease;
+}
+
+img:not([src]) {
+    opacity: 0;
+}
+
+/* Enhanced button hover effects */
+.btn-primary {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.btn-primary::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+}
+
+.btn-primary:hover::before {
+    left: 100%;
+}
+
+/* Card hover effects */
+.card-hover {
+    transition: all 0.3s ease;
+    transform-style: preserve-3d;
+}
+
+.card-hover:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(6, 182, 212, 0.3);
+}
+
+/* Text selection */
+::selection {
+    background-color: #06b6d4;
+    color: white;
+}
+
+::-moz-selection {
+    background-color: #06b6d4;
+    color: white;
+}
+
+/* Focus styles */
+button:focus,
+input:focus,
+textarea:focus,
+select:focus {
+    outline: 2px solid #06b6d4;
+    outline-offset: 2px;
+}
+
+/* Responsive image handling */
+.responsive-image {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.responsive-image:hover {
+    transform: scale(1.05);
+}
+
+/* Loading spinner */
+.spinner {
+    border: 4px solid rgba(6, 182, 212, 0.3);
+    border-radius: 50%;
+    border-top: 4px solid #06b6d4;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Typewriter effect */
+.typewriter {
+    overflow: hidden;
+    border-right: 0.15em solid #06b6d4;
+    white-space: nowrap;
+    margin: 0 auto;
+    letter-spacing: 0.1em;
+    animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+}
+
+@keyframes typing {
+    from { width: 0; }
+    to { width: 100%; }
+}
+
+@keyframes blink-caret {
+    from, to { border-color: transparent; }
+    50% { border-color: #06b6d4; }
+}
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+    .animate-fade-in-up,
+    .animate-slide-in-left,
+    .animate-slide-in-right {
+        animation-duration: 0.8s;
+    }
+    
+    .card-hover:hover {
+        transform: translateY(-4px) scale(1.01);
+    }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+    
+    .animate-bounce,
+    .animate-pulse,
+    .animate-ping {
+        animation: none;
+    }
+}
+.hover\:-translate-y-2:hover {
+  --tw-translate-y: -0.5rem;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+.hover\:scale-105:hover {
+  --tw-scale-x: 1.05;
+  --tw-scale-y: 1.05;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+.hover\:scale-110:hover {
+  --tw-scale-x: 1.1;
+  --tw-scale-y: 1.1;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+.hover\:border-cyan-400\/50:hover {
+  border-color: rgb(34 211 238 / 0.5);
+}
+.hover\:bg-cyan-400:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(34 211 238 / var(--tw-bg-opacity, 1));
+}
+.hover\:bg-cyan-700:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(14 116 144 / var(--tw-bg-opacity, 1));
+}
+.hover\:bg-gray-700:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(55 65 81 / var(--tw-bg-opacity, 1));
+}
+.hover\:bg-green-600:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(22 163 74 / var(--tw-bg-opacity, 1));
+}
+.hover\:bg-green-700:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(21 128 61 / var(--tw-bg-opacity, 1));
+}
+.hover\:from-cyan-700:hover {
+  --tw-gradient-from: #0e7490 var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(14 116 144 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+.hover\:to-blue-700:hover {
+  --tw-gradient-to: #1d4ed8 var(--tw-gradient-to-position);
+}
+.hover\:text-cyan-400:hover {
+  --tw-text-opacity: 1;
+  color: rgb(34 211 238 / var(--tw-text-opacity, 1));
+}
+.hover\:text-gray-900:hover {
+  --tw-text-opacity: 1;
+  color: rgb(17 24 39 / var(--tw-text-opacity, 1));
+}
+.hover\:text-white:hover {
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity, 1));
+}
+.hover\:shadow-2xl:hover {
+  --tw-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+  --tw-shadow-colored: 0 25px 50px -12px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+.hover\:shadow-xl:hover {
+  --tw-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+  --tw-shadow-colored: 0 20px 25px -5px var(--tw-shadow-color), 0 8px 10px -6px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+.hover\:shadow-cyan-500\/20:hover {
+  --tw-shadow-color: rgb(6 182 212 / 0.2);
+  --tw-shadow: var(--tw-shadow-colored);
+}
+.hover\:shadow-cyan-500\/50:hover {
+  --tw-shadow-color: rgb(6 182 212 / 0.5);
+  --tw-shadow: var(--tw-shadow-colored);
+}
+.focus\:border-transparent:focus {
+  border-color: transparent;
+}
+.focus\:outline-none:focus {
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+}
+.focus\:ring-2:focus {
+  --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
+  --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color);
+  box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);
+}
+.focus\:ring-inset:focus {
+  --tw-ring-inset: inset;
+}
+.focus\:ring-cyan-400:focus {
+  --tw-ring-opacity: 1;
+  --tw-ring-color: rgb(34 211 238 / var(--tw-ring-opacity, 1));
+}
+.focus\:ring-white:focus {
+  --tw-ring-opacity: 1;
+  --tw-ring-color: rgb(255 255 255 / var(--tw-ring-opacity, 1));
+}
+.group:hover .group-hover\:scale-110 {
+  --tw-scale-x: 1.1;
+  --tw-scale-y: 1.1;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+.group:hover .group-hover\:text-cyan-400 {
+  --tw-text-opacity: 1;
+  color: rgb(34 211 238 / var(--tw-text-opacity, 1));
+}
+@media (min-width: 640px) {
+
+  .sm\:flex-row {
+    flex-direction: row;
+  }
+
+  .sm\:px-3 {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
+
+  .sm\:px-6 {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+@media (min-width: 768px) {
+
+  .md\:col-span-2 {
+    grid-column: span 2 / span 2;
+  }
+
+  .md\:block {
+    display: block;
+  }
+
+  .md\:hidden {
+    display: none;
+  }
+
+  .md\:grid-cols-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .md\:grid-cols-4 {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .md\:text-2xl {
+    font-size: 1.5rem;
+    line-height: 2rem;
+  }
+
+  .md\:text-4xl {
+    font-size: 2.25rem;
+    line-height: 2.5rem;
+  }
+
+  .md\:text-5xl {
+    font-size: 3rem;
+    line-height: 1;
+  }
+
+  .md\:text-6xl {
+    font-size: 3.75rem;
+    line-height: 1;
+  }
+
+  .md\:text-base {
+    font-size: 1rem;
+    line-height: 1.5rem;
+  }
+}
+@media (min-width: 1024px) {
+
+  .lg\:grid-cols-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .lg\:grid-cols-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .lg\:px-8 {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+
+  .lg\:text-7xl {
+    font-size: 4.5rem;
+    line-height: 1;
+  }
+}
+
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8uL3NyYy9pbmRleC5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFBQSx3QkFBYztFQUFkLHdCQUFjO0VBQWQsbUJBQWM7RUFBZCxtQkFBYztFQUFkLGNBQWM7RUFBZCxjQUFjO0VBQWQsY0FBYztFQUFkLGVBQWM7RUFBZCxlQUFjO0VBQWQsYUFBYztFQUFkLGFBQWM7RUFBZCxrQkFBYztFQUFkLHNDQUFjO0VBQWQsOEJBQWM7RUFBZCw2QkFBYztFQUFkLDRCQUFjO0VBQWQsZUFBYztFQUFkLG9CQUFjO0VBQWQsc0JBQWM7RUFBZCx1QkFBYztFQUFkLHdCQUFjO0VBQWQsa0JBQWM7RUFBZCwyQkFBYztFQUFkLDRCQUFjO0VBQWQsc0NBQWM7RUFBZCxrQ0FBYztFQUFkLDJCQUFjO0VBQWQsc0JBQWM7RUFBZCw4QkFBYztFQUFkLFlBQWM7RUFBZCxrQkFBYztFQUFkLGdCQUFjO0VBQWQsaUJBQWM7RUFBZCxrQkFBYztFQUFkLGNBQWM7RUFBZCxnQkFBYztFQUFkLGFBQWM7RUFBZCxtQkFBYztFQUFkLHFCQUFjO0VBQWQsMkJBQWM7RUFBZCx5QkFBYztFQUFkLDBCQUFjO0VBQWQsMkJBQWM7RUFBZCx1QkFBYztFQUFkLHdCQUFjO0VBQWQseUJBQWM7RUFBZCxzQkFBYztFQUFkLG9CQUFjO0VBQWQsc0JBQWM7RUFBZCxxQkFBYztFQUFkO0FBQWM7O0FBQWQ7RUFBQSx3QkFBYztFQUFkLHdCQUFjO0VBQWQsbUJBQWM7RUFBZCxtQkFBYztFQUFkLGNBQWM7RUFBZCxjQUFjO0VBQWQsY0FBYztFQUFkLGVBQWM7RUFBZCxlQUFjO0VBQWQsYUFBYztFQUFkLGFBQWM7RUFBZCxrQkFBYztFQUFkLHNDQUFjO0VBQWQsOEJBQWM7RUFBZCw2QkFBYztFQUFkLDRCQUFjO0VBQWQsZUFBYztFQUFkLG9CQUFjO0VBQWQsc0JBQWM7RUFBZCx1QkFBYztFQUFkLHdCQUFjO0VBQWQsa0JBQWM7RUFBZCwyQkFBYztFQUFkLDRCQUFjO0VBQWQsc0NBQWM7RUFBZCxrQ0FBYztFQUFkLDJCQUFjO0VBQWQsc0JBQWM7RUFBZCw4QkFBYztFQUFkLFlBQWM7RUFBZCxrQkFBYztFQUFkLGdCQUFjO0VBQWQsaUJBQWM7RUFBZCxrQkFBYztFQUFkLGNBQWM7RUFBZCxnQkFBYztFQUFkLGFBQWM7RUFBZCxtQkFBYztFQUFkLHFCQUFjO0VBQWQsMkJBQWM7RUFBZCx5QkFBYztFQUFkLDBCQUFjO0VBQWQsMkJBQWM7RUFBZCx1QkFBYztFQUFkLHdCQUFjO0VBQWQseUJBQWM7RUFBZCxzQkFBYztFQUFkLG9CQUFjO0VBQWQsc0JBQWM7RUFBZCxxQkFBYztFQUFkO0FBQWMsQ0FBZDs7Q0FBYyxDQUFkOzs7Q0FBYzs7QUFBZDs7O0VBQUEsc0JBQWMsRUFBZCxNQUFjO0VBQWQsZUFBYyxFQUFkLE1BQWM7RUFBZCxtQkFBYyxFQUFkLE1BQWM7RUFBZCxxQkFBYyxFQUFkLE1BQWM7QUFBQTs7QUFBZDs7RUFBQSxnQkFBYztBQUFBOztBQUFkOzs7Ozs7OztDQUFjOztBQUFkOztFQUFBLGdCQUFjLEVBQWQsTUFBYztFQUFkLDhCQUFjLEVBQWQsTUFBYyxFQUFkLE1BQWM7RUFBZCxXQUFjLEVBQWQsTUFBYztFQUFkLCtIQUFjLEVBQWQsTUFBYztFQUFkLDZCQUFjLEVBQWQsTUFBYztFQUFkLCtCQUFjLEVBQWQsTUFBYztFQUFkLHdDQUFjLEVBQWQsTUFBYztBQUFBOztBQUFkOzs7Q0FBYzs7QUFBZDtFQUFBLFNBQWMsRUFBZCxNQUFjO0VBQWQsb0JBQWMsRUFBZCxNQUFjO0FBQUE7O0FBQWQ7Ozs7Q0FBYzs7QUFBZDtFQUFBLFNBQWMsRUFBZCxNQUFjO0VBQWQsY0FBYyxFQUFkLE1BQWM7RUFBZCxxQkFBYyxFQUFkLE1BQWM7QUFBQTs7QUFBZDs7Q0FBYzs7QUFBZDtFQUFBLHlDQUFjO1VBQWQsaUNBQWM7QUFBQTs7QUFBZDs7Q0FBYzs7QUFBZDs7Ozs7O0VBQUEsa0JBQWM7RUFBZCxvQkFBYztBQUFBOztBQUFkOztDQUFjOztBQUFkO0VBQUEsY0FBYztFQUFkLHdCQUFjO0FBQUE7O0FBQWQ7O0NBQWM7O0FBQWQ7O0VBQUEsbUJBQWM7QUFBQTs7QUFBZDs7Ozs7Q0FBYzs7QUFBZDs7OztFQUFBLCtHQUFjLEVBQWQsTUFBYztFQUFkLDZCQUFjLEVBQWQsTUFBYztFQUFkLCtCQUFjLEVBQWQsTUFBYztFQUFkLGNBQWMsRUFBZCxNQUFjO0FBQUE7O0FBQWQ7O0NBQWM7O0FBQWQ7RUFBQSxjQUFjO0FBQUE7O0FBQWQ7O0NBQWM7O0FBQWQ7O0VBQUEsY0FBYztFQUFkLGNBQWM7RUFBZCxrQkFBYztFQUFkLHdCQUFjO0FBQUE7O0FBQWQ7RUFBQSxlQUFjO0FBQUE7O0FBQWQ7RUFBQSxXQUFjO0FBQUE7O0FBQWQ7Ozs7Q0FBYzs7QUFBZDtFQUFBLGNBQWMsRUFBZCxNQUFjO0VBQWQscUJBQWMsRUFBZCxNQUFjO0VBQWQseUJBQWMsRUFBZCxNQUFjO0FBQUE7O0FBQWQ7Ozs7Q0FBYzs7QUFBZDs7Ozs7RUFBQSxvQkFBYyxFQUFkLE1BQWM7RUFBZCw4QkFBYyxFQUFkLE1BQWM7RUFBZCxnQ0FBYyxFQUFkLE1BQWM7RUFBZCxlQUFjLEVBQWQsTUFBYztFQUFkLG9CQUFjLEVBQWQsTUFBYztFQUFkLG9CQUFjLEVBQWQsTUFBYztFQUFkLHVCQUFjLEVBQWQsTUFBYztFQUFkLGNBQWMsRUFBZCxNQUFjO0VBQWQsU0FBYyxFQUFkLE1BQWM7RUFBZCxVQUFjLEVBQWQsTUFBYztBQUFBOztBQUFkOztDQUFjOztBQUFkOztFQUFBLG9CQUFjO0FBQUE7O0FBQWQ7OztDQUFjOztBQUFkOzs7O0VBQUEsMEJBQWMsRUFBZCxNQUFjO0VBQWQsNkJBQWMsRUFBZCxNQUFjO0VBQWQsc0JBQWMsRUFBZCxNQUFjO0FBQUE7O0FBQWQ7O0NBQWM7O0FBQWQ7RUFBQSxhQUFjO0FBQUE7O0FBQWQ7O0NBQWM7O0FBQWQ7RUFBQSxnQkFBYztBQUFBOztBQUFkOztDQUFjOztBQUFkO0VBQUEsd0JBQWM7QUFBQTs7QUFBZDs7Q0FBYzs7QUFBZDs7RUFBQSxZQUFjO0FBQUE7O0FBQWQ7OztDQUFjOztBQUFkO0VBQUEsNkJBQWMsRUFBZCxNQUFjO0VBQWQsb0JBQWMsRUFBZCxNQUFjO0FBQUE7O0FBQWQ7O0NBQWM7O0FBQWQ7RUFBQSx3QkFBYztBQUFBOztBQUFkOzs7Q0FBYzs7QUFBZDtFQUFBLDBCQUFjLEVBQWQsTUFBYztFQUFkLGFBQWMsRUFBZCxNQUFjO0FBQUE7O0FBQWQ7O0NBQWM7O0FBQWQ7RUFBQSxrQkFBYztBQUFBOztBQUFkOztDQUFjOztBQUFkOzs7Ozs7Ozs7Ozs7O0VBQUEsU0FBYztBQUFBOztBQUFkO0VBQUEsU0FBYztFQUFkLFVBQWM7QUFBQTs7QUFBZDtFQUFBLFVBQWM7QUFBQTs7QUFBZDs7O0VBQUEsZ0JBQWM7RUFBZCxTQUFjO0VBQWQsVUFBYztBQUFBOztBQUFkOztDQUFjO0FBQWQ7RUFBQSxVQUFjO0FBQUE7O0FBQWQ7O0NBQWM7O0FBQWQ7RUFBQSxnQkFBYztBQUFBOztBQUFkOzs7Q0FBYzs7QUFBZDs7RUFBQSxVQUFjLEVBQWQsTUFBYztFQUFkLGNBQWMsRUFBZCxNQUFjO0FBQUE7O0FBQWQ7O0NBQWM7O0FBQWQ7O0VBQUEsZUFBYztBQUFBOztBQUFkOztDQUFjO0FBQWQ7RUFBQSxlQUFjO0FBQUE7O0FBQWQ7Ozs7Q0FBYzs7QUFBZDs7Ozs7Ozs7RUFBQSxjQUFjLEVBQWQsTUFBYztFQUFkLHNCQUFjLEVBQWQsTUFBYztBQUFBOztBQUFkOztDQUFjOztBQUFkOztFQUFBLGVBQWM7RUFBZCxZQUFjO0FBQUE7O0FBQWQsd0VBQWM7QUFBZDtFQUFBLGFBQWM7QUFBQTtBQUVkO0VBQUE7QUFBbUI7QUFBbkI7RUFBQTtBQUFtQjtBQUFuQjtFQUFBO0FBQW1CO0FBQW5CO0VBQUE7QUFBbUI7QUFBbkI7RUFBQTtBQUFtQjtBQUFuQjtFQUFBO0FBQW1CO0FBQW5CO0VBQUE7QUFBbUI7QUFBbkI7RUFBQTtBQUFtQjtBQUFuQjtFQUFBO0FBQW1CO0FBQW5CO0VBQUE7QUFBbUI7QUFBbkI7RUFBQTtBQUFtQjtBQUFuQjtFQUFBO0FBQW1CO0FBQW5CO0VBQUE7QUFBbUI7QUFBbkI7RUFBQTtBQUFtQjtBQUFuQjtFQUFBO0FBQW1CO0FBQW5CO0VBQUE7QUFBbUI7QUFBbkI7RUFBQTtBQUFtQjtBQUFuQjtFQUFBO0FBQW1CO0FBQW5CO0VBQUE7QUFBbUI7QUFBbkI7RUFBQTtBQUFtQjtBQUFuQjtFQUFBO0FBQW1CO0FBQW5CO0VBQUE7QUFBbUI7QUFBbkI7RUFBQTtBQUFtQjtBQUFuQjtFQUFBO0FBQW1CO0FBQW5CO0VBQUE7QUFBbUI7QUFBbkI7RUFBQTtBQUFtQjtBQUFuQjtFQUFBO0FBQW1CO0FBQW5CO0VBQUE7QUFBbUI7QUFBbkI7RUFBQTtBQUFtQjtBQUFuQjtFQUFBO0FBQW1CO0FBQW5CO0VBQUEsaUJBQW1CO0VBQW5CO0FBQW1CO0FBQW5CO0VBQUE7QUFBbUI7QUFBbkI7RUFBQTtBQUFtQjtBQUFuQjtFQUFBO0FBQW1CO0FBQW5CO0VBQUE7QUFBbUI7QUFBbkI7RUFBQTtBQUFtQjtBQUFuQjtFQUFBO0FBQW1CO0FBQW5CO0VBQUE7QUFBbUI7QUFBbkI7RUFBQTtBQUFtQjtBQUFuQjtFQUFBO0FBQW1CO0FBQW5CO0VBQUE7QUFBbUI7QUFBbkI7RUFBQTtBQUFtQjtBQUFuQjtFQUFBO0FBQW1CO0FBQW5CO0VBQUE7QUFBbUI7QUFBbkI7RUFBQTtBQUFtQjtBQUFuQjtFQUFBO0FBQW1CO0FBQW5CO0VBQUE7QUFBbUI7QUFBbkI7RUFBQTtBQUFtQjtBQUFuQjtFQUFBO0FBQW1CO0FBQW5CO0VBQUE7QUFBbUI7QUFBbkI7RUFBQTtBQUFtQjtBQUFuQjtFQUFBO0FBQW1CO0FBQW5CO0VBQUE7QUFBbUI7QUFBbkI7RUFBQTtBQUFtQjtBQUFuQjtFQUFBO0FBQW1CO0FBQW5CO0VBQUE7QUFBbUI7QUFBbkI7RUFBQTtBQUFtQjtBQUFuQjtFQUFBO0FBQW1CO0FBQW5CO0VBQUE7QUFBbUI7QUFBbkI7RUFBQTtBQUFtQjtBQUFuQjtFQUFBO0FBQW1CO0FBQW5CO0VBQUE7QUFBbUI7QUFBbkI7RUFBQTtBQUFtQjtBQUFuQjtFQUFBO0FBQW1CO0FBQW5CO0VBQUE7QUFBbUI7QUFBbkI7RUFBQTtBQUFtQjtBQUFuQjtFQUFBO0FBQW1CO0FBQW5CO0VBQUE7QUFBbUI7QUFBbkI7RUFBQTtBQUFtQjtBQUFuQjtFQUFBO0FBQW1CO0FBQW5CO0VBQUE7QUFBbUI7QUFBbkI7RUFBQTtBQUFtQjtBQUFuQjtFQUFBO0FBQW1CO0FBQW5CO0VBQUE7QUFBbUI7QUFBbkI7RUFBQTtBQUFtQjtBQUFuQjtFQUFBO0FBQW1CO0FBQW5CO0VBQUE7QUFBbUI7QUFBbkI7RUFBQSxzQkFBbUI7RUFBbkI7QUFBbUI7QUFBbkI7RUFBQSxrQkFBbUI7RUFBbkI7QUFBbUI7QUFBbkI7RUFBQTtBQUFtQjtBQUFuQjs7RUFBQTtJQUFBLDJCQUFtQjtJQUFuQjtFQUFtQjs7RUFBbkI7SUFBQSxlQUFtQjtJQUFuQjtFQUFtQjtBQUFBO0FBQW5CO0VBQUE7QUFBbUI7QUFBbkI7O0VBQUE7SUFBQSxtQkFBbUI7SUFBbkI7RUFBbUI7QUFBQTtBQUFuQjtFQUFBO0FBQW1CO0FBQW5COztFQUFBO0lBQUE7RUFBbUI7QUFBQTtBQUFuQjtFQUFBO0FBQW1CO0FBQW5CO0VBQUE7QUFBbUI7QUFBbkI7RUFBQTtBQUFtQjtBQUFuQjtFQUFBO0FBQW1CO0FBQW5CO0VBQUE7QUFBbUI7QUFBbkI7RUFBQTtBQUFtQjtBQUFuQjtFQUFBO0FBQW1CO0FBQW5CO0VBQUE7QUFBbUI7QUFBbkI7RUFBQTtBQUFtQjtBQUFuQjtFQUFBO0FBQW1CO0FBQW5CO0VBQUE7QUFBbUI7QUFBbkI7RUFBQTtBQUFtQjtBQUFuQjtFQUFBO0FBQW1CO0FBQW5CO0VBQUE7QUFBbUI7QUFBbkI7RUFBQSx1QkFBbUI7RUFBbkIsb0RBQW1CO0VBQW5CO0FBQW1CO0FBQW5CO0VBQUEsdUJBQW1CO0VBQW5CLCtEQUFtQjtFQUFuQjtBQUFtQjtBQUFuQjtFQUFBLHVCQUFtQjtFQUFuQiw4REFBbUI7RUFBbkI7QUFBbUI7QUFBbkI7RUFBQSx1QkFBbUI7RUFBbkIsNERBQW1CO0VBQW5CO0FBQW1CO0FBQW5CO0VBQUEsdUJBQW1CO0VBQW5CLDhEQUFtQjtFQUFuQjtBQUFtQjtBQUFuQjtFQUFBO0FBQW1CO0FBQW5CO0VBQUE7QUFBbUI7QUFBbkI7RUFBQTtBQUFtQjtBQUFuQjtFQUFBO0FBQW1CO0FBQW5CO0VBQUE7QUFBbUI7QUFBbkI7RUFBQTtBQUFtQjtBQUFuQjtFQUFBO0FBQW1CO0FBQW5CO0VBQUE7QUFBbUI7QUFBbkI7RUFBQTtBQUFtQjtBQUFuQjtFQUFBLHNCQUFtQjtFQUFuQjtBQUFtQjtBQUFuQjtFQUFBLHNCQUFtQjtFQUFuQjtBQUFtQjtBQUFuQjtFQUFBO0FBQW1CO0FBQW5CO0VBQUEsc0JBQW1CO0VBQW5CO0FBQW1CO0FBQW5CO0VBQUEsa0JBQW1CO0VBQW5CO0FBQW1CO0FBQW5CO0VBQUEsa0JBQW1CO0VBQW5CO0FBQW1CO0FBQW5CO0VBQUEsa0JBQW1CO0VBQW5CO0FBQW1CO0FBQW5CO0VBQUE7QUFBbUI7QUFBbkI7RUFBQSxrQkFBbUI7RUFBbkI7QUFBbUI7QUFBbkI7RUFBQSxrQkFBbUI7RUFBbkI7QUFBbUI7QUFBbkI7RUFBQTtBQUFtQjtBQUFuQjtFQUFBLGtCQUFtQjtFQUFuQjtBQUFtQjtBQUFuQjtFQUFBO0FBQW1CO0FBQW5CO0VBQUE7QUFBbUI7QUFBbkI7RUFBQSxrQkFBbUI7RUFBbkI7QUFBbUI7QUFBbkI7RUFBQSxrQkFBbUI7RUFBbkI7QUFBbUI7QUFBbkI7RUFBQTtBQUFtQjtBQUFuQjtFQUFBLGtCQUFtQjtFQUFuQjtBQUFtQjtBQUFuQjtFQUFBLGtCQUFtQjtFQUFuQjtBQUFtQjtBQUFuQjtFQUFBO0FBQW1CO0FBQW5CO0VBQUE7QUFBbUI7QUFBbkI7RUFBQTtBQUFtQjtBQUFuQjtFQUFBO0FBQW1CO0FBQW5CO0VBQUEsNERBQW1CO0VBQW5CLG1FQUFtQjtFQUFuQjtBQUFtQjtBQUFuQjtFQUFBLDREQUFtQjtFQUFuQixvRUFBbUI7RUFBbkI7QUFBbUI7QUFBbkI7RUFBQSw0REFBbUI7RUFBbkIsbUVBQW1CO0VBQW5CO0FBQW1CO0FBQW5CO0VBQUEseUVBQW1CO0VBQW5CLG1FQUFtQjtFQUFuQjtBQUFtQjtBQUFuQjtFQUFBLHdFQUFtQjtFQUFuQixrRUFBbUI7RUFBbkI7QUFBbUI7QUFBbkI7RUFBQSx3RUFBbUI7RUFBbkIsa0VBQW1CO0VBQW5CO0FBQW1CO0FBQW5CO0VBQUEsd0VBQW1CO0VBQW5CLGtFQUFtQjtFQUFuQjtBQUFtQjtBQUFuQjtFQUFBLHdFQUFtQjtFQUFuQixrRUFBbUI7RUFBbkI7QUFBbUI7QUFBbkI7RUFBQSx3RUFBbUI7RUFBbkIsa0VBQW1CO0VBQW5CO0FBQW1CO0FBQW5CO0VBQUEsbUVBQW1CO0VBQW5CO0FBQW1CO0FBQW5CO0VBQUE7QUFBbUI7QUFBbkI7RUFBQTtBQUFtQjtBQUFuQjtFQUFBO0FBQW1CO0FBQW5CO0VBQUE7QUFBbUI7QUFBbkI7RUFBQTtBQUFtQjtBQUFuQjtFQUFBO0FBQW1CO0FBQW5CO0VBQUE7QUFBbUI7QUFBbkI7RUFBQTtBQUFtQjtBQUFuQjtFQUFBO0FBQW1CO0FBQW5CO0VBQUE7QUFBbUI7QUFBbkI7RUFBQTtBQUFtQjtBQUFuQjtFQUFBO0FBQW1CO0FBQW5CO0VBQUE7QUFBbUI7QUFBbkI7RUFBQTtBQUFtQjtBQUFuQjtFQUFBLG9CQUFtQjtFQUFuQjtBQUFtQjtBQUFuQjtFQUFBLHFCQUFtQjtFQUFuQjtBQUFtQjtBQUFuQjtFQUFBLGtCQUFtQjtFQUFuQjtBQUFtQjtBQUFuQjtFQUFBLG9CQUFtQjtFQUFuQjtBQUFtQjtBQUFuQjtFQUFBLGtCQUFtQjtFQUFuQjtBQUFtQjtBQUFuQjtFQUFBLGlCQUFtQjtFQUFuQjtBQUFtQjtBQUFuQjtFQUFBLG1CQUFtQjtFQUFuQjtBQUFtQjtBQUFuQjtFQUFBLGlCQUFtQjtFQUFuQjtBQUFtQjtBQUFuQjtFQUFBLG9CQUFtQjtFQUFuQjtBQUFtQjtBQUFuQjtFQUFBLGlCQUFtQjtFQUFuQjtBQUFtQjtBQUFuQjtFQUFBO0FBQW1CO0FBQW5CO0VBQUE7QUFBbUI7QUFBbkI7RUFBQTtBQUFtQjtBQUFuQjtFQUFBO0FBQW1CO0FBQW5CO0VBQUE7QUFBbUI7QUFBbkI7RUFBQTtBQUFtQjtBQUFuQjtFQUFBO0FBQW1CO0FBQW5CO0VBQUEsaUJBQW1CO0VBQW5CO0FBQW1C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b0VBc1VBO0VBdFVBO0FBc1VBO0FBdFVBO0VBQUE7QUFzVUE7QUF0VUE7RUFBQSxvQkFzVUE7RUF0VUE7QUFzVUE7QUF0VUE7RUFBQSxvQkFzVUE7RUF0VUE7QUFzVUE7QUF0VUE7RUFBQSxvQkFzVUE7RUF0VUE7QUFzVUE7QUF0VUE7RUFBQSxnREFzVUE7RUF0VUEsNkRBc1VBO0VBdFVBO0FBc1VBO0FBdFVBO0VBQUEsZ0ZBc1VBO0VBdFVBLG9HQXNVQTtFQXRVQTtBQXNVQTtBQXRVQTtFQUFBLHVDQXNVQTtFQXRVQTtBQXNVQTtBQXRVQTtFQUFBLHVDQXNVQTtFQXRVQTtBQXNVQTtBQXRVQTtFQUFBO0FBc1VBO0FBdFVBO0VBQUEsOEJBc1VBO0VBdFVBO0FBc1VBO0FBdFVBO0VBQUEsMkdBc1VBO0VBdFVBLHlHQXNVQTtFQXRVQTtBQXNVQTtBQXRVQTtFQUFBO0FBc1VBO0FBdFVBO0VBQUEsb0JBc1VBO0VBdFVBO0FBc1VBO0FBdFVBO0VBQUEsb0JBc1VBO0VBdFVBO0FBc1VBO0FBdFVBO0VBQUEsaUJBc1VBO0VBdFVBLGlCQXNVQTtFQXRVQTtBQXNVQTtBQXRVQTtFQUFBLG9CQXNVQTtFQXRVQTtBQXNVQTtBQXRVQTs7RUFBQTtJQUFBO0VBc1VBOztFQXRVQTtJQUFBLHFCQXNVQTtJQXRVQTtFQXNVQTs7RUF0VUE7SUFBQSxvQkFzVUE7SUF0VUE7RUFzVUE7QUFBQTtBQXRVQTs7RUFBQTtJQUFBO0VBc1VBOztFQXRVQTtJQUFBO0VBc1VBOztFQXRVQTtJQUFBO0VBc1VBOztFQXRVQTtJQUFBO0VBc1VBOztFQXRVQTtJQUFBO0VBc1VBOztFQXRVQTtJQUFBLGlCQXNVQTtJQXRVQTtFQXNVQTs7RUF0VUE7SUFBQSxrQkFzVUE7SUF0VUE7RUFzVUE7O0VBdFVBO0lBQUEsZUFzVUE7SUF0VUE7RUFzVUE7O0VBdFVBO0lBQUEsa0JBc1VBO0lBdFVBO0VBc1VBOztFQXRVQTtJQUFBLGVBc1VBO0lBdFVBO0VBc1VBO0FBQUE7QUF0VUE7O0VBQUE7SUFBQTtFQXNVQTs7RUF0VUE7SUFBQTtFQXNVQTs7RUF0VUE7SUFBQSxrQkFzVUE7SUF0VUE7RUFzVUE7O0VBdFVBO0lBQUEsaUJBc1VBO0lBdFVBO0VBc1VBO0FBQUEiLCJzb3VyY2VzQ29udGVudCI6WyJAdGFpbHdpbmQgYmFzZTtcbkB0YWlsd2luZCBjb21wb25lbnRzO1xuQHRhaWx3aW5kIHV0aWxpdGllcztcblxuLyogQ3VzdG9tIEFuaW1hdGlvbnMgYW5kIFN0eWxlcyBmb3IgUEFLQSBUZWNoICovXG5cbi8qIEJhc2Ugc3R5bGVzICovXG5ib2R5IHtcbiAgICBtYXJnaW46IDA7XG4gICAgZm9udC1mYW1pbHk6IC1hcHBsZS1zeXN0ZW0sIEJsaW5rTWFjU3lzdGVtRm9udCwgXCJTZWdvZSBVSVwiLCBcIlJvYm90b1wiLFxuICAgICAgICBcIk94eWdlblwiLCBcIlVidW50dVwiLCBcIkNhbnRhcmVsbFwiLCBcIkZpcmEgU2Fuc1wiLCBcIkRyb2lkIFNhbnNcIixcbiAgICAgICAgXCJIZWx2ZXRpY2EgTmV1ZVwiLCBzYW5zLXNlcmlmO1xuICAgIC13ZWJraXQtZm9udC1zbW9vdGhpbmc6IGFudGlhbGlhc2VkO1xuICAgIC1tb3otb3N4LWZvbnQtc21vb3RoaW5nOiBncmF5c2NhbGU7XG4gICAgb3ZlcmZsb3cteDogaGlkZGVuO1xufVxuXG5jb2RlIHtcbiAgICBmb250LWZhbWlseTogc291cmNlLWNvZGUtcHJvLCBNZW5sbywgTW9uYWNvLCBDb25zb2xhcywgXCJDb3VyaWVyIE5ld1wiLFxuICAgICAgICBtb25vc3BhY2U7XG59XG5cbi8qIFNtb290aCBzY3JvbGxpbmcgKi9cbmh0bWwge1xuICAgIHNjcm9sbC1iZWhhdmlvcjogc21vb3RoO1xufVxuXG4vKiBDdXN0b20gYW5pbWF0aW9ucyAqL1xuQGtleWZyYW1lcyBmYWRlSW5VcCB7XG4gICAgZnJvbSB7XG4gICAgICAgIG9wYWNpdHk6IDA7XG4gICAgICAgIHRyYW5zZm9ybTogdHJhbnNsYXRlWSgzMHB4KTtcbiAgICB9XG4gICAgdG8ge1xuICAgICAgICBvcGFjaXR5OiAxO1xuICAgICAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZVkoMCk7XG4gICAgfVxufVxuXG5Aa2V5ZnJhbWVzIGZhZGVJbiB7XG4gICAgZnJvbSB7XG4gICAgICAgIG9wYWNpdHk6IDA7XG4gICAgfVxuICAgIHRvIHtcbiAgICAgICAgb3BhY2l0eTogMTtcbiAgICB9XG59XG5cbkBrZXlmcmFtZXMgc2xpZGVJbkxlZnQge1xuICAgIGZyb20ge1xuICAgICAgICBvcGFjaXR5OiAwO1xuICAgICAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZVgoLTMwcHgpO1xuICAgIH1cbiAgICB0byB7XG4gICAgICAgIG9wYWNpdHk6IDE7XG4gICAgICAgIHRyYW5zZm9ybTogdHJhbnNsYXRlWCgwKTtcbiAgICB9XG59XG5cbkBrZXlmcmFtZXMgc2xpZGVJblJpZ2h0IHtcbiAgICBmcm9tIHtcbiAgICAgICAgb3BhY2l0eTogMDtcbiAgICAgICAgdHJhbnNmb3JtOiB0cmFuc2xhdGVYKDMwcHgpO1xuICAgIH1cbiAgICB0byB7XG4gICAgICAgIG9wYWNpdHk6IDE7XG4gICAgICAgIHRyYW5zZm9ybTogdHJhbnNsYXRlWCgwKTtcbiAgICB9XG59XG5cbkBrZXlmcmFtZXMgcHVsc2Uge1xuICAgIDAlLCAxMDAlIHtcbiAgICAgICAgb3BhY2l0eTogMTtcbiAgICB9XG4gICAgNTAlIHtcbiAgICAgICAgb3BhY2l0eTogMC41O1xuICAgIH1cbn1cblxuQGtleWZyYW1lcyBib3VuY2Uge1xuICAgIDAlLCAyMCUsIDUzJSwgODAlLCAxMDAlIHtcbiAgICAgICAgdHJhbnNmb3JtOiB0cmFuc2xhdGUzZCgwLCAwLCAwKTtcbiAgICB9XG4gICAgNDAlLCA0MyUge1xuICAgICAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZTNkKDAsIC0zMHB4LCAwKTtcbiAgICB9XG4gICAgNzAlIHtcbiAgICAgICAgdHJhbnNmb3JtOiB0cmFuc2xhdGUzZCgwLCAtMTVweCwgMCk7XG4gICAgfVxuICAgIDkwJSB7XG4gICAgICAgIHRyYW5zZm9ybTogdHJhbnNsYXRlM2QoMCwgLTRweCwgMCk7XG4gICAgfVxufVxuXG5Aa2V5ZnJhbWVzIHBpbmcge1xuICAgIDc1JSwgMTAwJSB7XG4gICAgICAgIHRyYW5zZm9ybTogc2NhbGUoMik7XG4gICAgICAgIG9wYWNpdHk6IDA7XG4gICAgfVxufVxuXG4vKiBBbmltYXRpb24gY2xhc3NlcyAqL1xuLmFuaW1hdGUtZmFkZS1pbi11cCB7XG4gICAgYW5pbWF0aW9uOiBmYWRlSW5VcCAxcyBlYXNlLW91dCBmb3J3YXJkcztcbn1cblxuLmFuaW1hdGUtZmFkZS1pbiB7XG4gICAgYW5pbWF0aW9uOiBmYWRlSW4gMC41cyBlYXNlLW91dCBmb3J3YXJkcztcbn1cblxuLmFuaW1hdGUtc2xpZGUtaW4tbGVmdCB7XG4gICAgYW5pbWF0aW9uOiBzbGlkZUluTGVmdCAwLjZzIGVhc2Utb3V0IGZvcndhcmRzO1xufVxuXG4uYW5pbWF0ZS1zbGlkZS1pbi1yaWdodCB7XG4gICAgYW5pbWF0aW9uOiBzbGlkZUluUmlnaHQgMC42cyBlYXNlLW91dCBmb3J3YXJkcztcbn1cblxuLmFuaW1hdGUtcHVsc2Uge1xuICAgIGFuaW1hdGlvbjogcHVsc2UgMnMgaW5maW5pdGU7XG59XG5cbi5hbmltYXRlLWJvdW5jZSB7XG4gICAgYW5pbWF0aW9uOiBib3VuY2UgMXMgaW5maW5pdGU7XG59XG5cbi5hbmltYXRlLXBpbmcge1xuICAgIGFuaW1hdGlvbjogcGluZyAxcyBjdWJpYy1iZXppZXIoMCwgMCwgMC4yLCAxKSBpbmZpbml0ZTtcbn1cblxuLyogR3JhZGllbnQgdGV4dCBhbmltYXRpb25zICovXG5Aa2V5ZnJhbWVzIGdyYWRpZW50U2hpZnQge1xuICAgIDAlIHtcbiAgICAgICAgYmFja2dyb3VuZC1wb3NpdGlvbjogMCUgNTAlO1xuICAgIH1cbiAgICA1MCUge1xuICAgICAgICBiYWNrZ3JvdW5kLXBvc2l0aW9uOiAxMDAlIDUwJTtcbiAgICB9XG4gICAgMTAwJSB7XG4gICAgICAgIGJhY2tncm91bmQtcG9zaXRpb246IDAlIDUwJTtcbiAgICB9XG59XG5cbi5ncmFkaWVudC10ZXh0IHtcbiAgICBiYWNrZ3JvdW5kOiBsaW5lYXItZ3JhZGllbnQoLTQ1ZGVnLCAjMDZiNmQ0LCAjM2I4MmY2LCAjOGI1Y2Y2LCAjMDZiNmQ0KTtcbiAgICBiYWNrZ3JvdW5kLXNpemU6IDQwMCUgNDAwJTtcbiAgICBiYWNrZ3JvdW5kLWNsaXA6IHRleHQ7XG4gICAgLXdlYmtpdC1iYWNrZ3JvdW5kLWNsaXA6IHRleHQ7XG4gICAgLXdlYmtpdC10ZXh0LWZpbGwtY29sb3I6IHRyYW5zcGFyZW50O1xuICAgIGFuaW1hdGlvbjogZ3JhZGllbnRTaGlmdCAzcyBlYXNlIGluZmluaXRlO1xufVxuXG4vKiBCYWNrZHJvcCBibHVyIHN1cHBvcnQgKi9cbi5iYWNrZHJvcC1ibHVyLXNtIHtcbiAgICBiYWNrZHJvcC1maWx0ZXI6IGJsdXIoNHB4KTtcbiAgICAtd2Via2l0LWJhY2tkcm9wLWZpbHRlcjogYmx1cig0cHgpO1xufVxuXG4uYmFja2Ryb3AtYmx1ci1tZCB7XG4gICAgYmFja2Ryb3AtZmlsdGVyOiBibHVyKDEycHgpO1xuICAgIC13ZWJraXQtYmFja2Ryb3AtZmlsdGVyOiBibHVyKDEycHgpO1xufVxuXG4vKiBDdXN0b20gc2Nyb2xsYmFyICovXG46Oi13ZWJraXQtc2Nyb2xsYmFyIHtcbiAgICB3aWR0aDogOHB4O1xufVxuXG46Oi13ZWJraXQtc2Nyb2xsYmFyLXRyYWNrIHtcbiAgICBiYWNrZ3JvdW5kOiAjMWYyOTM3O1xufVxuXG46Oi13ZWJraXQtc2Nyb2xsYmFyLXRodW1iIHtcbiAgICBiYWNrZ3JvdW5kOiBsaW5lYXItZ3JhZGllbnQodG8gYm90dG9tLCAjMDZiNmQ0LCAjM2I4MmY2KTtcbiAgICBib3JkZXItcmFkaXVzOiA0cHg7XG59XG5cbjo6LXdlYmtpdC1zY3JvbGxiYXItdGh1bWI6aG92ZXIge1xuICAgIGJhY2tncm91bmQ6IGxpbmVhci1ncmFkaWVudCh0byBib3R0b20sICMwODkxYjIsICMyNTYzZWIpO1xufVxuXG4vKiBGaXJlZm94IHNjcm9sbGJhciAqL1xuaHRtbCB7XG4gICAgc2Nyb2xsYmFyLXdpZHRoOiB0aGluO1xuICAgIHNjcm9sbGJhci1jb2xvcjogIzA2YjZkNCAjMWYyOTM3O1xufVxuXG4vKiBMb2FkaW5nIGFuaW1hdGlvbiBmb3IgaW1hZ2VzICovXG5pbWcge1xuICAgIHRyYW5zaXRpb246IG9wYWNpdHkgMC4zcyBlYXNlO1xufVxuXG5pbWc6bm90KFtzcmNdKSB7XG4gICAgb3BhY2l0eTogMDtcbn1cblxuLyogRW5oYW5jZWQgYnV0dG9uIGhvdmVyIGVmZmVjdHMgKi9cbi5idG4tcHJpbWFyeSB7XG4gICAgcG9zaXRpb246IHJlbGF0aXZlO1xuICAgIG92ZXJmbG93OiBoaWRkZW47XG4gICAgdHJhbnNpdGlvbjogYWxsIDAuM3MgZWFzZTtcbn1cblxuLmJ0bi1wcmltYXJ5OjpiZWZvcmUge1xuICAgIGNvbnRlbnQ6ICcnO1xuICAgIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgICB0b3A6IDA7XG4gICAgbGVmdDogLTEwMCU7XG4gICAgd2lkdGg6IDEwMCU7XG4gICAgaGVpZ2h0OiAxMDAlO1xuICAgIGJhY2tncm91bmQ6IGxpbmVhci1ncmFkaWVudCg5MGRlZywgdHJhbnNwYXJlbnQsIHJnYmEoMjU1LCAyNTUsIDI1NSwgMC4yKSwgdHJhbnNwYXJlbnQpO1xuICAgIHRyYW5zaXRpb246IGxlZnQgMC41cztcbn1cblxuLmJ0bi1wcmltYXJ5OmhvdmVyOjpiZWZvcmUge1xuICAgIGxlZnQ6IDEwMCU7XG59XG5cbi8qIENhcmQgaG92ZXIgZWZmZWN0cyAqL1xuLmNhcmQtaG92ZXIge1xuICAgIHRyYW5zaXRpb246IGFsbCAwLjNzIGVhc2U7XG4gICAgdHJhbnNmb3JtLXN0eWxlOiBwcmVzZXJ2ZS0zZDtcbn1cblxuLmNhcmQtaG92ZXI6aG92ZXIge1xuICAgIHRyYW5zZm9ybTogdHJhbnNsYXRlWSgtOHB4KSBzY2FsZSgxLjAyKTtcbiAgICBib3gtc2hhZG93OiAwIDIwcHggNDBweCByZ2JhKDYsIDE4MiwgMjEyLCAwLjMpO1xufVxuXG4vKiBUZXh0IHNlbGVjdGlvbiAqL1xuOjpzZWxlY3Rpb24ge1xuICAgIGJhY2tncm91bmQtY29sb3I6ICMwNmI2ZDQ7XG4gICAgY29sb3I6IHdoaXRlO1xufVxuXG46Oi1tb3otc2VsZWN0aW9uIHtcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiAjMDZiNmQ0O1xuICAgIGNvbG9yOiB3aGl0ZTtcbn1cblxuLyogRm9jdXMgc3R5bGVzICovXG5idXR0b246Zm9jdXMsXG5pbnB1dDpmb2N1cyxcbnRleHRhcmVhOmZvY3VzLFxuc2VsZWN0OmZvY3VzIHtcbiAgICBvdXRsaW5lOiAycHggc29saWQgIzA2YjZkNDtcbiAgICBvdXRsaW5lLW9mZnNldDogMnB4O1xufVxuXG4vKiBSZXNwb25zaXZlIGltYWdlIGhhbmRsaW5nICovXG4ucmVzcG9uc2l2ZS1pbWFnZSB7XG4gICAgd2lkdGg6IDEwMCU7XG4gICAgaGVpZ2h0OiBhdXRvO1xuICAgIG9iamVjdC1maXQ6IGNvdmVyO1xuICAgIHRyYW5zaXRpb246IHRyYW5zZm9ybSAwLjNzIGVhc2U7XG59XG5cbi5yZXNwb25zaXZlLWltYWdlOmhvdmVyIHtcbiAgICB0cmFuc2Zvcm06IHNjYWxlKDEuMDUpO1xufVxuXG4vKiBMb2FkaW5nIHNwaW5uZXIgKi9cbi5zcGlubmVyIHtcbiAgICBib3JkZXI6IDRweCBzb2xpZCByZ2JhKDYsIDE4MiwgMjEyLCAwLjMpO1xuICAgIGJvcmRlci1yYWRpdXM6IDUwJTtcbiAgICBib3JkZXItdG9wOiA0cHggc29saWQgIzA2YjZkNDtcbiAgICB3aWR0aDogNDBweDtcbiAgICBoZWlnaHQ6IDQwcHg7XG4gICAgYW5pbWF0aW9uOiBzcGluIDFzIGxpbmVhciBpbmZpbml0ZTtcbn1cblxuQGtleWZyYW1lcyBzcGluIHtcbiAgICAwJSB7IHRyYW5zZm9ybTogcm90YXRlKDBkZWcpOyB9XG4gICAgMTAwJSB7IHRyYW5zZm9ybTogcm90YXRlKDM2MGRlZyk7IH1cbn1cblxuLyogVHlwZXdyaXRlciBlZmZlY3QgKi9cbi50eXBld3JpdGVyIHtcbiAgICBvdmVyZmxvdzogaGlkZGVuO1xuICAgIGJvcmRlci1yaWdodDogMC4xNWVtIHNvbGlkICMwNmI2ZDQ7XG4gICAgd2hpdGUtc3BhY2U6IG5vd3JhcDtcbiAgICBtYXJnaW46IDAgYXV0bztcbiAgICBsZXR0ZXItc3BhY2luZzogMC4xZW07XG4gICAgYW5pbWF0aW9uOiB0eXBpbmcgMy41cyBzdGVwcyg0MCwgZW5kKSwgYmxpbmstY2FyZXQgMC43NXMgc3RlcC1lbmQgaW5maW5pdGU7XG59XG5cbkBrZXlmcmFtZXMgdHlwaW5nIHtcbiAgICBmcm9tIHsgd2lkdGg6IDA7IH1cbiAgICB0byB7IHdpZHRoOiAxMDAlOyB9XG59XG5cbkBrZXlmcmFtZXMgYmxpbmstY2FyZXQge1xuICAgIGZyb20sIHRvIHsgYm9yZGVyLWNvbG9yOiB0cmFuc3BhcmVudDsgfVxuICAgIDUwJSB7IGJvcmRlci1jb2xvcjogIzA2YjZkNDsgfVxufVxuXG4vKiBNb2JpbGUgb3B0aW1pemF0aW9ucyAqL1xuQG1lZGlhIChtYXgtd2lkdGg6IDc2OHB4KSB7XG4gICAgLmFuaW1hdGUtZmFkZS1pbi11cCxcbiAgICAuYW5pbWF0ZS1zbGlkZS1pbi1sZWZ0LFxuICAgIC5hbmltYXRlLXNsaWRlLWluLXJpZ2h0IHtcbiAgICAgICAgYW5pbWF0aW9uLWR1cmF0aW9uOiAwLjhzO1xuICAgIH1cbiAgICBcbiAgICAuY2FyZC1ob3Zlcjpob3ZlciB7XG4gICAgICAgIHRyYW5zZm9ybTogdHJhbnNsYXRlWSgtNHB4KSBzY2FsZSgxLjAxKTtcbiAgICB9XG59XG5cbi8qIFJlZHVjZWQgbW90aW9uIHN1cHBvcnQgKi9cbkBtZWRpYSAocHJlZmVycy1yZWR1Y2VkLW1vdGlvbjogcmVkdWNlKSB7XG4gICAgKixcbiAgICAqOjpiZWZvcmUsXG4gICAgKjo6YWZ0ZXIge1xuICAgICAgICBhbmltYXRpb24tZHVyYXRpb246IDAuMDFtcyAhaW1wb3J0YW50O1xuICAgICAgICBhbmltYXRpb24taXRlcmF0aW9uLWNvdW50OiAxICFpbXBvcnRhbnQ7XG4gICAgICAgIHRyYW5zaXRpb24tZHVyYXRpb246IDAuMDFtcyAhaW1wb3J0YW50O1xuICAgICAgICBzY3JvbGwtYmVoYXZpb3I6IGF1dG8gIWltcG9ydGFudDtcbiAgICB9XG4gICAgXG4gICAgLmFuaW1hdGUtYm91bmNlLFxuICAgIC5hbmltYXRlLXB1bHNlLFxuICAgIC5hbmltYXRlLXBpbmcge1xuICAgICAgICBhbmltYXRpb246IG5vbmU7XG4gICAgfVxufVxuIl0sInNvdXJjZVJvb3QiOiIifQ== */
+   </style>
+   <style>.App {
+    text-align: center;
+}
+
+.App-logo {
+    height: 40vmin;
+    pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .App-logo {
+        animation: App-logo-spin infinite 20s linear;
+    }
+}
+
+.App-header {
+    background-color: #0f0f10;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: white;
+}
+
+.App-link {
+    color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8uL3NyYy9BcHAuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0lBQ0ksa0JBQWtCO0FBQ3RCOztBQUVBO0lBQ0ksY0FBYztJQUNkLG9CQUFvQjtBQUN4Qjs7QUFFQTtJQUNJO1FBQ0ksNENBQTRDO0lBQ2hEO0FBQ0o7O0FBRUE7SUFDSSx5QkFBeUI7SUFDekIsaUJBQWlCO0lBQ2pCLGFBQWE7SUFDYixzQkFBc0I7SUFDdEIsbUJBQW1CO0lBQ25CLHVCQUF1QjtJQUN2Qiw2QkFBNkI7SUFDN0IsWUFBWTtBQUNoQjs7QUFFQTtJQUNJLGNBQWM7QUFDbEI7O0FBRUE7SUFDSTtRQUNJLHVCQUF1QjtJQUMzQjtJQUNBO1FBQ0kseUJBQXlCO0lBQzdCO0FBQ0oiLCJzb3VyY2VzQ29udGVudCI6WyIuQXBwIHtcbiAgICB0ZXh0LWFsaWduOiBjZW50ZXI7XG59XG5cbi5BcHAtbG9nbyB7XG4gICAgaGVpZ2h0OiA0MHZtaW47XG4gICAgcG9pbnRlci1ldmVudHM6IG5vbmU7XG59XG5cbkBtZWRpYSAocHJlZmVycy1yZWR1Y2VkLW1vdGlvbjogbm8tcHJlZmVyZW5jZSkge1xuICAgIC5BcHAtbG9nbyB7XG4gICAgICAgIGFuaW1hdGlvbjogQXBwLWxvZ28tc3BpbiBpbmZpbml0ZSAyMHMgbGluZWFyO1xuICAgIH1cbn1cblxuLkFwcC1oZWFkZXIge1xuICAgIGJhY2tncm91bmQtY29sb3I6ICMwZjBmMTA7XG4gICAgbWluLWhlaWdodDogMTAwdmg7XG4gICAgZGlzcGxheTogZmxleDtcbiAgICBmbGV4LWRpcmVjdGlvbjogY29sdW1uO1xuICAgIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG4gICAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XG4gICAgZm9udC1zaXplOiBjYWxjKDEwcHggKyAydm1pbik7XG4gICAgY29sb3I6IHdoaXRlO1xufVxuXG4uQXBwLWxpbmsge1xuICAgIGNvbG9yOiAjNjFkYWZiO1xufVxuXG5Aa2V5ZnJhbWVzIEFwcC1sb2dvLXNwaW4ge1xuICAgIGZyb20ge1xuICAgICAgICB0cmFuc2Zvcm06IHJvdGF0ZSgwZGVnKTtcbiAgICB9XG4gICAgdG8ge1xuICAgICAgICB0cmFuc2Zvcm06IHJvdGF0ZSgzNjBkZWcpO1xuICAgIH1cbn1cbiJdLCJzb3VyY2VSb290IjoiIn0= */</style>
+  <link type="text/css" rel="stylesheet" charset="UTF-8" href="https://www.gstatic.com/_/translate_http/_/ss/k=translate_http.tr.pgV-E-68K-A.L.W.O/am=hMA/d=0/rs=AN8SPfoMSCsz74287nno-gZmD_8fI6XKww/m=el_main_css">
+  <style id="monica-reading-highlight-style">
+        .monica-reading-highlight {
+          animation: fadeInOut 1.5s ease-in-out;
+        }
+
+        @keyframes fadeInOut {
+          0%, 100% { background-color: transparent; }
+          30%, 70% { background-color: rgba(2, 118, 255, 0.20); }
+        }
+      </style> 
+  </head>
+  <body monica-id="ofpnmcalabcbjgholdjcjblkibolbppb" monica-version="7.9.6">
+        <noscript>You need to enable JavaScript to run this app.</noscript>
+        <div id="root"><div class="min-h-screen bg-gray-900"><nav class="fixed top-0 w-full z-50 transition-all duration-300 bg-transparent"><div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"><div class="flex justify-between items-center h-16"><div class="flex-shrink-0"><h1 class="text-2xl font-bold bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Tecnología PAKA</font></font></h1></div><div class="hidden md:block"><div class="ml-10 flex items-baseline space-x-4"><button class="px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 bg-cyan-600 text-white"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Inicio</font></font></button><button class="px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 text-gray-300 hover:bg-gray-700 hover:text-white"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Servicios</font></font></button><button class="px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 text-gray-300 hover:bg-gray-700 hover:text-white"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Nosotros</font></font></button><button class="px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 text-gray-300 hover:bg-gray-700 hover:text-white"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Testimonios</font></font></button><button class="px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 text-gray-300 hover:bg-gray-700 hover:text-white"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Contacto</font></font></button></div></div><div class="md:hidden"><button class="bg-gray-800 inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"><svg class="block h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg></button></div></div></div></nav><main><section id="inicio" class="relative min-h-screen flex items-center justify-center overflow-hidden"><div class="absolute inset-0 z-0"><img alt="Configuración de tecnología profesional" class="w-full h-full object-cover" src="https://images.unsplash.com/photo-1494173853739-c21f58b16055?crop=entropy&amp;cs=srgb&amp;fm=jpg&amp;ixid=M3w3NTY2Njl8MHwxfHNlYXJjaHwxfHxjb21wdXRlciUyMHJlcGFpcnxlbnwwfHx8Ymx1ZXwxNzU0MjUxMTg2fDA&amp;ixlib=rb-4.1.0&amp;q=85"><div class="absolute inset-0 bg-gradient-to-r from-gray-900/90 via-gray-900/80 to-blue-900/70"></div></div><div class="absolute inset-0 z-10"><div class="absolute top-20 left-10 w-2 h-2 bg-cyan-400 rounded-full animate-pulse"></div><div class="absolute top-40 right-20 w-3 h-3 bg-blue-400 rounded-full animate-bounce"></div><div class="absolute bottom-40 left-20 w-2 h-2 bg-cyan-300 rounded-full animate-ping"></div><div class="absolute bottom-20 right-40 w-4 h-4 bg-blue-500 rounded-full animate-pulse"></div></div><div class="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center"><div class="animate-fade-in-up"><h1 class="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Soluciones Tecnológicas</font></font><span class="block bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">a tu alcance</font></font></span></h1><p class="text-xl md:text-2xl text-gray-300 mb-8 max-w-4xl mx-auto leading-relaxed"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Reparación, mantenimiento, redes, instalación de software y más.</font></font><span class="block text-cyan-400 font-semibold mt-2"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Siempre cerca, siempre contigo.</font></font></span></p><div class="flex flex-col sm:flex-row gap-4 justify-center items-center"><button class="bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-700 hover:to-blue-700 text-white font-bold py-4 px-8 rounded-lg text-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-cyan-500/50"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ver Servicios</font></font></button><button class="border-2 border-cyan-400 text-cyan-400 hover:bg-cyan-400 hover:text-gray-900 font-bold py-4 px-8 rounded-lg text-lg transition-all duration-300 transform hover:scale-105"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Contáctanos ahora</font></font></button></div></div><div class="grid grid-cols-2 md:grid-cols-4 gap-8 mt-16 max-w-4xl mx-auto"><div class="text-center animate-fade-in-up" style="animation-delay: 0s;"><div class="text-3xl md:text-4xl font-bold text-cyan-400 mb-2"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">más de 500</font></font></div><div class="text-gray-300 text-sm md:text-base"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Clientes satisfechos</font></font></div></div><div class="text-center animate-fade-in-up" style="animation-delay: 0.2s;"><div class="text-3xl md:text-4xl font-bold text-cyan-400 mb-2"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">99%</font></font></div><div class="text-gray-300 text-sm md:text-base"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Tasa de Éxito</font></font></div></div><div class="text-center animate-fade-in-up" style="animation-delay: 0.4s;"><div class="text-3xl md:text-4xl font-bold text-cyan-400 mb-2"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">24/7</font></font></div><div class="text-gray-300 text-sm md:text-base"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Soporte Técnico</font></font></div></div><div class="text-center animate-fade-in-up" style="animation-delay: 0.6s;"><div class="text-3xl md:text-4xl font-bold text-cyan-400 mb-2"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">5★</font></font></div><div class="text-gray-300 text-sm md:text-base"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Calificación Promedio</font></font></div></div></div></div><div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20"><div class="animate-bounce"><svg class="w-6 h-6 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg></div></div></section><section id="servicios" class="py-20 bg-gray-800"><div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"><div class="text-center mb-16"><h2 class="text-4xl md:text-5xl font-bold text-white mb-6"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Nuestros </font></font><span class="text-cyan-400"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Servicios</font></font></span></h2><p class="text-xl text-gray-300 max-w-3xl mx-auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ofrecemos soluciones integrales para todas tus necesidades tecnológicas con la más alta calidad y profesionalismo.</font></font></p></div><div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8"><div class="group bg-gradient-to-br from-gray-700/50 to-gray-800/50 rounded-2xl overflow-hidden backdrop-blur-sm border border-gray-600/50 hover:border-cyan-400/50 transition-all duration-500 transform hover:-translate-y-2 hover:shadow-2xl hover:shadow-cyan-500/20"><div class="relative h-48 overflow-hidden"><img alt="Reparación de PC" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" src="https://images.unsplash.com/photo-1603732551681-2e91159b9dc2?crop=entropy&amp;cs=srgb&amp;fm=jpg&amp;ixid=M3w3NTY2Njl8MHwxfHNlYXJjaHwyfHxjb21wdXRlciUyMHJlcGFpcnxlbnwwfHx8Ymx1ZXwxNzU0MjUxMTg2fDA&amp;ixlib=rb-4.1.0&amp;q=85"><div class="absolute inset-0 bg-gradient-to-t from-gray-900/80 to-transparent"></div><div class="absolute top-4 right-4 text-3xl bg-cyan-400/20 backdrop-blur-sm rounded-full w-16 h-16 flex items-center justify-center"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">🔧</font></font></div></div><div class="p-6"><h3 class="text-2xl font-bold text-white mb-3 group-hover:text-cyan-400 transition-colors"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Reparación de PC</font></font></h3><p class="text-gray-300 mb-4 leading-relaxed"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Formateo, diagnóstico profesional, optimización y más. Devolvemos la vida a tu equipo.</font></font></p><ul class="space-y-2"><li class="flex items-center text-gray-300"><svg class="w-4 h-4 text-cyan-400 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Diagnóstico completo</font></font></li><li class="flex items-center text-gray-300"><svg class="w-4 h-4 text-cyan-400 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Reparación de hardware</font></font></li><li class="flex items-center text-gray-300"><svg class="w-4 h-4 text-cyan-400 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Optimización del sistema</font></font></li><li class="flex items-center text-gray-300"><svg class="w-4 h-4 text-cyan-400 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Recuperación de datos</font></font></li></ul><button class="mt-6 w-full bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-700 hover:to-blue-700 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Solicitar servicio</font></font></button></div></div><div class="group bg-gradient-to-br from-gray-700/50 to-gray-800/50 rounded-2xl overflow-hidden backdrop-blur-sm border border-gray-600/50 hover:border-cyan-400/50 transition-all duration-500 transform hover:-translate-y-2 hover:shadow-2xl hover:shadow-cyan-500/20"><div class="relative h-48 overflow-hidden"><img alt="Mantenimiento" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" src="https://images.unsplash.com/photo-1588460789007-a79cfe129bcf?crop=entropy&amp;cs=srgb&amp;fm=jpg&amp;ixid=M3w3NTY2Njl8MHwxfHNlYXJjaHw0fHxjb21wdXRlciUyMHJlcGFpcnxlbnwwfHx8Ymx1ZXwxNzU0MjUxMTg2fDA&amp;ixlib=rb-4.1.0&amp;q=85"><div class="absolute inset-0 bg-gradient-to-t from-gray-900/80 to-transparent"></div><div class="absolute top-4 right-4 text-3xl bg-cyan-400/20 backdrop-blur-sm rounded-full w-16 h-16 flex items-center justify-center"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">🧹</font></font></div></div><div class="p-6"><h3 class="text-2xl font-bold text-white mb-3 group-hover:text-cyan-400 transition-colors"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Mantenimiento</font></font></h3><p class="text-gray-300 mb-4 leading-relaxed"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Limpieza interna y externa para un rendimiento óptimo. Mantenemos tu equipo como nuevo.</font></font></p><ul class="space-y-2"><li class="flex items-center text-gray-300"><svg class="w-4 h-4 text-cyan-400 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Limpieza profunda</font></font></li><li class="flex items-center text-gray-300"><svg class="w-4 h-4 text-cyan-400 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Cambio de pasta térmica</font></font></li><li class="flex items-center text-gray-300"><svg class="w-4 h-4 text-cyan-400 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Revisión de componentes</font></font></li><li class="flex items-center text-gray-300"><svg class="w-4 h-4 text-cyan-400 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Actualización de controladores</font></font></li></ul><button class="mt-6 w-full bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-700 hover:to-blue-700 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Solicitar servicio</font></font></button></div></div><div class="group bg-gradient-to-br from-gray-700/50 to-gray-800/50 rounded-2xl overflow-hidden backdrop-blur-sm border border-gray-600/50 hover:border-cyan-400/50 transition-all duration-500 transform hover:-translate-y-2 hover:shadow-2xl hover:shadow-cyan-500/20"><div class="relative h-48 overflow-hidden"><img alt="Instalación de software" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" src="https://images.unsplash.com/photo-1591439657848-9f4b9ce436b9?crop=entropy&amp;cs=srgb&amp;fm=jpg&amp;ixid=M3w3NTY2Njl8MHwxfHNlYXJjaHwzfHxjb21wdXRlciUyMHJlcGFpcnxlbnwwfHx8Ymx1ZXwxNzU0MjUxMTg2fDA&amp;ixlib=rb-4.1.0&amp;q=85"><div class="absolute inset-0 bg-gradient-to-t from-gray-900/80 to-transparent"></div><div class="absolute top-4 right-4 text-3xl bg-cyan-400/20 backdrop-blur-sm rounded-full w-16 h-16 flex items-center justify-center"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">💻</font></font></div></div><div class="p-6"><h3 class="text-2xl font-bold text-white mb-3 group-hover:text-cyan-400 transition-colors"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Instalación de software</font></font></h3><p class="text-gray-300 mb-4 leading-relaxed"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Windows, Office, antivirus y programas personalizados. Todo lo que necesitas en tu PC.</font></font></p><ul class="space-y-2"><li class="flex items-center text-gray-300"><svg class="w-4 h-4 text-cyan-400 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Instalación de SO</font></font></li><li class="flex items-center text-gray-300"><svg class="w-4 h-4 text-cyan-400 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Software especializado</font></font></li><li class="flex items-center text-gray-300"><svg class="w-4 h-4 text-cyan-400 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Configuración de antivirus</font></font></li><li class="flex items-center text-gray-300"><svg class="w-4 h-4 text-cyan-400 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Programas de oficina</font></font></li></ul><button class="mt-6 w-full bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-700 hover:to-blue-700 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Solicitar servicio</font></font></button></div></div><div class="group bg-gradient-to-br from-gray-700/50 to-gray-800/50 rounded-2xl overflow-hidden backdrop-blur-sm border border-gray-600/50 hover:border-cyan-400/50 transition-all duration-500 transform hover:-translate-y-2 hover:shadow-2xl hover:shadow-cyan-500/20"><div class="relative h-48 overflow-hidden"><img alt="Mantenimiento de impresoras" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" src="https://images.pexels.com/photos/16053029/pexels-photo-16053029.jpeg"><div class="absolute inset-0 bg-gradient-to-t from-gray-900/80 to-transparent"></div><div class="absolute top-4 right-4 text-3xl bg-cyan-400/20 backdrop-blur-sm rounded-full w-16 h-16 flex items-center justify-center"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">🖨️</font></font></div></div><div class="p-6"><h3 class="text-2xl font-bold text-white mb-3 group-hover:text-cyan-400 transition-colors"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Mantenimiento de impresoras</font></font></h3><p class="text-gray-300 mb-4 leading-relaxed"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Revisión, limpieza y optimización para evitar fallos y prolongar la vida útil.</font></font></p><ul class="space-y-2"><li class="flex items-center text-gray-300"><svg class="w-4 h-4 text-cyan-400 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Limpieza de cabezales</font></font></li><li class="flex items-center text-gray-300"><svg class="w-4 h-4 text-cyan-400 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Calibración de colores</font></font></li><li class="flex items-center text-gray-300"><svg class="w-4 h-4 text-cyan-400 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Reparación de atascos</font></font></li><li class="flex items-center text-gray-300"><svg class="w-4 h-4 text-cyan-400 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Cambio de cartuchos</font></font></li></ul><button class="mt-6 w-full bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-700 hover:to-blue-700 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Solicitar servicio</font></font></button></div></div></div></div></section><section id="nosotros" class="py-20 bg-gray-900 relative overflow-hidden"><div class="absolute inset-0 opacity-10"><div class="absolute top-20 left-10 w-32 h-32 bg-cyan-400 rounded-full blur-3xl"></div><div class="absolute bottom-20 right-10 w-40 h-40 bg-blue-400 rounded-full blur-3xl"></div></div><div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10"><div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center"><div><h2 class="text-4xl md:text-5xl font-bold text-white mb-6"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Sobre </font></font><span class="text-cyan-400"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">nosotros</font></font></span></h2><p class="text-xl text-gray-300 mb-6 leading-relaxed"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">PAKA es un experto en soporte técnico y mantenimiento informático en Villa Alborada, comprometido con brindar soluciones rápidas y confiables para mantener tus dispositivos siempre en óptimas condiciones.</font></font></p><p class="text-lg text-gray-400 mb-8 leading-relaxed"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Con años de experiencia en el sector tecnológico, nuestro equipo está capacitado para resolver cualquier problema técnico con la más alta calidad y profesionalismo.</font></font></p><div class="grid grid-cols-2 gap-6 mb-8"><div class="text-center p-4 bg-gradient-to-br from-cyan-600/20 to-blue-600/20 rounded-lg backdrop-blur-sm"><div class="text-3xl font-bold text-cyan-400 mb-2"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">5+</font></font></div><div class="text-gray-300"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Años de experiencia</font></font></div></div><div class="text-center p-4 bg-gradient-to-br from-cyan-600/20 to-blue-600/20 rounded-lg backdrop-blur-sm"><div class="text-3xl font-bold text-cyan-400 mb-2"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">100%</font></font></div><div class="text-gray-300"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Garantía en Servicios</font></font></div></div></div><div class="flex flex-wrap gap-4"><span class="bg-cyan-600/20 text-cyan-400 px-4 py-2 rounded-full text-sm font-medium"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Reparación Experta</font></font></span><span class="bg-blue-600/20 text-blue-400 px-4 py-2 rounded-full text-sm font-medium"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Mantenimiento preventivo</font></font></span><span class="bg-cyan-600/20 text-cyan-400 px-4 py-2 rounded-full text-sm font-medium"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Soporte 24/7</font></font></span><span class="bg-blue-600/20 text-blue-400 px-4 py-2 rounded-full text-sm font-medium"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Garantía total</font></font></span></div></div><div class="relative"><div class="relative rounded-2xl overflow-hidden shadow-2xl"><img alt="Equipo Profesional PAKA Tech" class="w-full h-96 object-cover" src="https://images.unsplash.com/photo-1533698215883-e2edc689fef5?crop=entropy&amp;cs=srgb&amp;fm=jpg&amp;ixid=M3w3NTY2Nzd8MHwxfHNlYXJjaHwxfHx0ZWNobmljaWFufGVufDB8fHxibHVlfDE3NTQyNTEyMTN8MA&amp;ixlib=rb-4.1.0&amp;q=85"><div class="absolute inset-0 bg-gradient-to-t from-gray-900/50 to-transparent"></div></div><div class="absolute -bottom-6 -left-6 bg-gradient-to-r from-cyan-600 to-blue-600 p-4 rounded-lg shadow-lg"><div class="text-white text-center"><div class="text-2xl font-bold"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">más de 500</font></font></div><div class="text-sm"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Equipos Reparados</font></font></div></div></div><div class="absolute -top-6 -right-6 bg-gradient-to-r from-blue-600 to-cyan-600 p-4 rounded-lg shadow-lg"><div class="text-white text-center"><div class="text-2xl font-bold"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">⭐ 5.0</font></font></div><div class="text-sm"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Calificación</font></font></div></div></div></div></div></div></section><section id="testimonios" class="py-20 bg-gray-800"><div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"><div class="text-center mb-16"><h2 class="text-4xl md:text-5xl font-bold text-white mb-6"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Lo que Dicen Nuestros </font></font><span class="text-cyan-400"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Clientes</font></font></span></h2><p class="text-xl text-gray-300 max-w-3xl mx-auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">La satisfacción de nuestros clientes es nuestra mayor recompensa. Escucha sus experiencias.</font></font></p></div><div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"><div class="bg-gradient-to-br from-gray-700/50 to-gray-800/50 p-6 rounded-2xl backdrop-blur-sm border border-gray-600/50 hover:border-cyan-400/50 transition-all duration-300 transform hover:-translate-y-2 hover:shadow-xl hover:shadow-cyan-500/20"><div class="flex items-center mb-4"><img alt="Yoselin N." class="w-16 h-16 rounded-full object-cover border-2 border-cyan-400" src="https://images.unsplash.com/photo-1579165466991-467135ad3110?crop=entropy&amp;cs=srgb&amp;fm=jpg&amp;ixid=M3w3NTY2Nzd8MHwxfHNlYXJjaHwyfHx0ZWNobmljaWFufGVufDB8fHxibHVlfDE3NTQyNTEyMTN8MA&amp;ixlib=rb-4.1.0&amp;q=85"><div class="ml-4"><h4 class="text-lg font-semibold text-white"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Yoselin N.</font></font></h4><p class="text-gray-400 text-sm"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Cliente satisfecho</font></font></p></div></div><div class="flex mb-4"><svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg><svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg><svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg><svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg><svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg></div><p class="text-gray-300 leading-relaxed italic"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">" </font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Gracias a PAKA Tech mi laptop volvió a la vida. Excelente atención y muy profesionales. Ahora funciona mejor que nunca. </font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">"</font></font></p></div><div class="bg-gradient-to-br from-gray-700/50 to-gray-800/50 p-6 rounded-2xl backdrop-blur-sm border border-gray-600/50 hover:border-cyan-400/50 transition-all duration-300 transform hover:-translate-y-2 hover:shadow-xl hover:shadow-cyan-500/20"><div class="flex items-center mb-4"><img alt="Sofía L." class="w-16 h-16 rounded-full object-cover border-2 border-cyan-400" src="https://images.pexels.com/photos/11158027/pexels-photo-11158027.jpeg"><div class="ml-4"><h4 class="text-lg font-semibold text-white"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Sofía L.</font></font></h4><p class="text-gray-400 text-sm"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Empresaria</font></font></p></div></div><div class="flex mb-4"><svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg><svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg><svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg><svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg><svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg></div><p class="text-gray-300 leading-relaxed italic"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">" </font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Rápido, confiable y con precios justos. Muy recomendado. El equipo de PAKA Tech solucionó todos mis problemas informáticos. </font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">"</font></font></p></div><div class="bg-gradient-to-br from-gray-700/50 to-gray-800/50 p-6 rounded-2xl backdrop-blur-sm border border-gray-600/50 hover:border-cyan-400/50 transition-all duration-300 transform hover:-translate-y-2 hover:shadow-xl hover:shadow-cyan-500/20"><div class="flex items-center mb-4"><img alt="Carlos M." class="w-16 h-16 rounded-full object-cover border-2 border-cyan-400" src="https://images.unsplash.com/photo-1533698215883-e2edc689fef5?crop=entropy&amp;cs=srgb&amp;fm=jpg&amp;ixid=M3w3NTY2Nzd8MHwxfHNlYXJjaHwxfHx0ZWNobmljaWFufGVufDB8fHxibHVlfDE3NTQyNTEyMTN8MA&amp;ixlib=rb-4.1.0&amp;q=85"><div class="ml-4"><h4 class="text-lg font-semibold text-white"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Carlos M.</font></font></h4><p class="text-gray-400 text-sm"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Estudiante</font></font></p></div></div><div class="flex mb-4"><svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg><svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg><svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg><svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg><svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg></div><p class="text-gray-300 leading-relaxed italic"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">" </font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Increíble servicio. Mi computadora estaba completamente dañada y la recuperaron al 100%. Definitivamente los recomiendo. </font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">"</font></font></p></div></div></div></section><section id="faq" class="py-20 bg-gray-900"><div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8"><div class="text-center mb-16"><h2 class="text-4xl md:text-5xl font-bold text-white mb-6"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Preguntas </font></font><span class="text-cyan-400"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">frecuentes</font></font></span></h2><p class="text-xl text-gray-300"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Resolvemos las dudas más comunes sobre nuestros servicios.</font></font></p></div><div class="space-y-4"><div class="bg-gradient-to-r from-gray-800/50 to-gray-700/50 rounded-xl backdrop-blur-sm border border-gray-600/50 overflow-hidden transition-all duration-300 hover:border-cyan-400/50"><button class="w-full text-left p-6 focus:outline-none"><div class="flex justify-between items-center"><h3 class="text-lg font-semibold text-white pr-4"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">¿Ofrecen garantía por los servicios realizados?</font></font></h3><svg class="w-6 h-6 text-cyan-400 transform transition-transform duration-200 " fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg></div></button></div><div class="bg-gradient-to-r from-gray-800/50 to-gray-700/50 rounded-xl backdrop-blur-sm border border-gray-600/50 overflow-hidden transition-all duration-300 hover:border-cyan-400/50"><button class="w-full text-left p-6 focus:outline-none"><div class="flex justify-between items-center"><h3 class="text-lg font-semibold text-white pr-4"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">¿Atienden emergencias?</font></font></h3><svg class="w-6 h-6 text-cyan-400 transform transition-transform duration-200 " fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg></div></button></div><div class="bg-gradient-to-r from-gray-800/50 to-gray-700/50 rounded-xl backdrop-blur-sm border border-gray-600/50 overflow-hidden transition-all duration-300 hover:border-cyan-400/50"><button class="w-full text-left p-6 focus:outline-none"><div class="flex justify-between items-center"><h3 class="text-lg font-semibold text-white pr-4"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">¿Cuánto tiempo tarda una reparación típica?</font></font></h3><svg class="w-6 h-6 text-cyan-400 transform transition-transform duration-200 " fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg></div></button></div><div class="bg-gradient-to-r from-gray-800/50 to-gray-700/50 rounded-xl backdrop-blur-sm border border-gray-600/50 overflow-hidden transition-all duration-300 hover:border-cyan-400/50"><button class="w-full text-left p-6 focus:outline-none"><div class="flex justify-between items-center"><h3 class="text-lg font-semibold text-white pr-4"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">¿Realizan visitas a domicilio?</font></font></h3><svg class="w-6 h-6 text-cyan-400 transform transition-transform duration-200 " fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg></div></button></div><div class="bg-gradient-to-r from-gray-800/50 to-gray-700/50 rounded-xl backdrop-blur-sm border border-gray-600/50 overflow-hidden transition-all duration-300 hover:border-cyan-400/50"><button class="w-full text-left p-6 focus:outline-none"><div class="flex justify-between items-center"><h3 class="text-lg font-semibold text-white pr-4"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">¿Qué formas de pago aceptan?</font></font></h3><svg class="w-6 h-6 text-cyan-400 transform transition-transform duration-200 " fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg></div></button></div></div></div></section><section id="contacto" class="py-20 bg-gray-800 relative overflow-hidden"><div class="absolute inset-0 opacity-10"><div class="absolute top-20 right-10 w-32 h-32 bg-cyan-400 rounded-full blur-3xl"></div><div class="absolute bottom-20 left-10 w-40 h-40 bg-blue-400 rounded-full blur-3xl"></div></div><div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10"><div class="text-center mb-16"><h2 class="text-4xl md:text-5xl font-bold text-white mb-6"><span class="text-cyan-400"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Contáctanos</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">​</font></font></h2><p class="text-xl text-gray-300 max-w-3xl mx-auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">¿Tienes algún problema técnico? ¡Estamos aquí para ayudarte! Contáctanos y recibe una respuesta rápida.</font></font></p></div><div class="grid grid-cols-1 lg:grid-cols-2 gap-12"><div><h3 class="text-2xl font-bold text-white mb-8"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Información de contacto</font></font></h3><div class="space-y-6"><div class="flex items-center p-6 bg-gradient-to-r from-gray-700/50 to-gray-800/50 rounded-xl backdrop-blur-sm border border-gray-600/50"><div class="bg-cyan-600 p-3 rounded-lg mr-4"><svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg></div><div><h4 class="text-lg font-semibold text-white"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Teléfono</font></font></h4><p class="text-gray-300"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">+502 4754-8991</font></font></p></div></div><div class="flex items-center p-6 bg-gradient-to-r from-gray-700/50 to-gray-800/50 rounded-xl backdrop-blur-sm border border-gray-600/50"><div class="bg-blue-600 p-3 rounded-lg mr-4"><svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg></div><div><h4 class="text-lg font-semibold text-white"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Correo electrónico</font></font></h4><p class="text-gray-300"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">pakatechsolutions@gmail.com</font></font></p></div></div><div class="flex items-center p-6 bg-gradient-to-r from-gray-700/50 to-gray-800/50 rounded-xl backdrop-blur-sm border border-gray-600/50"><div class="bg-cyan-600 p-3 rounded-lg mr-4"><svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg></div><div><h4 class="text-lg font-semibold text-white"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubicación</font></font></h4><p class="text-gray-300"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Villa Alborada, Amatitlán, Guatemala</font></font></p></div></div></div><div class="mt-8"><h4 class="text-lg font-semibold text-white mb-4"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Horarios de Atención</font></font></h4><div class="bg-gradient-to-r from-gray-700/50 to-gray-800/50 p-6 rounded-xl backdrop-blur-sm border border-gray-600/50"><div class="space-y-2 text-gray-300"><div class="flex justify-between"><span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Lunes - Viernes:</font></font></span><span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">8:00 a. m. - 6:00 p. m.</font></font></span></div><div class="flex justify-between"><span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Sábados:</font></font></span><span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">9:00 a. m. - 4:00 p. m.</font></font></span></div><div class="flex justify-between"><span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Domingos:</font></font></span><span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Solo Emergencias</font></font></span></div></div></div></div></div><div><h3 class="text-2xl font-bold text-white mb-8"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Envíanos un mensaje</font></font></h3><form class="space-y-6"><div class="grid grid-cols-1 md:grid-cols-2 gap-6"><div><label class="block text-sm font-medium text-gray-300 mb-2"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Nombre *</font></font></label><input required="" class="w-full px-4 py-3 bg-gray-700/50 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:border-transparent transition-all duration-200" placeholder="Tu nombre completo" type="text" value="" name="name" data-listener-added_a38f4d6b="true"></div><div><label class="block text-sm font-medium text-gray-300 mb-2"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Correo electrónico *</font></font></label><input required="" class="w-full px-4 py-3 bg-gray-700/50 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:border-transparent transition-all duration-200" placeholder="tu@email.com" type="email" value="" name="email" data-listener-added_a38f4d6b="true"></div></div><div class="grid grid-cols-1 md:grid-cols-2 gap-6"><div><label class="block text-sm font-medium text-gray-300 mb-2"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Teléfono</font></font></label><input class="w-full px-4 py-3 bg-gray-700/50 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:border-transparent transition-all duration-200" placeholder="+502 0000-0000" type="tel" value="" name="phone" data-listener-added_a38f4d6b="true"></div><div><label class="block text-sm font-medium text-gray-300 mb-2"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Servicio de Interés</font></font></label><select name="service" class="w-full px-4 py-3 bg-gray-700/50 border border-gray-600 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:border-transparent transition-all duration-200"><option value=""><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Seleccione un servicio</font></font></option><option value="reparacion-pc"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Reparación de PC</font></font></option><option value="mantenimiento"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Mantenimiento</font></font></option><option value="software"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Instalación de software</font></font></option><option value="impresoras"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Mantenimiento de impresoras</font></font></option><option value="otro"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Otro</font></font></option></select></div></div><div><label class="block text-sm font-medium text-gray-300 mb-2"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Mensaje *</font></font></label><textarea name="message" required="" rows="5" class="w-full px-4 py-3 bg-gray-700/50 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:border-transparent transition-all duration-200 resize-none" placeholder="Describe tu problema o consulta..." data-listener-added_a38f4d6b="true"></textarea><span id="monica-writing-entry-btn-root" style="position: absolute; left: 0px; top: 0px; pointer-events: none;"></span></div><button type="submit" class="w-full bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-700 hover:to-blue-700 text-white font-bold py-4 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-cyan-500/50"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Enviar mensaje</font></font></button></form></div></div></div></section></main><footer class="bg-gray-900 text-white py-12 border-t border-gray-700"><div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"><div class="grid grid-cols-1 md:grid-cols-4 gap-8"><div class="col-span-1 md:col-span-2"><h3 class="text-2xl font-bold bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent mb-4"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Soluciones tecnológicas PAKA</font></font></h3><p class="text-gray-300 mb-4 leading-relaxed"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Tu socio confiable en soluciones tecnológicas. Brindamos servicios de reparación, mantenimiento e instalación con la más alta calidad y profesionalismo en Villa Alborada.</font></font></p><div class="flex space-x-4"><a href="https://wa.me/50247548991" target="_blank" rel="noopener noreferrer" class="bg-green-600 hover:bg-green-700 p-3 rounded-full transition-colors duration-200"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"></path></svg></a></div></div><div><h4 class="text-lg font-semibold text-white mb-4"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Servicios</font></font></h4><ul class="space-y-2"><li><button class="text-gray-300 hover:text-cyan-400 transition-colors duration-200"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Reparación de PC</font></font></button></li><li><button class="text-gray-300 hover:text-cyan-400 transition-colors duration-200"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Mantenimiento</font></font></button></li><li><button class="text-gray-300 hover:text-cyan-400 transition-colors duration-200"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Instalación de software</font></font></button></li><li><button class="text-gray-300 hover:text-cyan-400 transition-colors duration-200"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Mantenimiento de impresoras</font></font></button></li></ul></div><div><h4 class="text-lg font-semibold text-white mb-4"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Enlaces rápidos</font></font></h4><ul class="space-y-2"><li><button class="text-gray-300 hover:text-cyan-400 transition-colors duration-200"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Inicio</font></font></button></li><li><button class="text-gray-300 hover:text-cyan-400 transition-colors duration-200"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Sobre nosotros</font></font></button></li><li><button class="text-gray-300 hover:text-cyan-400 transition-colors duration-200"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Testimonios</font></font></button></li><li><button class="text-gray-300 hover:text-cyan-400 transition-colors duration-200"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Contacto</font></font></button></li></ul></div></div><div class="border-t border-gray-700 mt-8 pt-8 text-center"><p class="text-gray-400"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">© 2024 Soluciones tecnológicas PAKA. Todos los derechos reservados.</font></font></p><p class="text-gray-500 text-sm mt-2"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Villa Alborada, Amatitlán, Guatemala | Teléfono: +502 4754-8991</font></font></p></div></div></footer><a href="https://wa.me/50247548991" target="_blank" rel="noopener noreferrer" class="fixed bottom-6 right-6 bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-110 z-50" aria-label="Contactar por WhatsApp"><svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"></path></svg></a></div></div>
+        <!--
+      This HTML file is a template.
+      If you open it directly in the browser, you will see an empty page.
+
+      You can add webfonts, meta tags, or analytics to this file.
+      The build step will place the bundled scripts into the <body> tag.
+
+      To begin the development, run `npm start` or `yarn start`.
+      To create a production bundle, use `npm run build` or `yarn build`.
+    -->
+
+        <script>
+            !(function (t, e) {
+                var o, n, p, r;
+                e.__SV ||
+                    ((window.posthog = e),
+                    (e._i = []),
+                    (e.init = function (i, s, a) {
+                        function g(t, e) {
+                            var o = e.split(".");
+                            2 == o.length && ((t = t[o[0]]), (e = o[1])),
+                                (t[e] = function () {
+                                    t.push(
+                                        [e].concat(
+                                            Array.prototype.slice.call(
+                                                arguments,
+                                                0,
+                                            ),
+                                        ),
+                                    );
+                                });
+                        }
+                        ((p = t.createElement("script")).type =
+                            "text/javascript"),
+                            (p.crossOrigin = "anonymous"),
+                            (p.async = !0),
+                            (p.src =
+                                s.api_host.replace(
+                                    ".i.posthog.com",
+                                    "-assets.i.posthog.com",
+                                ) + "/static/array.js"),
+                            (r =
+                                t.getElementsByTagName(
+                                    "script",
+                                )[0]).parentNode.insertBefore(p, r);
+                        var u = e;
+                        for (
+                            void 0 !== a ? (u = e[a] = []) : (a = "posthog"),
+                                u.people = u.people || [],
+                                u.toString = function (t) {
+                                    var e = "posthog";
+                                    return (
+                                        "posthog" !== a && (e += "." + a),
+                                        t || (e += " (stub)"),
+                                        e
+                                    );
+                                },
+                                u.people.toString = function () {
+                                    return u.toString(1) + ".people (stub)";
+                                },
+                                o =
+                                    "init me ws ys ps bs capture je Di ks register register_once register_for_session unregister unregister_for_session Ps getFeatureFlag getFeatureFlagPayload isFeatureEnabled reloadFeatureFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSurveysLoaded onSessionId getSurveys getActiveMatchingSurveys renderSurvey canRenderSurvey canRenderSurveyAsync identify setPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException loadToolbar get_property getSessionProperty Es $s createPersonProfile Is opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing clear_opt_in_out_capturing Ss debug xs getPageViewId captureTraceFeedback captureTraceMetric".split(
+                                        " ",
+                                    ),
+                                n = 0;
+                            n < o.length;
+                            n++
+                        )
+                            g(u, o[n]);
+                        e._i.push([i, s, a]);
+                    }),
+                    (e.__SV = 1));
+            })(document, window.posthog || []);
+            posthog.init("phc_yJW1VjHGGwmCbbrtczfqqNxgBDbhlhOWcdzcIJEOTFE", {
+                api_host: "https://us.i.posthog.com",
+                person_profiles: "identified_only", // or 'always' to create profiles for anonymous users as well
+            });
+        </script>
+    
+
+<div id="goog-gt-tt" class="VIpgJd-yAWNEb-L7lbkb skiptranslate" style="border-radius: 12px; margin: 0 0 0 -23px; padding: 0; font-family: 'Google Sans', Arial, sans-serif;" data-id=""><div id="goog-gt-vt" class="VIpgJd-yAWNEb-hvhgNd"><div class="VIpgJd-yAWNEb-hvhgNd-Ud7fr"><img src="https://fonts.gstatic.com/s/i/productlogos/translate/v14/24px.svg" width="24" height="24" alt=""><div class=" VIpgJd-yAWNEb-hvhgNd-IuizWc-i3jM8c " dir="ltr">Texto original</div></div><div class="VIpgJd-yAWNEb-hvhgNd-k77Iif"><div id="goog-gt-original-text" class="VIpgJd-yAWNEb-nVMfcd-fmcmS VIpgJd-yAWNEb-hvhgNd-axAV1"></div></div><div class="VIpgJd-yAWNEb-hvhgNd-N7Eqid ltr"><div class="VIpgJd-yAWNEb-hvhgNd-N7Eqid-B7I4Od ltr" dir="ltr"><div class="VIpgJd-yAWNEb-hvhgNd-UTujCb">Valora esta traducción</div><div class="VIpgJd-yAWNEb-hvhgNd-eO9mKe">Tu opinión servirá para ayudar a mejorar el Traductor de Google</div></div><div class="VIpgJd-yAWNEb-hvhgNd-xgov5 ltr"><button id="goog-gt-thumbUpButton" type="button" class="VIpgJd-yAWNEb-hvhgNd-bgm6sf" title="Buena traducción" aria-label="Buena traducción" aria-pressed="false"><span id="goog-gt-thumbUpIcon"><svg width="24" height="24" viewBox="0 0 24 24" focusable="false" class="VIpgJd-yAWNEb-hvhgNd-THI6Vb NMm5M"><path d="M21 7h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L14.17 0S7.08 6.85 7 7H2v13h16c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73V9c0-1.1-.9-2-2-2zM7 18H4V9h3v9zm14-7l-3 7H9V8l4.34-4.34L12 9h9v2z"></path></svg></span><span id="goog-gt-thumbUpIconFilled"><svg width="24" height="24" viewBox="0 0 24 24" focusable="false" class="VIpgJd-yAWNEb-hvhgNd-THI6Vb NMm5M"><path d="M21 7h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L14.17 0S7.08 6.85 7 7v13h11c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73V9c0-1.1-.9-2-2-2zM5 7H1v13h4V7z"></path></svg></span></button><button id="goog-gt-thumbDownButton" type="button" class="VIpgJd-yAWNEb-hvhgNd-bgm6sf" title="Mala traducción" aria-label="Mala traducción" aria-pressed="false"><span id="goog-gt-thumbDownIcon"><svg width="24" height="24" viewBox="0 0 24 24" focusable="false" class="VIpgJd-yAWNEb-hvhgNd-THI6Vb NMm5M"><path d="M3 17h6.31l-.95 4.57-.03.32c0 .41.17.79.44 1.06L9.83 24s7.09-6.85 7.17-7h5V4H6c-.83 0-1.54.5-1.84 1.22l-3.02 7.05c-.09.23-.14.47-.14.73v2c0 1.1.9 2 2 2zM17 6h3v9h-3V6zM3 13l3-7h9v10l-4.34 4.34L12 15H3v-2z"></path></svg></span><span id="goog-gt-thumbDownIconFilled"><svg width="24" height="24" viewBox="0 0 24 24" focusable="false" class="VIpgJd-yAWNEb-hvhgNd-THI6Vb NMm5M"><path d="M3 17h6.31l-.95 4.57-.03.32c0 .41.17.79.44 1.06L9.83 24s7.09-6.85 7.17-7V4H6c-.83 0-1.54.5-1.84 1.22l-3.02 7.05c-.09.23-.14.47-.14.73v2c0 1.1.9 2 2 2zm16 0h4V4h-4v13z"></path></svg></span></button></div></div><div id="goog-gt-votingHiddenPane" class="VIpgJd-yAWNEb-hvhgNd-aXYTce"><form id="goog-gt-votingForm" action="//translate.googleapis.com/translate_voting?client=te_lib" method="post" target="votingFrame" class="VIpgJd-yAWNEb-hvhgNd-aXYTce"><input type="text" name="sl" id="goog-gt-votingInputSrcLang"><input type="text" name="tl" id="goog-gt-votingInputTrgLang"><input type="text" name="query" id="goog-gt-votingInputSrcText"><input type="text" name="gtrans" id="goog-gt-votingInputTrgText"><input type="text" name="vote" id="goog-gt-votingInputVote"></form><iframe name="votingFrame" frameborder="0"></iframe></div></div></div><div id="monica-content-root" class="monica-widget" style="pointer-events: auto;"></div></body>
 </html>
