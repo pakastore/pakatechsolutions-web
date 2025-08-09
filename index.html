@@ -115,6 +115,24 @@
     height: 80px;
     margin-bottom: 1rem;
   }
+  /* HORARIO */
+  #horario h2 {
+    color: #00ffcc;
+    text-shadow: 0 0 8px #00ffcc;
+    text-align: center;
+    margin-bottom: 1.5rem;
+  }
+  #horario .service {
+    background: #111;
+    padding: 1rem 2rem;
+    border-radius: 10px;
+    text-align: center;
+    border: 1px solid #00ffcc;
+    font-size: 1.1rem;
+    line-height: 1.7;
+    max-width: 400px;
+    margin: 1rem auto;
+  }
   /* TESTIMONIOS */
   .testimonials {
     display: grid;
@@ -157,8 +175,14 @@
     position: relative;
   }
   .faq-item p {
-    display: none;
-    margin-top: 0.5rem;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease, padding 0.4s ease;
+    padding: 0 10px;
+  }
+  .faq-item p.active {
+    max-height: 200px;
+    padding: 10px;
   }
   /* FORMULARIO */
   form {
@@ -238,12 +262,12 @@
   }
 </style>
 <script>
-  document.addEventListener("DOMContentLoaded", function(){
-    // FAQ accordion
+  document.addEventListener("DOMContentLoaded", () => {
+    // FAQ toggle con clase active para animación suave
     document.querySelectorAll(".faq-item h4").forEach(q => {
       q.addEventListener("click", () => {
-        let p = q.nextElementSibling;
-        p.style.display = (p.style.display === "block") ? "none" : "block";
+        const p = q.nextElementSibling;
+        p.classList.toggle("active");
       });
     });
   });
@@ -256,6 +280,7 @@
   <nav>
     <a href="#inicio">Inicio</a>
     <a href="#servicios">Servicios</a>
+    <a href="#horario">Horario</a>
     <a href="#testimonios">Testimonios</a>
     <a href="#faq">FAQ</a>
     <a href="#contacto">Contacto</a>
@@ -273,19 +298,33 @@
   <div class="services">
     <div class="service">
       <img src="https://cdn-icons-png.flaticon.com/512/1055/1055687.png" alt="Soporte Técnico" />
-      <h3>Soporte Técnico</h3>
-      <p>Resolución rápida y efectiva de problemas informáticos.</p>
+      <h3>Reparación de PC</h3>
+      <p>Formateo, diagnóstico profesional, optimización y más..</p>
     </div>
     <div class="service">
       <img src="https://cdn-icons-png.flaticon.com/512/2721/2721289.png" alt="Mantenimiento Preventivo" />
       <h3>Mantenimiento Preventivo</h3>
-      <p>Evita fallos y alarga la vida útil de tus equipos.</p>
+      <p>Limpieza interna y externa para un rendimiento óptimo.</p>
     </div>
     <div class="service">
       <img src="https://cdn-icons-png.flaticon.com/512/888/888879.png" alt="Instalación de Software" />
       <h3>Instalación de Software</h3>
-      <p>Instalación y configuración de software adaptado a tus necesidades.</p>
+      <p>Windows, Office, antivirus y programas personalizados.</p>
     </div>
+    <div class="service">
+      <img src="https://cdn-icons-png.flaticon.com/512/3524/3524635.png" alt="Mantenimiento Preventivo de Impresoras" />
+      <h3>Mantenimiento Preventivo de Impresoras</h3>
+      <p>Revisión, limpieza y optimización para evitar fallos y prolongar la vida útil.</p>
+    </div>
+  </div>
+</section>
+
+<section id="horario">
+  <h2>Horario de Atención</h2>
+  <div class="service">
+    <p><strong>Domingo:</strong> No laboramos</p>
+    <p><strong>Lunes a Viernes:</strong> 7:00 a 18:00</p>
+    <p><strong>Sábado:</strong> 8:00 a 16:00</p>
   </div>
 </section>
 
@@ -293,14 +332,14 @@
   <h2>Testimonios</h2>
   <div class="testimonials">
     <div class="testimonial">
-      <img src="https://randomuser.me/api/portraits/women/45.jpg" alt="María López" />
+      <img src="https://media-public.canva.com/mVlcU/MAE9KTmVlcU/1/tl.jpg" alt="Sofía L." />
       <p>"Excelente servicio, rápido y confiable. Mi computadora funciona como nueva."</p>
-      <strong>- María López</strong>
+      <strong>- Sofía L.</strong>
     </div>
     <div class="testimonial">
-      <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Carlos Pérez" />
+      <img src="https://media-public.canva.com/cyrf8/MAEFBgcyrf8/1/tl.jpg" alt="Yóselin N." />
       <p>"PAKA Tech Solutions salvó mi negocio. Muy profesionales y atentos."</p>
-      <strong>- Carlos Pérez</strong>
+      <strong>- Yóselin N.</strong>
     </div>
   </div>
 </section>
@@ -310,15 +349,15 @@
   <div class="faq">
     <div class="faq-item">
       <h4>¿Cuánto tardan en resolver un problema?</h4>
-      <p>Dependiendo del tipo de problema, puede variar entre minutos y unas pocas horas.</p>
+      <p>Depende del problema, pero la mayoría de reparaciones se realizan en 24-48 horas.</p>
     </div>
     <div class="faq-item">
       <h4>¿Pueden atender a domicilio?</h4>
-      <p>Sí, ofrecemos servicio a domicilio según disponibilidad en tu zona.</p>
+      <p>Sí, ofrecemos servicio a domicilio únicamente en áreas cercanas a Villa Alborada, Amatitlán, con un pequeño recargo adicional. También puedes optar por visitarnos personalmente en nuestro local.</p>
     </div>
     <div class="faq-item">
       <h4>¿Dan garantía de sus servicios?</h4>
-      <p>Todos nuestros servicios tienen garantía de satisfacción y calidad.</p>
+      <p>Sí, ofrecemos garantía en todas nuestras reparaciones y mantenimientos.</p>
     </div>
   </div>
 </section>
@@ -353,28 +392,12 @@
 </section>
 
 <footer>
-  <p>&copy; 2025 PAKA Tech Solutions - Todos los derechos reservados.</p>
+  <p>&copy; PAKA Tech Solutions | Todos los derechos reservados.</p>
 </footer>
 
-<a href="https://wa.me/50212345678" class="whatsapp" target="_blank" rel="noopener" aria-label="Whatsapp">
+<a href="https://wa.me/50247548991" class="whatsapp" target="_blank" rel="noopener" aria-label="Whatsapp">
   <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" width="40" alt="Whatsapp Icon" />
 </a>
-
-<script>
-  // FAQ toggle
-  document.addEventListener("DOMContentLoaded", () => {
-    document.querySelectorAll(".faq-item h4").forEach((q) => {
-      q.addEventListener("click", () => {
-        const p = q.nextElementSibling;
-        if (p.style.display === "block") {
-          p.style.display = "none";
-        } else {
-          p.style.display = "block";
-        }
-      });
-    });
-  });
-</script>
 
 </body>
 </html>
