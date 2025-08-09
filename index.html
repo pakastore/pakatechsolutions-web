@@ -1,271 +1,380 @@
+<!DOCTYPE html>
 <html lang="es">
 <head>
  <meta name="google-site-verification" content="dWMUHvnS15ercMqQrwJT8nfVtoBMDEwm4-_Dt-18s64" />
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>PAKA Tech Solutions | Tecnología a tu alcance</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet" />
-  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
-  <style>
-    * { box-sizing: border-box; scroll-behavior: smooth; }
-    body { margin: 0; font-family: 'Poppins', sans-serif; background: #0f0f0f; color: #fff; line-height: 1.6; }
-    header { background: #111; padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.5); }
-    .logo-container { display: flex; align-items: center; gap: 10px; user-select: none; }
-    .logo-container img { height: 40px; }
-    .logo { font-size: 1.8rem; font-weight: 800; color: #00fff2; }
-    nav.nav-desktop { display: flex; gap: 1.5rem; }
-    nav.nav-desktop a { color: #fff; text-decoration: none; font-weight: 600; padding: 0.4rem 0.8rem; border-radius: 4px; transition: background-color 0.3s, color 0.3s; }
-    nav.nav-desktop a:hover, nav.nav-desktop a:focus { background-color: #00fff2; color: #000; outline: none; }
-    .menu-btn { display: none; flex-direction: column; gap: 5px; cursor: pointer; user-select: none; background: none; border: none; padding: 0; }
-    .menu-btn div { width: 28px; height: 3.5px; background: #fff; border-radius: 2px; transition: all 0.3s ease; }
-    .menu-btn.active div:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
-    .menu-btn.active div:nth-child(2) { opacity: 0; }
-    .menu-btn.active div:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
-    .nav-mobile { display: none; flex-direction: column; background: #111; position: fixed; top: 60px; right: 20px; padding: 1rem 1.5rem; border-radius: 8px; min-width: 220px; box-shadow: 0 8px 24px rgba(0,0,0,0.7); z-index: 1100; user-select: none; max-height: calc(100vh - 80px); overflow-y: auto; transition: opacity 0.3s ease, visibility 0.3s ease; opacity: 0; visibility: hidden; }
-    .nav-mobile.show { display: flex; opacity: 1; visibility: visible; }
-    .nav-mobile a { color: #fff; margin: 0.5rem 0; font-weight: 600; text-decoration: none; padding: 0.4rem 0.6rem; border-radius: 4px; transition: background-color 0.3s; display: flex; justify-content: space-between; align-items: center; }
-    .nav-mobile a:hover, .nav-mobile a:focus { background-color: #00fff2; color: #000; outline: none; }
-    .submenu-mobile { display: flex; flex-direction: column; }
-    .submenu-toggle { cursor: pointer; display: flex; justify-content: space-between; align-items: center; color: #fff; font-weight: 600; user-select: none; padding: 0.4rem 0.6rem; border-radius: 4px; transition: background-color 0.3s; }
-    .submenu-toggle:hover, .submenu-toggle:focus { background-color: #00fff2; color: #000; outline: none; }
-    .submenu-toggle .arrow { font-size: 1rem; margin-left: 8px; transition: transform 0.3s ease; user-select: none; }
-    .submenu-toggle.active .arrow { transform: rotate(180deg); }
-    .submenu-content { display: none; flex-direction: column; margin-left: 1rem; margin-top: 0.5rem; }
-    .submenu-content.show { display: flex; }
-    .submenu-content a { color: #00fff2; font-weight: 500; margin: 0.3rem 0; text-decoration: none; padding-left: 0.4rem; border-left: 2px solid #00fff2; transition: color 0.3s; }
-    .submenu-content a:hover, .submenu-content a:focus { text-decoration: underline; color: #33fff6; outline: none; }
-    .hero { background: linear-gradient(135deg, #00fff2, #0066ff); padding: 6rem 2rem; text-align: center; color: #000; }
-    .hero h1 { font-size: 3rem; margin-bottom: 1rem; user-select: none; }
-    .hero p { font-size: 1.25rem; max-width: 700px; margin: 0 auto; user-select: none; }
-    section { padding: 4rem 2rem; max-width: 1100px; margin: auto; }
-    section h2 { text-align: center; font-size: 2.5rem; margin-bottom: 2rem; color: #00fff2; user-select: none; }
-    .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; }
-    .card { background: #1a1a1a; padding: 2rem; border-radius: 10px; transition: transform 0.3s ease, box-shadow 0.3s ease; user-select: none; }
-    .card:hover, .card:focus-within { transform: translateY(-8px); box-shadow: 0 8px 20px rgba(0, 255, 242, 0.3); outline: none; }
-    .card h3 { color: #00fff2; margin-bottom: 1rem; }
-    .faq, .testimonios { max-width: 800px; margin: auto; text-align: center; user-select: none; }
-    .faq p, .testimonios p { margin-bottom: 1.5rem; background: #1a1a1a; padding: 1rem; border-radius: 8px; }
-    footer { background: #111; padding: 2rem; text-align: center; color: #888; user-select: none; }
-    .whatsapp { position: fixed; bottom: 20px; right: 20px; z-index: 1001; width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; border-radius: 50%; background: #25D366; box-shadow: 0 0 15px rgba(0,0,0,0.4); text-decoration: none; transition: background-color 0.3s ease; }
-    .whatsapp:hover, .whatsapp:focus { background: #1ebe57; outline: none; }
-    .whatsapp img { pointer-events: none; user-select: none; }
-    .scroll-top { right: 80px; background: #0066ff; transition: opacity 0.4s ease, transform 0.4s ease; opacity: 0; transform: translateY(20px); pointer-events: none; position: fixed; bottom: 20px; border-radius: 50%; padding: 0.6rem 0.8rem; color: white; font-size: 1.8rem; box-shadow: 0 0 15px rgba(0,0,0,0.4); z-index: 1001; text-decoration: none; display: flex; align-items: center; justify-content: center; width: 48px; height: 48px; }
-    .scroll-top.show { opacity: 1; transform: translateY(0); pointer-events: auto; }
-    .scroll-top svg { width: 24px; height: 24px; display: block; }
-    
-    /* Formulario Contacto */
-    .form-container {
-      max-width: 480px;
-      margin: 2rem auto 0 auto;
-      background: #1a1a1a;
-      padding: 2rem;
-      border-radius: 12px;
-      box-shadow: 0 8px 24px rgba(0, 255, 242, 0.25);
-      user-select: none;
-    }
-
-    .form-container form {
-      display: flex;
-      flex-direction: column;
-      gap: 1.2rem;
-    }
-
-    .form-container input,
-    .form-container textarea {
-      background: #0f0f0f;
-      border: 2px solid #00fff2;
-      border-radius: 8px;
-      padding: 0.75rem 1rem;
-      color: #fff;
-      font-size: 1rem;
-      font-family: 'Poppins', sans-serif;
-      transition: border-color 0.3s ease;
-      resize: vertical;
-    }
-
-    .form-container input:focus,
-    .form-container textarea:focus {
-      border-color: #33fff6;
-      outline: none;
-    }
-
-    .form-container button {
-      background: #00fff2;
-      color: #000;
-      font-weight: 700;
-      padding: 0.75rem;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      font-size: 1.1rem;
-      transition: background-color 0.3s ease;
-      user-select: none;
-    }
-
-    .form-container button:hover,
-    .form-container button:focus {
-      background: #33fff6;
-      outline: none;
-    }
-
-    @media (max-width: 768px) {
-      nav.nav-desktop { display: none; }
-      .menu-btn { display: flex; }
-    }
-  </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>PAKA Tech Solutions - Soporte y Mantenimiento Informático</title>
+<style>
+  * {
+    margin: 0; padding: 0; box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+  }
+  body {
+    background: #0a0a0a;
+    color: white;
+    line-height: 1.6;
+    scroll-behavior: smooth;
+  }
+  /* HEADER */
+  header {
+    background: linear-gradient(90deg, #00f2ff, #00ff88);
+    padding: 0.8rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.4);
+  }
+  header img {
+    height: 50px;
+    transition: transform 0.3s ease;
+  }
+  header img:hover {
+    transform: scale(1.05);
+  }
+  nav a {
+    color: black;
+    text-decoration: none;
+    margin: 0 1rem;
+    font-weight: bold;
+    transition: color 0.3s;
+  }
+  nav a:hover {
+    color: white;
+  }
+  /* HERO */
+  .hero {
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.7)), 
+      url('https://images.unsplash.com/photo-1518770660439-4636190af475') no-repeat center/cover;
+    padding: 6rem 2rem;
+    text-align: center;
+  }
+  .hero h1 {
+    font-size: 3rem;
+    color: #00ffcc;
+    text-shadow: 0 0 10px #00ffcc;
+    animation: fadeInDown 1s ease;
+  }
+  .hero p {
+    max-width: 700px;
+    margin: 1rem auto;
+    font-size: 1.2rem;
+    animation: fadeInUp 1.2s ease;
+  }
+  .hero a {
+    display: inline-block;
+    background: #00ff88;
+    color: black;
+    padding: 0.7rem 1.5rem;
+    margin-top: 1rem;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: 0.3s;
+    box-shadow: 0 0 10px #00ff88;
+  }
+  .hero a:hover {
+    background: #00f2ff;
+    box-shadow: 0 0 15px #00f2ff;
+  }
+  /* TITULOS */
+  h2 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    font-size: 2rem;
+    color: #00ffcc;
+    text-shadow: 0 0 8px #00ffcc;
+  }
+  /* SECCIONES */
+  section {
+    padding: 3rem 2rem;
+    max-width: 1200px;
+    margin: auto;
+  }
+  /* SERVICIOS */
+  .services {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+  }
+  .service {
+    background: #111;
+    padding: 1.5rem;
+    border-radius: 10px;
+    text-align: center;
+    border: 1px solid #00ff88;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  .service:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 15px #00ff88;
+  }
+  .service img {
+    height: 80px;
+    margin-bottom: 1rem;
+  }
+  /* TESTIMONIOS */
+  .testimonials {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+  }
+  .testimonial {
+    background: #111;
+    padding: 1.5rem;
+    border-radius: 10px;
+    border: 1px solid #00f2ff;
+    text-align: center;
+    transition: box-shadow 0.3s;
+  }
+  .testimonial:hover {
+    box-shadow: 0 0 15px #00f2ff;
+  }
+  .testimonial img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin-bottom: 1rem;
+    object-fit: cover;
+    border: 2px solid #00f2ff;
+  }
+  /* FAQ */
+  .faq {
+    background: #111;
+    padding: 2rem;
+    border-radius: 10px;
+  }
+  .faq-item {
+    margin-bottom: 1rem;
+    border-bottom: 1px solid #222;
+    padding-bottom: 0.5rem;
+  }
+  .faq-item h4 {
+    color: #00ffcc;
+    cursor: pointer;
+    position: relative;
+  }
+  .faq-item p {
+    display: none;
+    margin-top: 0.5rem;
+  }
+  /* FORMULARIO */
+  form {
+    max-width: 500px;
+    margin: auto;
+    text-align: left;
+  }
+  form label {
+    display: block;
+    margin-top: 10px;
+  }
+  form input, form textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 5px;
+    border: none;
+    background: #222;
+    color: white;
+    outline: none;
+    transition: box-shadow 0.3s;
+  }
+  form input:focus, form textarea:focus {
+    box-shadow: 0 0 8px #00ffcc;
+  }
+  form button {
+    background-color: #00ff88;
+    color: black;
+    padding: 10px 20px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s, box-shadow 0.3s;
+  }
+  form button:hover {
+    background-color: #00f2ff;
+    box-shadow: 0 0 10px #00f2ff;
+  }
+  /* FOOTER */
+  footer {
+    background: #000;
+    text-align: center;
+    padding: 2rem;
+    border-top: 2px solid #00ffcc;
+    font-size: 0.9rem;
+  }
+  /* WHATSAPP */
+  .whatsapp {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #25D366;
+    padding: 15px;
+    border-radius: 50%;
+    box-shadow: 0 0 10px #25D366;
+    animation: pulse 1.5s infinite;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    z-index: 10000;
+  }
+  .whatsapp:hover {
+    transform: scale(1.1);
+  }
+  /* ANIMACIONES */
+  @keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+  }
+</style>
+<script>
+  document.addEventListener("DOMContentLoaded", function(){
+    // FAQ accordion
+    document.querySelectorAll(".faq-item h4").forEach(q => {
+      q.addEventListener("click", () => {
+        let p = q.nextElementSibling;
+        p.style.display = (p.style.display === "block") ? "none" : "block";
+      });
+    });
+  });
+</script>
 </head>
 <body>
 
-  <header>
-    <div class="logo-container" tabindex="0">
-      <img src="https://hosting.renderforestsites.com/31797606/1520202/media/51a88f12e21c6145f94ccb88d97a8d75.png" alt="Logo PAKA Tech" />
-      <div class="logo">PAKA Tech</div>
+<header>
+  <img src="https://hosting.renderforestsites.com/31797606/1520202/media/51a88f12e21c6145f94ccb88d97a8d75.png" alt="PAKA Tech Solutions" />
+  <nav>
+    <a href="#inicio">Inicio</a>
+    <a href="#servicios">Servicios</a>
+    <a href="#testimonios">Testimonios</a>
+    <a href="#faq">FAQ</a>
+    <a href="#contacto">Contacto</a>
+  </nav>
+</header>
+
+<section class="hero" id="inicio">
+  <h1>Soluciones Tecnológicas a Tu Alcance</h1>
+  <p>En <strong>PAKA Tech Solutions</strong> ofrecemos soporte técnico, mantenimiento informático y soluciones digitales para impulsar tu negocio o proyecto personal. Calidad, rapidez y confianza en cada servicio.</p>
+  <a href="#contacto">Solicita tu cotización</a>
+</section>
+
+<section id="servicios">
+  <h2>Servicios</h2>
+  <div class="services">
+    <div class="service">
+      <img src="https://cdn-icons-png.flaticon.com/512/1055/1055687.png" alt="Soporte Técnico" />
+      <h3>Soporte Técnico</h3>
+      <p>Resolución rápida y efectiva de problemas informáticos.</p>
     </div>
-    <nav class="nav-desktop" aria-label="Menú principal">
-      <a href="#servicios" tabindex="0">Servicios</a>
-      <a href="#nosotros" tabindex="0">Nosotros</a>
-      <a href="#contacto" tabindex="0">Contacto</a>
-    </nav>
-    <button class="menu-btn" aria-label="Abrir menú móvil" aria-expanded="false" aria-controls="mobileMenu" onclick="toggleMenu(this)">
-      <div></div><div></div><div></div>
-    </button>
-    <nav class="nav-mobile" id="mobileMenu" aria-label="Menú móvil" role="navigation">
-      <a href="#servicios" onclick="toggleMenu()" tabindex="0">Servicios</a>
-      <div class="submenu-mobile">
-        <a href="#nosotros" class="submenu-toggle" aria-haspopup="true" aria-expanded="false" tabindex="0">
-          Nosotros <span class="arrow" aria-hidden="true">▼</span>
-        </a>
-        <div class="submenu-content" role="region" aria-label="Submenú Nosotros">
-          <a href=".testimonios" onclick="toggleMenu()" tabindex="0">Testimonios</a>
-          <a href=".faq" onclick="toggleMenu()" tabindex="0">Preguntas Frecuentes</a>
-        </div>
-      </div>
-      <a href="#contacto" onclick="toggleMenu()" tabindex="0">Contacto</a>
-    </nav>
-  </header>
-
-  <section class="hero" data-aos="fade-up" tabindex="0">
-    <h1>Soluciones Tecnológicas a tu Alcance</h1>
-    <p>Reparación, mantenimiento, redes, instalación de software y más. Siempre cerca, siempre contigo</p>
-  </section>
-
-  <section id="servicios" tabindex="0">
-    <h2 data-aos="fade-down">Servicios</h2>
-    <div class="cards">
-      <div class="card" data-aos="fade-right" tabindex="0">
-        <h3>Reparación de PC</h3>
-        <p>Formateo, diagnóstico profesional, optimización y más.</p>
-      </div>
-      <div class="card" data-aos="zoom-in" tabindex="0">
-        <h3>Mantenimiento</h3>
-        <p>Limpieza interna y externa para un rendimiento óptimo.</p>
-      </div>
-      <div class="card" data-aos="fade-left" tabindex="0">
-        <h3>Instalación de Software</h3>
-        <p>Windows, Office, antivirus y programas personalizados.</p>
-      </div>
-      <div class="card" data-aos="fade-up" tabindex="0">
-        <h3>Mantenimiento Preventivo de Impresoras</h3>
-        <p>Revisión, limpieza y optimización para evitar fallos y prolongar la vida útil.</p>
-      </div>
+    <div class="service">
+      <img src="https://cdn-icons-png.flaticon.com/512/2721/2721289.png" alt="Mantenimiento Preventivo" />
+      <h3>Mantenimiento Preventivo</h3>
+      <p>Evita fallos y alarga la vida útil de tus equipos.</p>
     </div>
-  </section>
-
-  <section id="nosotros" tabindex="0">
-    <h2 data-aos="zoom-in">Sobre Nosotros</h2>
-    <p data-aos="fade-up" style="text-align:center; max-width:700px; margin:auto;">
-      PAKA es un experto en soporte técnico y mantenimiento informático en Villa Alborada, comprometido con brindar soluciones rápidas y confiables para mantener tus dispositivos siempre en óptimas condiciones.
-    </p>
-  </section>
-
-  <section class="testimonios" tabindex="0">
-    <h2 data-aos="fade-up">Testimonios</h2>
-    <p data-aos="fade-right">“Gracias a PAKA Tech mi laptop volvió a la vida. Excelente atención.” – Yoselin N.</p>
-    <p data-aos="fade-left">“Rápido, confiable y con precios justos. Muy recomendado.” –  Sofía L.</p>
-  </section>
-
-  <section class="faq" tabindex="0">
-    <h2 data-aos="fade-up">Preguntas Frecuentes</h2>
-    <p data-aos="fade-up"><strong>¿Ofrecen garantía por los servicios realizados?</strong> Sí, todos nuestros servicios cuentan con garantía para tu tranquilidad.</p>
-    <p data-aos="fade-up"><strong>¿Atienden emergencias?</strong> Sí, con un pequeño recargo adicional por urgencia.</p>
-  </section>
-
-  <section id="contacto" tabindex="0">
-    <h2 data-aos="flip-left">Contacto</h2>
-    <p data-aos="fade-up" style="text-align:center;">
-      📞 Tel: +502 4754-8991 <br />
-      ✉️ Email: pakatechsolutions@gmail.com <br />
-      📍Villa Alborada, Amatitlán, Guatemala
-    </p>
-
-    <div class="form-container" data-aos="fade-up">
-      <form action="https://formsubmit.co/pakatechsolutions@gmail.com" method="POST" novalidate>
-        <input type="text" name="name" placeholder="Tu nombre" required autocomplete="name" />
-        <input type="email" name="email" placeholder="Tu correo" required autocomplete="email" />
-        <textarea name="message" rows="5" placeholder="Tu mensaje" required></textarea>
-        <button type="submit">Enviar</button>
-      </form>
+    <div class="service">
+      <img src="https://cdn-icons-png.flaticon.com/512/888/888879.png" alt="Instalación de Software" />
+      <h3>Instalación de Software</h3>
+      <p>Instalación y configuración de software adaptado a tus necesidades.</p>
     </div>
-  </section>
+  </div>
+</section>
 
-  <footer>
-    &copy; 2025 PAKA Tech Solutions. Todos los derechos reservados.
-  </footer>
+<section id="testimonios">
+  <h2>Testimonios</h2>
+  <div class="testimonials">
+    <div class="testimonial">
+      <img src="https://randomuser.me/api/portraits/women/45.jpg" alt="María López" />
+      <p>"Excelente servicio, rápido y confiable. Mi computadora funciona como nueva."</p>
+      <strong>- María López</strong>
+    </div>
+    <div class="testimonial">
+      <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Carlos Pérez" />
+      <p>"PAKA Tech Solutions salvó mi negocio. Muy profesionales y atentos."</p>
+      <strong>- Carlos Pérez</strong>
+    </div>
+  </div>
+</section>
 
-  <!-- Botón WhatsApp con PNG oficial -->
-  <a class="whatsapp" href="https://wa.me/50247548991" target="_blank" rel="noopener" aria-label="Chat en WhatsApp" title="Chat en WhatsApp">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" draggable="false" style="width:28px; height:28px;" />
-  </a>
+<section id="faq">
+  <h2>Preguntas Frecuentes</h2>
+  <div class="faq">
+    <div class="faq-item">
+      <h4>¿Cuánto tardan en resolver un problema?</h4>
+      <p>Dependiendo del tipo de problema, puede variar entre minutos y unas pocas horas.</p>
+    </div>
+    <div class="faq-item">
+      <h4>¿Pueden atender a domicilio?</h4>
+      <p>Sí, ofrecemos servicio a domicilio según disponibilidad en tu zona.</p>
+    </div>
+    <div class="faq-item">
+      <h4>¿Dan garantía de sus servicios?</h4>
+      <p>Todos nuestros servicios tienen garantía de satisfacción y calidad.</p>
+    </div>
+  </div>
+</section>
 
-  <a class="scroll-top" id="scrollTopBtn" href="#" aria-label="Ir arriba">
-    <svg xmlns="http://www.w3.org/2000/svg" height="24" width="24" fill="#fff" viewBox="0 0 24 24">
-      <path d="M12 4.5 4.5 12h15ZM4.5 12v1.5h15V12Z" />
-    </svg>
-  </a>
+<section id="contacto" style="padding: 50px; text-align: center; background-color: #111; color: white;">
+  <h2 style="display: flex; align-items: center; justify-content: center; gap: 10px;">
+    <img src="https://hosting.renderforestsites.com/31797606/1520202/media/51a88f12e21c6145f94ccb88d97a8d75.png" alt="Logo PAKA Tech Solutions" style="height: 40px; vertical-align: middle;" />
+    Contáctanos
+  </h2>
 
-  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-  <script>
-    AOS.init({ duration: 1200 });
-    function toggleMenu(button) {
-      const menu = document.getElementById('mobileMenu');
-      const isVisible = menu.classList.toggle('show');
-      if (button) {
-        button.classList.toggle('active');
-        button.setAttribute('aria-expanded', isVisible);
-      }
-    }
-    document.addEventListener('DOMContentLoaded', () => {
-      document.querySelectorAll('.submenu-toggle').forEach(btn => {
-        btn.addEventListener('click', e => {
-          e.preventDefault();
-          const content = btn.nextElementSibling;
-          const isVisible = content.classList.contains('show');
-          document.querySelectorAll('.submenu-content').forEach(c => c.classList.remove('show'));
-          document.querySelectorAll('.submenu-toggle').forEach(t => { t.classList.remove('active'); t.setAttribute('aria-expanded','false'); });
-          if (!isVisible) {
-            content.classList.add('show');
-            btn.classList.add('active');
-            btn.setAttribute('aria-expanded','true');
-          }
-        });
-      });
-      document.querySelectorAll('.nav-mobile a').forEach(link => {
-        link.addEventListener('click', () => {
-          const menu = document.getElementById('mobileMenu');
-          const menuBtn = document.querySelector('.menu-btn');
-          if (menu.classList.contains('show')) {
-            menu.classList.remove('show');
-            menuBtn.classList.remove('active');
-            menuBtn.setAttribute('aria-expanded','false');
-          }
-        });
+  <div style="margin: 20px 0; font-size: 1.1rem; line-height: 1.8;">
+    📞 Tel: <a href="tel:+50247548991" style="color:#00ffcc; text-decoration:none;">+502 4754-8991</a><br />
+    ✉️ Email: <a href="mailto:pakatechsolutions@gmail.com" style="color:#00ffcc; text-decoration:none;">pakatechsolutions@gmail.com</a><br />
+    📍 Villa Alborada, Amatitlán, Guatemala
+  </div>
+
+  <form action="https://formsubmit.co/tu-correo-aqui" method="POST">
+    <label for="nombre">Nombre:</label>
+    <input type="text" name="nombre" id="nombre" required />
+
+    <label for="email">Correo:</label>
+    <input type="email" name="email" id="email" required />
+
+    <label for="mensaje">Mensaje:</label>
+    <textarea name="mensaje" id="mensaje" rows="5" required></textarea>
+
+    <input type="hidden" name="_next" value="https://pakastore.github.io/pakatechsolutions-web/" />
+    <input type="hidden" name="_captcha" value="true" />
+
+    <button type="submit">Enviar</button>
+  </form>
+</section>
+
+<footer>
+  <p>&copy; 2025 PAKA Tech Solutions - Todos los derechos reservados.</p>
+</footer>
+
+<a href="https://wa.me/50212345678" class="whatsapp" target="_blank" rel="noopener" aria-label="Whatsapp">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" width="40" alt="Whatsapp Icon" />
+</a>
+
+<script>
+  // FAQ toggle
+  document.addEventListener("DOMContentLoaded", () => {
+    document.querySelectorAll(".faq-item h4").forEach((q) => {
+      q.addEventListener("click", () => {
+        const p = q.nextElementSibling;
+        if (p.style.display === "block") {
+          p.style.display = "none";
+        } else {
+          p.style.display = "block";
+        }
       });
     });
-    const scrollBtn = document.getElementById('scrollTopBtn');
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 300) scrollBtn.classList.add('show'); else scrollBtn.classList.remove('show');
-    });
-    scrollBtn.addEventListener('click', e => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); });
-  </script>
+  });
+</script>
+
 </body>
 </html>
