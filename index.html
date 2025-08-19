@@ -28,23 +28,10 @@
     z-index: 1000;
     box-shadow: 0 3px 10px rgba(0,0,0,0.4);
   }
-  header img {
-    height: 50px;
-    transition: transform 0.3s ease;
-  }
-  header img:hover {
-    transform: scale(1.05);
-  }
-  nav a {
-    color: black;
-    text-decoration: none;
-    margin: 0 1rem;
-    font-weight: bold;
-    transition: color 0.3s;
-  }
-  nav a:hover {
-    color: white;
-  }
+  header img { height: 50px; transition: transform 0.3s ease; }
+  header img:hover { transform: scale(1.05); }
+  nav a { color: black; text-decoration: none; margin: 0 1rem; font-weight: bold; transition: color 0.3s; }
+  nav a:hover { color: white; }
   /* HERO */
   .hero {
     background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.7)), 
@@ -52,217 +39,55 @@
     padding: 6rem 2rem;
     text-align: center;
   }
-  .hero h1 {
-    font-size: 3rem;
-    color: #00ffcc;
-    text-shadow: 0 0 10px #00ffcc;
-    animation: fadeInDown 1s ease;
-  }
-  .hero p {
-    max-width: 700px;
-    margin: 1rem auto;
-    font-size: 1.2rem;
-    animation: fadeInUp 1.2s ease;
-  }
-  .hero a {
-    display: inline-block;
-    background: #00ff88;
-    color: black;
-    padding: 0.7rem 1.5rem;
-    margin-top: 1rem;
-    font-weight: bold;
-    border-radius: 5px;
-    transition: 0.3s;
-    box-shadow: 0 0 10px #00ff88;
-  }
-  .hero a:hover {
-    background: #00f2ff;
-    box-shadow: 0 0 15px #00f2ff;
-  }
+  .hero h1 { font-size: 3rem; color: #00ffcc; text-shadow: 0 0 10px #00ffcc; animation: fadeInDown 1s ease; }
+  .hero p { max-width: 700px; margin: 1rem auto; font-size: 1.2rem; animation: fadeInUp 1.2s ease; }
+  .hero a { display: inline-block; background: #00ff88; color: black; padding: 0.7rem 1.5rem; margin-top: 1rem; font-weight: bold; border-radius: 5px; transition: 0.3s; box-shadow: 0 0 10px #00ff88; }
+  .hero a:hover { background: #00f2ff; box-shadow: 0 0 15px #00f2ff; }
   /* TITULOS */
-  h2 {
-    text-align: center;
-    margin-bottom: 1.5rem;
-    font-size: 2rem;
-    color: #00ffcc;
-    text-shadow: 0 0 8px #00ffcc;
-  }
+  h2 { text-align: center; margin-bottom: 1.5rem; font-size: 2rem; color: #00ffcc; text-shadow: 0 0 8px #00ffcc; }
   /* SECCIONES */
-  section {
-    padding: 3rem 2rem;
-    max-width: 1200px;
-    margin: auto;
-  }
+  section { padding: 3rem 2rem; max-width: 1200px; margin: auto; }
   /* SERVICIOS */
-  .services {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
-  }
-  .service {
-    background: #111;
-    padding: 1.5rem;
-    border-radius: 10px;
-    text-align: center;
-    border: 1px solid #00ff88;
-    transition: transform 0.3s, box-shadow 0.3s;
-  }
-  .service:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 0 15px #00ff88;
-  }
-  .service img {
-    height: 80px;
-    margin-bottom: 1rem;
-  }
+  .services { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; }
+  .service { background: #111; padding: 1.5rem; border-radius: 10px; text-align: center; border: 1px solid #00ff88; transition: transform 0.3s, box-shadow 0.3s; }
+  .service:hover { transform: translateY(-5px); box-shadow: 0 0 15px #00ff88; }
+  .service img { height: 80px; margin-bottom: 1rem; }
   /* HORARIO */
-  #horario h2 {
-    color: #00ffcc;
-    text-shadow: 0 0 8px #00ffcc;
-    text-align: center;
-    margin-bottom: 1.5rem;
-  }
-  #horario .service {
-    background: #111;
-    padding: 1rem 2rem;
-    border-radius: 10px;
-    text-align: center;
-    border: 1px solid #00ffcc;
-    font-size: 1.1rem;
-    line-height: 1.7;
-    max-width: 400px;
-    margin: 1rem auto;
-  }
+  #horario h2 { color: #00ffcc; text-shadow: 0 0 8px #00ffcc; text-align: center; margin-bottom: 1.5rem; }
+  #horario .service { background: #111; padding: 1rem 2rem; border-radius: 10px; text-align: center; border: 1px solid #00ffcc; font-size: 1.1rem; line-height: 1.7; max-width: 400px; margin: 1rem auto; }
   /* TESTIMONIOS */
-  .testimonials {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-  }
-  .testimonial {
-    background: #111;
-    padding: 1.5rem;
-    border-radius: 10px;
-    border: 1px solid #00f2ff;
-    text-align: center;
-    transition: box-shadow 0.3s;
-  }
-  .testimonial:hover {
-    box-shadow: 0 0 15px #00f2ff;
-  }
-  .testimonial img {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    margin-bottom: 1rem;
-    object-fit: cover;
-    border: 2px solid #00f2ff;
-  }
+  .testimonials { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
+  .testimonial { background: #111; padding: 1.5rem; border-radius: 10px; border: 1px solid #00f2ff; text-align: center; transition: box-shadow 0.3s; }
+  .testimonial:hover { box-shadow: 0 0 15px #00f2ff; }
+  .testimonial img { width: 80px; height: 80px; border-radius: 50%; margin-bottom: 1rem; object-fit: cover; border: 2px solid #00f2ff; }
   /* FAQ */
-  .faq {
-    background: #111;
-    padding: 2rem;
-    border-radius: 10px;
-  }
-  .faq-item {
-    margin-bottom: 1rem;
-    border-bottom: 1px solid #222;
-    padding-bottom: 0.5rem;
-  }
-  .faq-item h4 {
-    color: #00ffcc;
-    cursor: pointer;
-    position: relative;
-  }
-  .faq-item p {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.4s ease, padding 0.4s ease;
-    padding: 0 10px;
-  }
-  .faq-item p.active {
-    max-height: 200px;
-    padding: 10px;
-  }
+  .faq { background: #111; padding: 2rem; border-radius: 10px; }
+  .faq-item { margin-bottom: 1rem; border-bottom: 1px solid #222; padding-bottom: 0.5rem; }
+  .faq-item h4 { color: #00ffcc; cursor: pointer; position: relative; }
+  .faq-item p { max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.4s ease; padding: 0 10px; }
+  .faq-item p.active { max-height: 200px; padding: 10px; }
   /* FORMULARIO */
-  form {
-    max-width: 500px;
-    margin: auto;
-    text-align: left;
-  }
-  form label {
-    display: block;
-    margin-top: 10px;
-  }
-  form input, form textarea {
-    width: 100%;
-    padding: 10px;
-    margin: 5px 0;
-    border-radius: 5px;
-    border: none;
-    background: #222;
-    color: white;
-    outline: none;
-    transition: box-shadow 0.3s;
-  }
-  form input:focus, form textarea:focus {
-    box-shadow: 0 0 8px #00ffcc;
-  }
-  form button {
-    background-color: #00ff88;
-    color: black;
-    padding: 10px 20px;
-    margin-top: 10px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background 0.3s, box-shadow 0.3s;
-  }
-  form button:hover {
-    background-color: #00f2ff;
-    box-shadow: 0 0 10px #00f2ff;
-  }
+  form { max-width: 500px; margin: auto; text-align: left; }
+  form label { display: block; margin-top: 10px; }
+  form input, form textarea { width: 100%; padding: 10px; margin: 5px 0; border-radius: 5px; border: none; background: #222; color: white; outline: none; transition: box-shadow 0.3s; }
+  form input:focus, form textarea:focus { box-shadow: 0 0 8px #00ffcc; }
+  form button { background-color: #00ff88; color: black; padding: 10px 20px; margin-top: 10px; border: none; border-radius: 5px; cursor: pointer; transition: background 0.3s, box-shadow 0.3s; }
+  form button:hover { background-color: #00f2ff; box-shadow: 0 0 10px #00f2ff; }
   /* FOOTER */
-  footer {
-    background: #000;
-    text-align: center;
-    padding: 2rem;
-    border-top: 2px solid #00ffcc;
-    font-size: 0.9rem;
-  }
+  footer { background: #000; text-align: center; padding: 2rem; border-top: 2px solid #00ffcc; font-size: 0.9rem; }
   /* WHATSAPP */
-  .whatsapp {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background: #25D366;
-    padding: 15px;
-    border-radius: 50%;
-    box-shadow: 0 0 10px #25D366;
-    animation: pulse 1.5s infinite;
-    cursor: pointer;
-    transition: transform 0.3s ease;
-    z-index: 10000;
-  }
-  .whatsapp:hover {
-    transform: scale(1.1);
-  }
+  .whatsapp { position: fixed; bottom: 20px; right: 20px; background: #25D366; padding: 15px; border-radius: 50%; box-shadow: 0 0 10px #25D366; animation: pulse 1.5s infinite; cursor: pointer; transition: transform 0.3s ease; z-index: 10000; }
+  .whatsapp:hover { transform: scale(1.1); }
   /* ANIMACIONES */
-  @keyframes fadeInDown {
-    from { opacity: 0; transform: translateY(-20px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-  @keyframes fadeInUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-  @keyframes pulse {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.05); }
-  }
+  @keyframes fadeInDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
 </style>
 <script>
   document.addEventListener("DOMContentLoaded", () => {
+    // Eliminar reseñas previas (de prueba)
+    localStorage.removeItem("reseñas");
+
     // FAQ toggle con clase active para animación suave
     document.querySelectorAll(".faq-item h4").forEach(q => {
       q.addEventListener("click", () => {
@@ -270,7 +95,60 @@
         p.classList.toggle("active");
       });
     });
+
+    // Mostrar reseñas guardadas
+    mostrarReseñas();
   });
+
+  function agregarReseña() {
+    let nombre = document.getElementById("nombreReseña").value.trim();
+    let apellido = document.getElementById("apellidoReseña").value.trim();
+    let mensaje = document.getElementById("mensajeReseña").value.trim();
+    let fotoInput = document.getElementById("fotoReseña");
+    let foto = "https://via.placeholder.com/80";
+
+    if (!nombre || !apellido || !mensaje) { alert("Por favor completa todos los campos."); return; }
+
+    if (fotoInput.files && fotoInput.files[0]) {
+      let reader = new FileReader();
+      reader.onload = function(e) {
+        foto = e.target.result;
+        guardarReseña(nombre, apellido, mensaje, foto);
+      }
+      reader.readAsDataURL(fotoInput.files[0]);
+    } else {
+      guardarReseña(nombre, apellido, mensaje, foto);
+    }
+  }
+
+  function guardarReseña(nombre, apellido, mensaje, foto) {
+    let reseña = { nombre: nombre, apellido: apellido.charAt(0).toUpperCase() + ".", mensaje: mensaje, foto: foto };
+    let reseñas = JSON.parse(localStorage.getItem("reseñas")) || [];
+    reseñas.push(reseña);
+    localStorage.setItem("reseñas", JSON.stringify(reseñas));
+    mostrarReseñas();
+    document.getElementById("nombreReseña").value = "";
+    document.getElementById("apellidoReseña").value = "";
+    document.getElementById("fotoReseña").value = "";
+    document.getElementById("mensajeReseña").value = "";
+  }
+
+  function mostrarReseñas() {
+    let contenedor = document.getElementById("listaReseñas");
+    if (!contenedor) return;
+    contenedor.innerHTML = "";
+    let reseñas = JSON.parse(localStorage.getItem("reseñas")) || [];
+    reseñas.forEach(r => {
+      let div = document.createElement("div");
+      div.classList.add("testimonial"); 
+      div.innerHTML = `
+        <img src="${r.foto}" alt="${r.nombre} ${r.apellido}">
+        <p>"${r.mensaje}"</p>
+        <strong>- ${r.nombre} ${r.apellido}</strong>
+      `;
+      contenedor.appendChild(div);
+    });
+  }
 </script>
 </head>
 <body>
@@ -344,6 +222,22 @@
   </div>
 </section>
 
+<section id="reseñas">
+  <h2>Reseñas de Clientes</h2>
+  <form onsubmit="event.preventDefault(); agregarReseña();">
+    <label for="nombreReseña">Nombre:</label>
+    <input type="text" id="nombreReseña" required />
+    <label for="apellidoReseña">Apellido:</label>
+    <input type="text" id="apellidoReseña" required />
+    <label for="fotoReseña">Foto:</label>
+    <input type="file" id="fotoReseña" accept="image/*" />
+    <label for="mensajeReseña">Mensaje:</label>
+    <textarea id="mensajeReseña" rows="5" required></textarea>
+    <button type="submit">Agregar Reseña</button>
+  </form>
+  <div id="listaReseñas" class="testimonials" style="margin-top: 2rem;"></div>
+</section>
+
 <section id="faq">
   <h2>Preguntas Frecuentes</h2>
   <div class="faq">
@@ -367,26 +261,20 @@
     <img src="https://hosting.renderforestsites.com/31797606/1520202/media/51a88f12e21c6145f94ccb88d97a8d75.png" alt="Logo PAKA Tech Solutions" style="height: 40px; vertical-align: middle;" />
     Contáctanos
   </h2>
-
   <div style="margin: 20px 0; font-size: 1.1rem; line-height: 1.8;">
     📞 Tel: <a href="tel:+50247548991" style="color:#00ffcc; text-decoration:none;">+502 4754-8991</a><br />
     ✉️ Email: <a href="mailto:pakatechsolutions@gmail.com" style="color:#00ffcc; text-decoration:none;">pakatechsolutions@gmail.com</a><br />
     📍 Villa Alborada, Amatitlán, Guatemala
   </div>
-
   <form action="https://formsubmit.co/pakatechsolutions@gmail.com" method="POST">
     <label for="nombre">Nombre:</label>
     <input type="text" name="nombre" id="nombre" required />
-
     <label for="email">Correo:</label>
     <input type="email" name="email" id="email" required />
-
     <label for="mensaje">Mensaje:</label>
     <textarea name="mensaje" id="mensaje" rows="5" required></textarea>
-
     <input type="hidden" name="_next" value="https://pakastore.github.io/pakatechsolutions-web/" />
     <input type="hidden" name="_captcha" value="true" />
-
     <button type="submit">Enviar</button>
   </form>
 </section>
